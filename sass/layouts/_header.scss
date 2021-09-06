@@ -1,6 +1,5 @@
 header {
   height: 90px;
-  width: 100%;
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -8,5 +7,35 @@ header {
   img {
     width: 200px;
     height: 50px;
+  }
+
+  .tags {
+    width: 553px;
+    height: 49px;
+
+    &__list {
+      display: flex;
+      @include flexbox($direction: row);
+      column-gap: 10px;
+      width: 68px;
+      height: 22px;
+    }
+
+    &__item {
+      border: 0.5px solid #c4c4c4;
+      box-sizing: border-box;
+      border-radius: 11px;
+    }
+
+    a {
+      font-weight: 500;
+      padding: 5px;
+      color: $color-primary;
+
+      &:hover {
+        background-color: $color-primary;
+        color: $color-deco;
+      }
+    }
   }
 }

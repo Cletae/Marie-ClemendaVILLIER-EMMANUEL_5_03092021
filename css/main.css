@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "DM Sans", sans-serif;
 }
@@ -16,7 +20,6 @@ ul {
 
 header {
   height: 90px;
-  width: 100%;
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -24,6 +27,42 @@ header {
 header img {
   width: 200px;
   height: 50px;
+}
+header .tags {
+  width: 553px;
+  height: 49px;
+}
+header .tags__list {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  width: 68px;
+  height: 22px;
+}
+header .tags__item {
+  border: 0.5px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 11px;
+}
+header .tags a {
+  font-weight: 500;
+  padding: 5px;
+  color: #901C1C;
+}
+header .tags a:hover {
+  background-color: #901C1C;
+  color: #fff;
+}
+
+h1 {
+  padding-top: 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-weight: 400;
+  font-size: 36px;
+  color: #901C1C;
+  left: 5px;
 }
 
 /*# sourceMappingURL=main.css.map */
