@@ -1,0 +1,9 @@
+h1 {
+  padding-top: 5px;
+  display: flex;
+  @include flex($position: flex-end);
+  font-weight: 400;
+  font-size: 36px;
+  color: $color-primary;
+  left: 5px;
+}
