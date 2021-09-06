@@ -7,3 +7,53 @@ h1 {
   color: $color-primary;
   left: 5px;
 }
+
+.photographers {
+  display: grid;
+  grid-template-columns: repeat(3, 425px);
+  grid-template-rows: repeat(2, 1fr);
+
+  &__cards {
+    margin-top: 25px;
+    padding-top: 50px;
+    display: flex;
+    @include flex;
+    @include flexbox;
+  }
+
+  &__item {
+    display: flex;
+    @include flexbox;
+    @include flex;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: ease;
+    }
+  }
+
+  img {
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+  }
+
+  h2 {
+    color: $color-secondary;
+    font-size: 40px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin: 0.3rem;
+  }
+
+  .city {
+    color: $color-primary;
+  }
+
+  .price {
+    color: darken($color-bg, $amount: 35);
+  }
+}

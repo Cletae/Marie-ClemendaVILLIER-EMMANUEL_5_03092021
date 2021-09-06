@@ -28,28 +28,22 @@ header img {
   width: 200px;
   height: 50px;
 }
-header .tags {
-  width: 553px;
-  height: 49px;
-}
-header .tags__list {
+
+.tags__list {
   display: flex;
   flex-direction: row;
   column-gap: 10px;
-  width: 68px;
   height: 22px;
 }
-header .tags__item {
-  border: 0.5px solid #c4c4c4;
-  box-sizing: border-box;
-  border-radius: 11px;
-}
-header .tags a {
+.tags a {
   font-weight: 500;
   padding: 5px;
   color: #901C1C;
+  border: 0.5px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 15px;
 }
-header .tags a:hover {
+.tags a:hover {
   background-color: #901C1C;
   color: #fff;
 }
@@ -63,6 +57,50 @@ h1 {
   font-size: 36px;
   color: #901C1C;
   left: 5px;
+}
+
+.photographers {
+  display: grid;
+  grid-template-columns: repeat(3, 425px);
+  grid-template-rows: repeat(2, 1fr);
+}
+.photographers__cards {
+  margin-top: 25px;
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.photographers__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.photographers__item:hover {
+  transform: scale(1.05);
+  transition: ease;
+}
+.photographers img {
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+}
+.photographers h2 {
+  color: #D3573C;
+  font-size: 40px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.photographers p {
+  margin: 0.3rem;
+}
+.photographers .city {
+  color: #901C1C;
+}
+.photographers .price {
+  color: #8c8c8c;
 }
 
 /*# sourceMappingURL=main.css.map */
