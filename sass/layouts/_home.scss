@@ -1,5 +1,5 @@
 h1 {
-  padding-top: 5px;
+  padding-top: 25px;
   display: flex;
   @include flex($position: flex-end);
   font-weight: 400;
@@ -10,12 +10,17 @@ h1 {
 
 .photographers {
   display: grid;
-  grid-template-columns: repeat(3, 425px);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  row-gap: 55px;
+  padding-top: 45px;
+
+  @include tablette;
+  @include screen;
 
   &__cards {
-    margin-top: 25px;
-    padding-top: 50px;
+    // margin-top: 25px;
+    // padding-top: 50px;
     display: flex;
     @include flex;
     @include flexbox;
@@ -25,17 +30,17 @@ h1 {
     display: flex;
     @include flexbox;
     @include flex;
+    transition: 0.3 ease;
 
     &:hover {
-      transform: scale(1.05);
-      transition: ease;
+      transform: scale(1.02);
     }
   }
 
   img {
     border-radius: 50%;
-    height: 300px;
-    width: 300px;
+    height: 210px;
+    width: 210px;
   }
 
   h2 {
@@ -43,10 +48,12 @@ h1 {
     font-size: 40px;
     font-weight: 300;
     margin-bottom: 10px;
+    margin-top: 7px;
   }
 
   p {
-    margin: 0.3rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0;
   }
 
   .city {

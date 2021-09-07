@@ -4,3 +4,10 @@ $color-secondary: #D3573C;
 $color-bg: #E5E5E5;
 $color-text: black; 
 $color-deco: #fff;
+
+// Maps
+$breakpoint: (
+  tab: 700px,
+  mobile: 375px,
+  desktop: 1024px,
+);

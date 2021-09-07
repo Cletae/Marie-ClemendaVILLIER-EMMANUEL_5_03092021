@@ -23,10 +23,15 @@ header {
   position: absolute;
   display: flex;
   flex-direction: row;
+  top: 45px;
 }
 header img {
   width: 200px;
   height: 50px;
+  padding-left: 25px;
+}
+header nav {
+  padding-left: 25px;
 }
 
 .tags__list {
@@ -34,6 +39,14 @@ header img {
   flex-direction: row;
   column-gap: 10px;
   height: 22px;
+  padding: 0;
+}
+@media screen and (min-width: 375px) and (max-width: 700px) {
+  .tags__list--header {
+    display: flex;
+    flex-wrap: wrap;
+    height: 85px;
+  }
 }
 .tags a {
   font-weight: 500;
@@ -49,7 +62,7 @@ header img {
 }
 
 h1 {
-  padding-top: 5px;
+  padding-top: 25px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -61,12 +74,27 @@ h1 {
 
 .photographers {
   display: grid;
-  grid-template-columns: repeat(3, 425px);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  row-gap: 55px;
+  padding-top: 45px;
+}
+@media screen and (min-width: 700px) and (max-width: 1024px) {
+  .photographers {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 15px;
+    row-gap: 20px;
+  }
+}
+@media screen and (min-width: 375px) and (max-width: 700px) {
+  .photographers {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    column-gap: 20px;
+  }
 }
 .photographers__cards {
-  margin-top: 25px;
-  padding-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,24 +105,26 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: 0.3 ease;
 }
 .photographers__item:hover {
-  transform: scale(1.05);
-  transition: ease;
+  transform: scale(1.02);
 }
 .photographers img {
   border-radius: 50%;
-  height: 300px;
-  width: 300px;
+  height: 210px;
+  width: 210px;
 }
 .photographers h2 {
   color: #D3573C;
   font-size: 40px;
   font-weight: 300;
   margin-bottom: 10px;
+  margin-top: 7px;
 }
 .photographers p {
-  margin: 0.3rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
 }
 .photographers .city {
   color: #901C1C;
