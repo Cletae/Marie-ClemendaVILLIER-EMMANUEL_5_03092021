@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/Cletae/Marie-ClemendaVILLIER-EMMANUEL_6_03092021/issues"
   },
-  "homepage": "https://github.com/Cletae/Marie-ClemendaVILLIER-EMMANUEL_6_03092021#readme"
+  "homepage": "https://github.com/Cletae/Marie-ClemendaVILLIER-EMMANUEL_6_03092021#readme",
+  "keywords": [],
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-standard": "^5.0.0"
+  }
 }

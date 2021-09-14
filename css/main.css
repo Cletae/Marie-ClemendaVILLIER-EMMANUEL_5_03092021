@@ -19,8 +19,9 @@ ul {
 }
 
 header {
+  width: 80%;
   height: 90px;
-  position: absolute;
+  position: relative;
   display: flex;
   flex-direction: row;
   top: 45px;
@@ -31,7 +32,38 @@ header img {
   padding-left: 25px;
 }
 header nav {
+  width: 65%;
   padding-left: 25px;
+  padding-top: 30px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+@media screen and (min-width: 375px) and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    width: 100%;
+  }
+  header img {
+    width: 125px;
+    height: 30px;
+  }
+  header nav {
+    width: 100%;
+    padding-left: 0;
+    padding-top: 30px;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 1100px) {
+  header {
+    flex-direction: column;
+    width: 100%;
+  }
+  header nav {
+    width: 100%;
+    padding-left: 0;
+    padding-top: 30px;
+  }
 }
 
 .tags__list {
@@ -41,11 +73,16 @@ header nav {
   height: 22px;
   padding: 0;
 }
+.tags__list--header {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 85px;
+  width: 100%;
+}
 @media screen and (min-width: 375px) and (max-width: 700px) {
   .tags__list--header {
-    display: flex;
-    flex-wrap: wrap;
-    height: 85px;
+    height: 124px;
   }
 }
 .tags a {
@@ -61,7 +98,14 @@ header nav {
   color: #fff;
 }
 
+main {
+  position: relative;
+}
+
 h1 {
+  position: absolute;
+  top: -92px;
+  right: 50px;
   padding-top: 25px;
   display: flex;
   justify-content: flex-end;
@@ -70,6 +114,13 @@ h1 {
   font-size: 36px;
   color: #901C1C;
   left: 5px;
+}
+@media screen and (min-width: 375px) and (max-width: 768px) {
+  h1 {
+    top: -87px;
+    right: 0;
+    font-size: 23px;
+  }
 }
 
 .photographers {
