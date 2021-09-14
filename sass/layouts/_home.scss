@@ -1,4 +1,11 @@
+main {
+  position: relative;
+}
+
 h1 {
+  position: absolute;
+  top: -92px;
+  right: 50px;
   padding-top: 25px;
   display: flex;
   @include flex($position: flex-end);
@@ -6,6 +13,12 @@ h1 {
   font-size: 36px;
   color: $color-primary;
   left: 5px;
+
+  @media screen and (min-width: 375px) and (max-width: 768px) {
+    top: -87px;
+    right: 0;
+    font-size: 23px;
+  }
 }
 
 .photographers {

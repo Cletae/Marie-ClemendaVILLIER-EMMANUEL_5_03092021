@@ -1,8 +1,9 @@
 header {
+  width: 80%;
   height: 90px;
-  position: absolute;
+  position: relative;
   display: flex;
-  flex-direction: row;
+  @include flexbox($direction: row);
   top: 45px;
 
   img {
@@ -12,7 +13,38 @@ header {
   }
 
   nav {
+    width: 65%;
     padding-left: 25px;
+    padding-top: 30px;
+    @include flex;
+    display: flex;
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 768px) {
+    @include flexbox;
+    width: 100%;
+
+    img {
+      width: 125px;
+      height: 30px;
+    }
+
+    nav {
+      width: 100%;
+      padding-left: 0;
+      padding-top: 30px;
+    }
+  }
+
+  @media all and (min-width: 768px) and (max-width: 1100px) {
+    @include flexbox;
+    width: 100%;
+
+    nav {
+      width: 100%;
+      padding-left: 0;
+      padding-top: 30px;
+    }
   }
 }
 
@@ -25,10 +57,14 @@ header {
     padding: 0;
 
     &--header {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      height: 85px;
+      width: 100%;
+
       @media screen and (min-width: 375px) and (max-width: 700px) {
-        display: flex;
-        flex-wrap: wrap;
-        height: 85px;
+        height: 124px;
       }
     }
   }
