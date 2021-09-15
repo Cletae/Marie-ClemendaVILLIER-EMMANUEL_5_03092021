@@ -1,8 +1,24 @@
 // Constantes
-const photographerSection = document.getElementsByClassName("photographers");
+const photographerSection = document.querySelector(".photographers");
+const filterTags = Array.from(document.querySelectorAll("tag"));
+let filterTagArray = [];
+
+// Filter tags active
+function filterTagActive() {
+  if (condition) {
+  }
+}
+
+// Filter no selected
+function name() {
+  if (condition) {
+  }
+}
 
 // Creation Card Photographers
-function createCard() {
+function createCard(photographer) {
+  console.log(photographer);
+  console.log(photographerSection);
   const photographerArticle = photographerSection.appendChild(
     document.createElement("article")
   );
@@ -63,6 +79,15 @@ function createCard() {
 
 
 
+// Promise
+fetch("../src/data.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const photographers = data.photographers
+    photographers.forEach((photographer) => {
+      createCard(photographer);
+    });
+  });
 
 // import data from "../data.json" assert { type: "json" };
 
@@ -96,9 +121,9 @@ function createCard() {
 //   .then((data) => {
 //     data.photographers.forEach((photographer) => {
 //       const markup = elFactory(
-//         "li",
+//         "h2",
 //         { class: "photographers__cards" },
-//         elFactory("li", {}, photographer.name)
+//         elFactory("h2", {}, photographer.name)
 //       );
 
 //       ul.appendChild(markup);

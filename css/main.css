@@ -18,7 +18,7 @@ ul {
   list-style: none;
 }
 
-header {
+.header_home {
   width: 80%;
   height: 90px;
   position: relative;
@@ -26,12 +26,12 @@ header {
   flex-direction: row;
   top: 45px;
 }
-header img {
+.header_home img {
   width: 200px;
   height: 50px;
   padding-left: 25px;
 }
-header nav {
+.header_home nav {
   width: 65%;
   padding-left: 25px;
   padding-top: 30px;
@@ -40,26 +40,26 @@ header nav {
   display: flex;
 }
 @media screen and (min-width: 375px) and (max-width: 768px) {
-  header {
+  .header_home {
     flex-direction: column;
     width: 100%;
   }
-  header img {
+  .header_home img {
     width: 125px;
     height: 30px;
   }
-  header nav {
+  .header_home nav {
     width: 100%;
     padding-left: 0;
     padding-top: 30px;
   }
 }
 @media all and (min-width: 768px) and (max-width: 1100px) {
-  header {
+  .header_home {
     flex-direction: column;
     width: 100%;
   }
-  header nav {
+  .header_home nav {
     width: 100%;
     padding-left: 0;
     padding-top: 30px;
