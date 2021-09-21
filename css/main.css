@@ -18,7 +18,8 @@ ul {
   list-style: none;
 }
 
-.header_home {
+.header_home,
+.header_photographer {
   width: 80%;
   height: 90px;
   position: relative;
@@ -26,12 +27,14 @@ ul {
   flex-direction: row;
   top: 45px;
 }
-.header_home img {
+.header_home img,
+.header_photographer img {
   width: 200px;
   height: 50px;
   padding-left: 25px;
 }
-.header_home nav {
+.header_home nav,
+.header_photographer nav {
   width: 65%;
   padding-left: 25px;
   padding-top: 30px;
@@ -40,26 +43,31 @@ ul {
   display: flex;
 }
 @media screen and (min-width: 375px) and (max-width: 768px) {
-  .header_home {
+  .header_home,
+.header_photographer {
     flex-direction: column;
     width: 100%;
   }
-  .header_home img {
+  .header_home img,
+.header_photographer img {
     width: 125px;
     height: 30px;
   }
-  .header_home nav {
+  .header_home nav,
+.header_photographer nav {
     width: 100%;
     padding-left: 0;
     padding-top: 30px;
   }
 }
 @media all and (min-width: 768px) and (max-width: 1100px) {
-  .header_home {
+  .header_home,
+.header_photographer {
     flex-direction: column;
     width: 100%;
   }
-  .header_home nav {
+  .header_home nav,
+.header_photographer nav {
     width: 100%;
     padding-left: 0;
     padding-top: 30px;
@@ -74,11 +82,12 @@ ul {
   padding: 0;
 }
 .tags__list--header {
+  z-index: 1;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   height: 85px;
-  width: 100%;
+  width: 95%;
 }
 @media screen and (min-width: 375px) and (max-width: 700px) {
   .tags__list--header {
@@ -88,13 +97,13 @@ ul {
 .tags a {
   font-weight: 500;
   padding: 5px;
-  color: #901C1C;
+  color: #901c1c;
   border: 0.5px solid #c4c4c4;
   box-sizing: border-box;
   border-radius: 15px;
 }
 .tags a:hover {
-  background-color: #901C1C;
+  background-color: #901c1c;
   color: #fff;
 }
 
@@ -105,14 +114,14 @@ main {
 h1 {
   position: absolute;
   top: -92px;
-  right: 50px;
+  right: 0;
   padding-top: 25px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   font-weight: 400;
   font-size: 36px;
-  color: #901C1C;
+  color: #901c1c;
   left: 5px;
 }
 @media screen and (min-width: 375px) and (max-width: 768px) {
@@ -128,7 +137,7 @@ h1 {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   row-gap: 55px;
-  padding-top: 45px;
+  padding-top: 145px;
 }
 @media screen and (min-width: 700px) and (max-width: 1024px) {
   .photographers {
@@ -167,7 +176,7 @@ h1 {
   width: 210px;
 }
 .photographers h2 {
-  color: #D3573C;
+  color: #d3573c;
   font-size: 40px;
   font-weight: 300;
   margin-bottom: 10px;
@@ -178,7 +187,7 @@ h1 {
   margin-bottom: 0;
 }
 .photographers .city {
-  color: #901C1C;
+  color: #901c1c;
 }
 .photographers .price {
   color: #8c8c8c;

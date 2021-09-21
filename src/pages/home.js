@@ -1,19 +1,6 @@
 // Constantes
+const tagsNav = document.querySelector(".tags");
 const photographerSection = document.querySelector(".photographers");
-const filterTags = Array.from(document.querySelectorAll("tag"));
-let filterTagArray = [];
-
-// Filter tags active
-function filterTagActive() {
-  if (condition) {
-  }
-}
-
-// Filter no selected
-function name() {
-  if (condition) {
-  }
-}
 
 // Creation Card Photographers
 function createCard(photographer) {
@@ -34,7 +21,7 @@ function createCard(photographer) {
   );
   photographerLink.setAttribute(
     "href",
-    `page-photographe.html?id=${photographer.id}&name=${photographer.name}`
+    `html/photographer_pages.html?id=${photographer.id}&name=${photographer.name}`
   );
   photographerLink.setAttribute("id", `${photographer.id}`);
   photographerLink.setAttribute("aria-label", `${photographer.name}`);
@@ -69,65 +56,133 @@ function createCard(photographer) {
     document.createElement("p")
   );
   photographerPrice.innerText = `${photographer.price}€/jour`;
-  photographerPrice.classList.add("photographer__price");
+  photographerPrice.classList.add("price");
 
-  const photographerTagList = photographerArticle.appendChild(
+  const photographerTagUl = photographerArticle.appendChild(
     document.createElement("ul")
   );
-  photographerTagList.classList.add("taglist");
+  photographerTagUl.classList.add("tags", "tags__list");
+
+  let tags = photographer.tags;
+  console.log(tags);
+
+  tags.forEach((tags) => {
+    const photographerTagList = photographerTagUl.appendChild(
+      document.createElement("li")
+    );
+
+    const photographerTagLink = photographerTagList.appendChild(
+      document.createElement("a")
+    );
+    photographerTagLink.classList.add("tag_link");
+    photographerTagLink.setAttribute("href", "#");
+    photographerTagLink.innerHTML = "#" + tags;
+    photographerTagLink.dataset.tagName = tags;
+  });
 }
 
+// fetch qui récupère toute les données
 
+// fonctionnement pour le filtre tag
+//
 
-// Promise
-fetch("../src/data.json")
-  .then((res) => res.json())
-  .then((data) => {
-    const photographers = data.photographers
-    photographers.forEach((photographer) => {
-      createCard(photographer);
+// tag.addEventsListener('click', () => {
+// 	// clear le html
+// 	clearHtml();
+
+// 	// on charge les nouvelles données, suite au click sur un tag
+// 	loadData(tag);
+// });
+
+// on charge les données la première fois (au chargement)
+
+loadData();
+
+function loadData(tags = undefined) {
+  // Promise
+  fetch("../src/data.json")
+    .then((res) => res.json())
+    .then((data) => {
+      let photographers = data.photographers;
+
+      console.log(photographers);
+
+      // Filtres
+      // filterTag();
+
+      // photographers = photographers.filter(photographers){
+      //   const tag = [
+      //     "portrait",
+      //     "art",
+      //     "fashion",
+      //     "architecture",
+      //     "travel",
+      //     "sport",
+      //     "animals",
+      //     "events",
+      //   ];
+      //   console.log(tag);
+      //   const tags = photographers.tags;
+
+      //   return tags.includes(tag)
+      // }
+
+      // Affichage des cards photographers
+      photographers.forEach((photographer) => {
+        createCard(photographer);
+      });
     });
+}
+
+function clearHtml() {
+  photographerSection.innerHTML = "";
+}
+
+// Filter Tags 
+function filterTag() {
+  const tag = [
+    "portrait",
+    "art",
+    "fashion",
+    "architecture",
+    "travel",
+    "sport",
+    "animals",
+    "events",
+  ];
+  console.log(tag);
+  const tags = photographer.tags;
+  const sameTags = document.querySelectorAll(
+    `.tag_link[data-tag-name="${element.dataset.tagName}"]`
+  );
+
+  const similarTag = document.getElementsByClassName("tag_link");
+  console.log(similarTag);
+
+  // Event tags similar & active
+  tags.addEventListener("click", () => {
+    if (element.classList.contains("active")) {
+      sameTags.forEach((similarTag) => {
+        similarTag.classList.remove("active");
+      });
+
+      photographers = photographers.filter((photographer) =>
+        photographer.tags.includes(tag)
+      );
+    } else {
+      sameTags.forEach((similarTag) => {
+        similarTag.classList.add("active");
+      });
+      photographers.push(photographers);
+    }
   });
 
-// import data from "../data.json" assert { type: "json" };
-
-// console.log(data);
-// const photographer = data.photographers;
-// const app = document.getElementById("app");
-// const htmlPhotographers = document.querySelector(".photographers");
-
-// const elFactory = (type, attributes, ...children) => {
-//   const el = document.createElement(type);
-
-//   for (const key in attributes) {
-//     el.setAttribute(key, attributes[key]);
-//   }
-
-//   children.forEach((child) => {
-//     if (typeof child === "string") {
-//       el.appendChild(document.createTextNode(child));
-//     } else {
-//       el.appendChild(child);
-//     }
-//   });
-
-//   return el;
-// };
-
-// const ul = elFactory("article", {}, "");
-
-// fetch("../src/data.json")
-//   .then((res) => res.json()) // conversion de la répone au format json
-//   .then((data) => {
-//     data.photographers.forEach((photographer) => {
-//       const markup = elFactory(
-//         "h2",
-//         { class: "photographers__cards" },
-//         elFactory("h2", {}, photographer.name)
-//       );
-
-//       ul.appendChild(markup);
-//     });
-
-//     htmlPhotographers.appendChild(ul);
-//   });
+  // Affichage all cards photographers
+  if (photopgraphers <= 0) {
+    const cardDisplay = document.querySelectorAll("article");
+    cardDisplay.forEach((cardDisplay) => {
+      cardDisplay.classList.remove("hidden");
+    });
+    return;
+  }
+}
