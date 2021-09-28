@@ -4,8 +4,6 @@ const photographerSection = document.querySelector(".photographers");
 
 // Creation Card Photographers
 function createCard(photographer) {
-  console.log(photographer);
-  console.log(photographerSection);
   const photographerArticle = photographerSection.appendChild(
     document.createElement("article")
   );
@@ -21,7 +19,7 @@ function createCard(photographer) {
   );
   photographerLink.setAttribute(
     "href",
-    `html/photographer_pages.html?id=${photographer.id}&name=${photographer.name}`
+    `html/photographer_pages.html?id=${photographer.id}`
   );
   photographerLink.setAttribute("id", `${photographer.id}`);
   photographerLink.setAttribute("aria-label", `${photographer.name}`);
@@ -64,7 +62,6 @@ function createCard(photographer) {
   photographerTagUl.classList.add("tags", "tags__list");
 
   let tags = photographer.tags;
-  console.log(tags);
 
   tags.forEach((tags) => {
     const photographerTagList = photographerTagUl.appendChild(
@@ -81,23 +78,8 @@ function createCard(photographer) {
   });
 }
 
-// fetch qui récupère toute les données
-
-// fonctionnement pour le filtre tag
-//
-
-// tag.addEventsListener('click', () => {
-// 	// clear le html
-// 	clearHtml();
-
-// 	// on charge les nouvelles données, suite au click sur un tag
-// 	loadData(tag);
-// });
-
-// on charge les données la première fois (au chargement)
-
 loadData();
-
+// Function : promise + filters
 function loadData(tags = undefined) {
   // Promise
   fetch("../src/data.json")
@@ -108,24 +90,23 @@ function loadData(tags = undefined) {
       console.log(photographers);
 
       // Filtres
-      // filterTag();
+      const tagsHtml = document.querySelectorAll(".tag_link");
 
-      // photographers = photographers.filter(photographers){
-      //   const tag = [
-      //     "portrait",
-      //     "art",
-      //     "fashion",
-      //     "architecture",
-      //     "travel",
-      //     "sport",
-      //     "animals",
-      //     "events",
-      //   ];
-      //   console.log(tag);
-      //   const tags = photographers.tags;
+      tagsHtml.forEach((tagHtml) => {
+        tagHtml.addEventListener("click", () => {
+          const selectedTag = tagHtml.dataset.tagName;
+          console.log(selectedTag);
+          photographers = photographers.filter((photographer) => {
+            const tags = photographer.tags;
 
-      //   return tags.includes(tag)
-      // }
+            return tags.includes(selectedTag);
+          });
+          clearHtml();
+          displayCard();
+        });
+      });
+
+      console.log(photographers);
 
       // Affichage des cards photographers
       photographers.forEach((photographer) => {
@@ -138,51 +119,11 @@ function clearHtml() {
   photographerSection.innerHTML = "";
 }
 
-// Filter Tags 
-function filterTag() {
-  const tag = [
-    "portrait",
-    "art",
-    "fashion",
-    "architecture",
-    "travel",
-    "sport",
-    "animals",
-    "events",
-  ];
-  console.log(tag);
-  const tags = photographer.tags;
-  const sameTags = document.querySelectorAll(
-    `.tag_link[data-tag-name="${element.dataset.tagName}"]`
-  );
+function displayCard(photographer) {
+  
+  const displayTags = `${photographer.tag}`;
 
-  const similarTag = document.getElementsByClassName("tag_link");
-  console.log(similarTag);
-
-  // Event tags similar & active
-  tags.addEventListener("click", () => {
-    if (element.classList.contains("active")) {
-      sameTags.forEach((similarTag) => {
-        similarTag.classList.remove("active");
-      });
-
-      photographers = photographers.filter((photographer) =>
-        photographer.tags.includes(tag)
-      );
-    } else {
-      sameTags.forEach((similarTag) => {
-        similarTag.classList.add("active");
-      });
-      photographers.push(photographers);
-    }
+  displayTags.forEach((displayTags) => {
+    createCard(displayTags);
   });
-
-  // Affichage all cards photographers
-  if (photopgraphers <= 0) {
-    const cardDisplay = document.querySelectorAll("article");
-    cardDisplay.forEach((cardDisplay) => {
-      cardDisplay.classList.remove("hidden");
-    });
-    return;
-  }
 }

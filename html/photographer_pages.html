@@ -14,9 +14,19 @@
       rel="stylesheet"
     />
 
+    <!-- Lien Icons -->
+    <script
+      src="https://kit.fontawesome.com/ae69335240.js"
+      crossorigin="anonymous"
+    ></script>
+
     <!-- CSS & JS -->
     <link rel="stylesheet" href="../css/main.css" />
-    <script src="../src/script.js" type="module" defer></script>
+    <script
+      src="../src/pages/photographer_pages.js"
+      type="module"
+      defer
+    ></script>
     <title>FishEye</title>
   </head>
 
@@ -29,34 +39,165 @@
 
     <main>
       <!-- Présentation photographer card detail -->
-      <section class="photographer">
-        <article class="photographer__detail">
-          <h1 class="photographer_name"></h1>
-          <p class="photographer_city"></p>
-          <p class="photographer_tagline"></p>
-          <ul class="tag tags__list">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+      <section class="banner">
+        <article class="banner__detail">
+          <h1 class="banner__name">Mimi Keel</h1>
+          <p class="banner__city">London, UK</p>
+          <p class="banner__tagline">Voir le beau dans le quotidien</p>
+          <ul class="tags tags__list">
+            <li class=""><a href="">#portrait</a></li>
+            <li class=""><a href="">#events</a></li>
+            <li class=""><a href="">#travel</a></li>
+            <li><a href="">#animals</a></li>
           </ul>
         </article>
-        <article></article>
-        <article></article>
+        <article>
+          <input
+            type="button"
+            aria-label="Contact Me"
+            class="btn-contact"
+            value="Contactez moi"
+          />
+        </article>
+        <article>
+          <img
+            src="../img/Photos/Photographers_ID_Photos/MimiKeel.jpg"
+            alt=""
+          />
+        </article>
       </section>
 
       <!-- Affichage du trie -->
-      <section></section>
+      <section class="trie">
+         <label class="">Trier par</label>
+
+       <!-- <article>
+          <select name="menu" class="menu">
+           
+            <option class="menu__option" value="Popularité">Popularité</option>
+            <option class="menu__option" value="Date">Date</option>
+            <option class="menu__option" value="Titre">Titre</option>
+          </select>
+        </article> -->
+
+        <!-- <article>
+          <button name="menu" class="menu">
+
+             <span>
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-chevron-up"></i>
+            </span>
+          </button>
+          <ul>
+            <li role="option" class="menu__option">Popularité</li>
+            <li role="option" class="menu__option">Date</li>
+            <li role="option" class="menu__option">Titre</li>
+          </ul>
+        </article>
+      </section> -->
+
+      <!-- <span>
+              <i class="fas fa-chevron-down"></i>
+              <i class="fas fa-chevron-up"></i>
+            </span> -->
 
       <!-- Affichage photos -->
-      <section>
-        <article></article>
-        <article></article>
-        <article></article>
-        <article></article>
-        <article></article>
-        <article></article>
+      <section class="display">
+        <!-- <figure class="display__item">
+          <img src="../img/Photos/243/Animals_Wild_Horses_in_the_mountains.mp4" alt="" />
+          <figcaption class="display__details">
+            <p>Arc-en-cie</p>
+            <div>
+              <span>142</span>
+              <a href="">
+                <i class="fas fa-heart"></i>
+              </a>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="display__item">
+          <img src="../img/Photos/243/Animals_Rainbow.jpg" alt="" />
+          <figcaption class="display__details">
+            <p>Arc-en-cie</p>
+            <div>
+              <span>142</span>
+              <a href="">
+                <i class="fas fa-heart"></i>
+              </a>
+            </div>
+          </figcaption>
+        </figure> -->
       </section>
+
+      <!-- <div class="bground">
+        <div class="content">
+          <span class="close"></span>
+          <div class="modal-body">
+            <form
+              name="reserve"
+              action="photographer_pages.html"
+              method="get"
+            >
+              <div
+                class="formData">
+                <label for="first">Prénom</label><br>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="first"
+                  name="first"
+                /><br>
+                <div id="firstname-empty"></div>
+              </div>
+
+              <div
+                class="formData">
+                <label for="last">Nom</label><br>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="last"
+                  name="last"
+                /><br>
+                <div id="lastname-empty"></div>
+              </div>
+
+              <div
+                class="formData">
+                <label for="email">E-mail</label><br>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="email"
+                  name="email"
+                /><br>
+                <div id="mail-empty"></div>
+              </div>
+
+              <div class="formData">
+                <label for="message">Votre message</label><br>
+                <textarea class="text-control"
+                  type="text"
+                  id="message"
+                  name="message" rows="8" cols="32">
+                  Saisissez votre texte ici...
+                </textarea>
+                <div id="message-empty"></div>
+              </div>
+  
+              </div>
+              <input
+                class="btn-submit"
+                type="submit"
+                class="button"
+                value="Envoyer"
+              />
+            </form>
+          </div>
+          <div id="confirmation">Merci d'avoir pris contact !</div>
+            <input id="close-btn" class="button btn-submit" type="button" value="Fermer">
+        </div> -->
     </main>
   </body>
 </html>
