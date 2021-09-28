@@ -120,7 +120,6 @@ function clearHtml() {
 }
 
 function displayCard(photographer) {
-  
   const displayTags = `${photographer.tag}`;
 
   displayTags.forEach((displayTags) => {
