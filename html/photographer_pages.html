@@ -27,10 +27,15 @@
       type="module"
       defer
     ></script>
+    <script
+      src="../src/pages/modal.js"
+      type="module"
+      defer
+    ></script>
     <title>FishEye</title>
   </head>
 
-  <body>
+  <body class="photographes">
     <header role="banner" class="header_photographer">
       <a href="../index.html">
         <img src="../img/logo.png" alt="FishEye Home Page" role="img" />
@@ -41,7 +46,7 @@
       <!-- Présentation photographer card detail -->
       <section class="banner">
         <article class="banner__detail">
-          <h1 class="banner__name">Mimi Keel</h1>
+          <!-- <h1 class="banner__name">Mimi Keel</h1>
           <p class="banner__city">London, UK</p>
           <p class="banner__tagline">Voir le beau dans le quotidien</p>
           <ul class="tags tags__list">
@@ -49,7 +54,7 @@
             <li class=""><a href="">#events</a></li>
             <li class=""><a href="">#travel</a></li>
             <li><a href="">#animals</a></li>
-          </ul>
+          </ul> -->
         </article>
         <article>
           <input
@@ -69,70 +74,74 @@
 
       <!-- Affichage du trie -->
       <section class="trie">
-         <label class="">Trier par</label>
+        <label class="">Trier par</label>
 
-       <!-- <article>
-          <select name="menu" class="menu">
-           
-            <option class="menu__option" value="Popularité">Popularité</option>
-            <option class="menu__option" value="Date">Date</option>
-            <option class="menu__option" value="Titre">Titre</option>
-          </select>
-        </article> -->
-
-        <!-- <article>
+        <article>
           <button name="menu" class="menu">
-
-             <span>
+            <span>
               <i class="fas fa-chevron-down"></i>
               <i class="fas fa-chevron-up"></i>
             </span>
           </button>
-          <ul>
-            <li role="option" class="menu__option">Popularité</li>
-            <li role="option" class="menu__option">Date</li>
-            <li role="option" class="menu__option">Titre</li>
+
+          <ul class="order">
+            <li role="option" class="order__option" data-value="popularite">
+              <a href="">Popularité</a>
+            </li>
+            <li role="option" class="order__option" data-value="date"><a href="">Date</a></li>
+            <li role="option" class="order__option" data-value="titre"><a href="">Titre</a></li>
           </ul>
         </article>
-      </section> -->
-
-      <!-- <span>
-              <i class="fas fa-chevron-down"></i>
-              <i class="fas fa-chevron-up"></i>
-            </span> -->
+      </section>
 
       <!-- Affichage photos -->
       <section class="display">
-        <!-- <figure class="display__item">
-          <img src="../img/Photos/243/Animals_Wild_Horses_in_the_mountains.mp4" alt="" />
+        <figure class="display__item">
+          <!-- <img src="../img/Photos/243/Animals_Rainbow.jpg" alt="" /> -->
           <figcaption class="display__details">
-            <p>Arc-en-cie</p>
-            <div>
-              <span>142</span>
+            <!-- <p>Arc-en-cie</p> -->
+            <div class="block">
+              <!-- <span class="like"></span> -->
               <a href="">
-                <i class="fas fa-heart"></i>
+                <!-- <i class="fas fa-heart"></i> -->
               </a>
             </div>
           </figcaption>
         </figure>
-
-        <figure class="display__item">
-          <img src="../img/Photos/243/Animals_Rainbow.jpg" alt="" />
-          <figcaption class="display__details">
-            <p>Arc-en-cie</p>
-            <div>
-              <span>142</span>
-              <a href="">
-                <i class="fas fa-heart"></i>
-              </a>
-            </div>
-          </figcaption>
-        </figure> -->
       </section>
 
-      <!-- <div class="bground">
-        <div class="content">
-          <span class="close"></span>
+        <!-- LIGHTBOX -->
+        <!-- <div class="lightbox_container" role="dialog" aria-label="image closeup view">
+          <div class="lightbox">
+            <div class="lightbox__left">
+              <button id="left_arrow" aria-label="Previous image" role="link">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+            </div>         
+  
+            <div class="lightbox__video">
+            </div>
+  
+
+            <div class="lightbox__right">
+              <button class="right_arrow" aria-label="Next image" role="link">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <button 
+                class="lightbox__close"
+                aria-label="Close dialog">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+  
+          </div>
+        </div> -->
+
+      <!-- Form Contact -->
+      <div class="bground">
+        <span class="close">
+         
+        </span>
           <div class="modal-body">
             <form
               name="reserve"
@@ -147,6 +156,7 @@
                   type="text"
                   id="first"
                   name="first"
+                  aria-label="First name" 
                 /><br>
                 <div id="firstname-empty"></div>
               </div>
@@ -159,6 +169,7 @@
                   type="text"
                   id="last"
                   name="last"
+                  aria-label="Last name" 
                 /><br>
                 <div id="lastname-empty"></div>
               </div>
@@ -171,6 +182,7 @@
                   type="text"
                   id="email"
                   name="email"
+                  aria-label="Email" 
                 /><br>
                 <div id="mail-empty"></div>
               </div>
@@ -197,7 +209,7 @@
           </div>
           <div id="confirmation">Merci d'avoir pris contact !</div>
             <input id="close-btn" class="button btn-submit" type="button" value="Fermer">
-        </div> -->
+        </div>
     </main>
   </body>
 </html>

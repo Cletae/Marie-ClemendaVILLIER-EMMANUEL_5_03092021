@@ -107,6 +107,28 @@ ul {
   color: #fff;
 }
 
+.header_link {
+  visibility: hidden;
+  position: absolute;
+  z-index: 2;
+  top: -45px;
+  left: 510px;
+  padding: 12px 6px;
+  color: #181818;
+  background-color: #db8876;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+}
+.header_link .mainSection {
+  visibility: visible;
+}
+.header_link .mainSection:active, .header_link .mainSection:focus {
+  font-size: 1.15rem;
+  color: #fafafa;
+}
+
 main {
   position: relative;
 }
@@ -265,7 +287,10 @@ main {
   background-color: #901c1c;
   color: #fff;
 }
-.trie .menu__option {
+.trie .order {
+  display: none;
+}
+.trie .order__option {
   font-size: 10px;
   cursor: pointer;
   white-space: inherit;
@@ -273,8 +298,8 @@ main {
   display: inline;
   border: none;
 }
-.trie .menu__option:hover,
-.trie .menu__option :focus {
+.trie .order__option:hover,
+.trie .order__option :focus {
   background-color: #db8876;
 }
 
@@ -320,51 +345,37 @@ main {
 }
 
 .bground {
-  display: none;
+  visibility: hidden;
   position: fixed;
-  z-index: 1;
+  z-index: 1000;
   left: 0;
   top: 0;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  overflow: scroll;
+  background-color: #c4c4c460;
 }
 
 .content {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
   background: #db8876;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  color: #fff;
+  color: black;
   padding-top: 10px;
 }
-
-.modal-body {
-  padding: 15px 8%;
-  margin: 15px auto;
-}
-
-label {
-  font-family: var(--font-default);
+.content label {
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
 }
-
-input {
+.content input {
   padding: 8px;
-  border: 0.8px solid #ccc;
-  outline: none;
+  border: none;
 }
-
-.text-control {
+.content .text-control {
   margin: 0;
   padding: 8px;
   width: 100%;
@@ -372,8 +383,7 @@ input {
   font-size: 20px;
   height: 48px;
 }
-
-.formData[data-error]::after {
+.content .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
@@ -385,16 +395,13 @@ input {
   opacity: 0;
   transition: 0.3s;
 }
-
-.formData[data-error-visible=true]::after {
+.content .formData[data-error-visible=true]::after {
   opacity: 1;
 }
-
-.formData[data-error-visible=true] .text-control {
+.content .formData[data-error-visible=true] .text-control {
   border: 2px solid #e54858;
 }
-
-.close {
+.content .close {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -404,9 +411,8 @@ input {
   cursor: pointer;
   transform: scale(0.7);
 }
-
-.close:before,
-.close:after {
+.content .close:before,
+.content .close:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -414,17 +420,14 @@ input {
   width: 3px;
   background-color: #fff;
 }
-
-.close:before {
+.content .close:before {
   transform: rotate(45deg);
 }
-
-.close:after {
+.content .close:after {
   transform: rotate(-45deg);
 }
-
-.btn-submit,
-.btn-signup {
+.content .btn-submit,
+.content .btn-signup {
   background: #fe142f;
   display: block;
   margin: 0 auto;

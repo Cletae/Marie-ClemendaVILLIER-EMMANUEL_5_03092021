@@ -1,7 +1,6 @@
 // --------- DOM Elements --------- //
 const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+const modalBtn = document.querySelectorAll(".btn_contact");
 
 // Form inputs elements
 const firstName = document.getElementById("first");
@@ -23,9 +22,12 @@ const emptyEmail = document.getElementById("mail-empty");
 // Regex
 const regexEmail = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
 
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.style.visibility = "visible";
 }
 
 // Message de confirmation invisible

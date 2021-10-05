@@ -1,17 +1,30 @@
+// Affichage
+// const body = document.querySelectorAll("body");
+
+// if (body.classList.contains("photographe")) {
+//   console.log(photographe);
+
 // ------ DOM Elements -------- //
 const photographerBanner = document.getElementsByClassName("banner");
+const photographerArticle = document.getElementsByClassName("banner__detail");
 const trie = document.getElementsByClassName("trie");
 const contentMedia = document.getElementsByClassName("display");
+const figure = document.getElementsByClassName("display__item");
+const figureCaption = document.getElementsByClassName("display__details");
+const block = document.getElementsByClassName("block");
+
+//
+const lightboxContainer = document.getElementsByClassName("lightbox_container");
+const lightbox = document.getElementById("lightbox");
+const closeLightbox = document.getElementById("lightbox__close");
+const lightboxMediaContainer = document.getElementById("lightbox__video");
+const lightboxLeftArrow = document.getElementById("lightbox__left");
+const lightboxRightArrow = document.getElementById("lightbox__right");
 
 // ---------- Content Photographer HTML ------------ //
 
-// Photographer banner
+// Create Photographer Banner //
 function photographerCard(photographer) {
-  const photographerArticle = photographerBanner.appendChild(
-    document.createElement("article")
-  );
-  photographerArticle.classList.add("banner__detail");
-
   const photographerName = photographerArticle.appendChild(
     document.createElement("h1")
   );
@@ -51,17 +64,6 @@ function photographerCard(photographer) {
     photographerTagLink.dataset.tagName = tags;
   });
 
-  const buttunArticle = photographerBanner.appendChild(
-    document.createElement("article")
-  );
-
-  const buttonContact = buttunArticle.appendChild(
-    document.createElement("input")
-  );
-  buttonContact.classList.add("btn-contact");
-  buttonContact.type = "button";
-  buttonContact.value = "Contactez-moi";
-
   const imgArticle = photographerBanner.appendChild(
     document.createElement("article")
   );
@@ -71,55 +73,45 @@ function photographerCard(photographer) {
   imgPhotographer.alt = element.name;
 }
 
-// Section trie
-function secondSection() {
-  const articleTrie = trie.appendChild(document.createElement("article"));
-
-  const selectTrie = articleTrie.appendChild(document.createElement("select"));
-  selectTrie.classList.add("menu");
-  selectTrie.name = menu;
-
-  const optionTrie1 = selectTrie.appendChild(document.createElement("option"));
-  optionTrie1.classList.add("menu__option");
-  optionTrie1.value = popuplarité;
-
-  const optionTrie2 = selectTrie.appendChild(document.createElement("option"));
-  optionTrie2.classList.add("menu__option");
-  optionTrie2.value = date;
-
-  const optionTrie3 = selectTrie.appendChild(document.createElement("option"));
-  optionTrie3.classList.add("menu__option");
-  optionTrie3.value = titre;
-}
-
 // Filtre select
 
+// LIGHTBOX
+// Left arrow event
+// lightboxLeftArrow.addEventListener('click', () => {
+//   for (let i = - 1; i >= 0; i -= 1) {
+//     if (media[i].id === selectedMedia.id) {
+//       if (i === 0) {
+//         selectedMedia = chosenOption[chosenOption.length - 1];
+//       } else {
+//         selectedMedia = chosenOption[i -= 1];
+//       }
+//     }
+//   }
+// });
+
+// // Right arrow
+// lightboxRightArrow.addEventListener('click', () => {
+//   for (let i = 0; i <= - 1; i += 1) {
+//     if (media[i].id === selectedMedia.id) {
+//       if (i === media - 1) {
+//         [selectedMedia] = chosenOption;
+//       } else {
+//         selectedMedia = chosenOption[i += 1];
+//       }
+//     }
+//   }
+// });
+
 // Affichage media
-function displayMedias(element) {
-  const figure = contentMedia.appendChild(document.createElement("figure"));
-  figure.classList.add("display__item");
-
+function displayMedias(media) {
   const img = figure.appendChild(document.createElement("img"));
-  img.src = `img/Photos/${element.photographerId}/${element.image}`;
-
-  const figureCaption = figure.appendChild(
-    document.createElement("figcaption")
-  );
-  figureCaption.classList.add("display__details");
+  img.src = `img/Photos/${media.photographerId}/${media.image}`;
 
   const para = figureCaption.appendChild(document.createElement("p"));
-  para.innerHTML = `${element.title}`;
+  para.innerHTML = `${media.title}`;
 
-  const div = figureCaption.appendChild(document.createElement("div"));
-
-  const span = div.appendChild(document.createElement("span"));
-  span.innerHTML = `${element.likes}`;
-
-  const link = div.appendChild(document.createElement("a"));
-  link.setAttribute("href", "#");
-
-  const icon = link.appendChild(document.createElement("i"));
-  icon.classList.add("fas fa-heart");
+  const span = block.appendChild(document.createElement("span"));
+  span.innerHTML = `${media.likes}`;
 }
 
 // Promise
@@ -133,14 +125,24 @@ fetch("../src/data.json")
 
     const displayPhotographer = photographers.find((photographer) => {
       const photographerIdString = photographer.id.toString();
-      return photographerIdString === idParams;
+      return photographerIdString == idParams;
     });
 
-    function reveleMedias(urlId) {
-      const displayMedias = medias.filter(
-        (media) => media.photographerId.toString() === urlId
-      );
-      return true;
-    }
-    const displayMediasDefault = reveleMedias(idParams);
+    console.log(displayPhotographer);
+
+    // function reveleMedias(urlId) {
+    //   const displayMedias = medias.filter(
+    //     (media) => media.photographerId.toString() == urlId
+    //   );
+    //   return true;
+    // }
+
+    // Afficher photographer banner
+    photographerCard(displayPhotographer);
+
+    // Afficher img/videos
+    medias.forEach((media) => {
+      displayMedias(media);
+    });
   });
+// }

@@ -78,7 +78,10 @@
     border-radius: 5px;
     background-color: $color-primary;
     color: $color-deco;
+  }
 
+  .order {
+    display: none;
     &__option {
       font-size: 10px;
       cursor: pointer;
