@@ -5,16 +5,13 @@
 //   console.log(photographe);
 
 // ------ DOM Elements -------- //
-const photographerBanner = document.getElementsByClassName("banner");
-const photographerArticle = document.getElementsByClassName("banner__detail");
-const trie = document.getElementsByClassName("trie");
-const contentMedia = document.getElementsByClassName("display");
-const figure = document.getElementsByClassName("display__item");
-const figureCaption = document.getElementsByClassName("display__details");
-const block = document.getElementsByClassName("block");
+const photographerBanner = document.querySelector(".banner");
+const photographerArticle = document.querySelector(".banner__detail");
+const trie = document.querySelector(".trie");
+const contentMedia = document.querySelector(".display");
 
-//
-const lightboxContainer = document.getElementsByClassName("lightbox_container");
+// ---------- Lightbox ----------- //
+const lightboxContainer = document.querySelector(".lightbox_container");
 const lightbox = document.getElementById("lightbox");
 const closeLightbox = document.getElementById("lightbox__close");
 const lightboxMediaContainer = document.getElementById("lightbox__video");
@@ -69,8 +66,37 @@ function photographerCard(photographer) {
   );
 
   const imgPhotographer = imgArticle.appendChild(document.createElement("img"));
-  imgPhotographer.src = `img/Photos/Photographers_ID_Photos/${photographer.portrait}`;
-  imgPhotographer.alt = element.name;
+  imgPhotographer.src = `/img/Photos/Photographers_ID_Photos/${photographer.portrait}`;
+  imgPhotographer.alt = photographer.name;
+}
+
+// Affichage media
+function displayMedias(media) {
+  const figure = contentMedia.appendChild(document.createElement("figure"));
+  figure.classList.add("display__item");
+
+  const img = figure.appendChild(document.createElement("img"));
+  img.src = `/img/Photos/${media.photographerId}/${media.image}`;
+
+  const figureCaption = figure.appendChild(
+    document.createElement("figcaption")
+  );
+  figureCaption.classList.add("display__details");
+
+  const para = figureCaption.appendChild(document.createElement("p"));
+  para.innerHTML = `${media.title}`;
+
+  const div = figureCaption.appendChild(document.createElement("div"));
+  div.classList.add("block");
+
+  const span = div.appendChild(document.createElement("span"));
+  span.innerHTML = `${media.likes}`;
+
+  const link = div.appendChild(document.createElement("a"));
+  link.setAttribute("href", "#");
+
+  const icon = link.appendChild(document.createElement("i"));
+  icon.innerHTML = `<i class="fas fa-heart"></i>`;
 }
 
 // Filtre select
@@ -102,24 +128,12 @@ function photographerCard(photographer) {
 //   }
 // });
 
-// Affichage media
-function displayMedias(media) {
-  const img = figure.appendChild(document.createElement("img"));
-  img.src = `img/Photos/${media.photographerId}/${media.image}`;
-
-  const para = figureCaption.appendChild(document.createElement("p"));
-  para.innerHTML = `${media.title}`;
-
-  const span = block.appendChild(document.createElement("span"));
-  span.innerHTML = `${media.likes}`;
-}
-
 // Promise
 fetch("../src/data.json")
   .then((res) => res.json())
   .then((data) => {
     const photographers = data.photographers;
-    const medias = data.medias;
+    const medias = data.media;
     const urlParams = new URL(window.location).searchParams;
     const idParams = parseInt(urlParams.get("id"));
 
@@ -128,20 +142,17 @@ fetch("../src/data.json")
       return photographerIdString == idParams;
     });
 
-    console.log(displayPhotographer);
+    console.log(medias);
 
-    // function reveleMedias(urlId) {
-    //   const displayMedias = medias.filter(
-    //     (media) => media.photographerId.toString() == urlId
-    //   );
-    //   return true;
-    // }
+    function reveleMedias(urlId) {
+      return medias.filter((media) => media.photographerId.toString() == urlId);
+    }
 
     // Afficher photographer banner
     photographerCard(displayPhotographer);
 
     // Afficher img/videos
-    medias.forEach((media) => {
+    reveleMedias(idParams).forEach((media) => {
       displayMedias(media);
     });
   });

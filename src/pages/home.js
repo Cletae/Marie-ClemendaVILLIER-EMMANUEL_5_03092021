@@ -112,16 +112,18 @@ if (document.body.classList.contains("home")) {
 
         tagsHtml.forEach((tagHtml) => {
           tagHtml.addEventListener("click", () => {
+            console.log("hello");
+
             const selectedTag = tagHtml.dataset.tagName;
             console.log(selectedTag);
 
-            photographers = photographers.filter((photographer) => {
+            const photographersData = photographers.filter((photographer) => {
               const tags = photographer.tags;
 
               return tags.includes(selectedTag);
             });
             clearHtml();
-            displayCard(photographers);
+            displayCard(photographersData);
           });
         });
 
