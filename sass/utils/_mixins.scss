@@ -1,27 +1,39 @@
 // Mixins
 // Flexbox
 @mixin flex($position: center) {
-    @if $position == flex-start {
-      justify-content: flex-start;
-      align-items: flex-start;
-    } @else if $position == center {
-      justify-content: center;
-      align-items: center;
-    } @else if $position == flex-end {
-      justify-content: flex-end;
-      align-items: flex-end;
-    }
+  @if $position == flex-start {
+    justify-content: flex-start;
+    align-items: flex-start;
+  } @else if $position == center {
+    justify-content: center;
+    align-items: center;
+  } @else if $position == flex-end {
+    justify-content: flex-end;
+    align-items: flex-end;
   }
+}
 
-  @mixin flexbox($direction: column) {
-    @if $direction == column {
-      flex-direction: column;
-    } @else if $direction == row {
-      flex-direction: row;
-    }
+@mixin flexbox($direction: column) {
+  @if $direction == column {
+    flex-direction: column;
+  } @else if $direction == row {
+    flex-direction: row;
   }
+}
 
-  //Media
+@mixin button {
+  background: $color-primary;
+  display: block;
+  margin: 30px auto 0 0;
+  border-radius: 7px;
+  font-size: 18px;
+  padding: 20px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+
+//Media
 @mixin tablette {
   @media screen and (min-width: map-get($breakpoint, tab)) and (max-width: map-get($breakpoint, desktop )) {
     grid-template-columns: 1fr 1fr;

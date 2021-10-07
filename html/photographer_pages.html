@@ -27,11 +27,7 @@
       type="module"
       defer
     ></script>
-    <script
-      src="../src/pages/modal.js"
-      type="module"
-      defer
-    ></script>
+    <script src="../src/pages/modal.js" type="module" defer></script>
     <title>FishEye</title>
   </head>
 
@@ -64,12 +60,7 @@
             value="Contactez moi"
           />
         </article>
-        <article>
-          <img
-            src="../img/Photos/Photographers_ID_Photos/MimiKeel.jpg"
-            alt=""
-          />
-        </article>
+        <article></article>
       </section>
 
       <!-- Affichage du trie -->
@@ -77,7 +68,7 @@
         <label class="">Trier par</label>
 
         <article>
-          <button name="menu" class="menu">
+          <!-- <button name="menu" class="menu">
             <span>
               <i class="fas fa-chevron-down"></i>
               <i class="fas fa-chevron-up"></i>
@@ -90,28 +81,28 @@
             </li>
             <li role="option" class="order__option" data-value="date"><a href="">Date</a></li>
             <li role="option" class="order__option" data-value="titre"><a href="">Titre</a></li>
-          </ul>
+          </ul> -->
         </article>
       </section>
 
       <!-- Affichage photos -->
       <section class="display">
-        <figure class="display__item">
-          <!-- <img src="../img/Photos/243/Animals_Rainbow.jpg" alt="" /> -->
+        <!-- <figure class="display__item">
+          <img src="../img/Photos/243/Animals_Rainbow.jpg" alt="" />
           <figcaption class="display__details">
-            <!-- <p>Arc-en-cie</p> -->
+            <p>Arc-en-cie</p>
             <div class="block">
-              <!-- <span class="like"></span> -->
+              <span class="like"></span>
               <a href="">
-                <!-- <i class="fas fa-heart"></i> -->
+                <i class="fas fa-heart"></i>
               </a>
             </div>
           </figcaption>
-        </figure>
+        </figure> -->
       </section>
 
-        <!-- LIGHTBOX -->
-        <!-- <div class="lightbox_container" role="dialog" aria-label="image closeup view">
+      <!-- LIGHTBOX -->
+      <!-- <div class="lightbox_container" role="dialog" aria-label="image closeup view">
           <div class="lightbox">
             <div class="lightbox__left">
               <button id="left_arrow" aria-label="Previous image" role="link">
@@ -139,66 +130,56 @@
 
       <!-- Form Contact -->
       <div class="bground">
-        <span class="close">
-         
-        </span>
+        <div class="content">
+          <span class="close"></span>
           <div class="modal-body">
-            <form
-              name="reserve"
-              action="photographer_pages.html"
-              method="get"
-            >
-              <div
-                class="formData">
-                <label for="first">Prénom</label><br>
+            <form name="reserve" action="index.html" method="get">
+              <h1>Contactez moi</h1>
+              <h2 id="photographer_name"></h2>
+              <div class="formData">
+                <label for="first">Prénom</label><br />
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
-                  aria-label="First name" 
-                /><br>
+                /><br />
                 <div id="firstname-empty"></div>
               </div>
-
-              <div
-                class="formData">
-                <label for="last">Nom</label><br>
+              <div class="formData">
+                <label for="last">Nom</label><br />
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
-                  aria-label="Last name" 
-                /><br>
+                /><br />
                 <div id="lastname-empty"></div>
               </div>
-
-              <div
-                class="formData">
-                <label for="email">E-mail</label><br>
+              <div class="formData">
+                <label for="email">E-mail</label><br />
                 <input
                   class="text-control"
                   type="text"
                   id="email"
                   name="email"
-                  aria-label="Email" 
-                /><br>
+                /><br />
                 <div id="mail-empty"></div>
               </div>
 
-              <div class="formData">
-                <label for="message">Votre message</label><br>
-                <textarea class="text-control"
+              <div class="formData" id="textbox">
+                <label for="message">Votre message</label><br />
+                <textarea
+                  class="text-control"
                   type="text"
                   id="message"
-                  name="message" rows="8" cols="32">
-                  Saisissez votre texte ici...
+                  name="message"
+                >
+Saisissez votre texte ici...
                 </textarea>
                 <div id="message-empty"></div>
               </div>
-  
-              </div>
+
               <input
                 class="btn-submit"
                 type="submit"
@@ -207,9 +188,15 @@
               />
             </form>
           </div>
-          <div id="confirmation">Merci d'avoir pris contact !</div>
-            <input id="close-btn" class="button btn-submit" type="button" value="Fermer">
+          <div id="confirmation">Merci d'avoir pris contact.</div>
+          <input
+            id="close-btn"
+            class="btn-confirmation"
+            type="button"
+            value="Fermer"
+          />
         </div>
+      </div>
     </main>
   </body>
 </html>

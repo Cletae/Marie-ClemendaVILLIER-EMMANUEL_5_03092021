@@ -345,19 +345,24 @@ main {
 }
 
 .bground {
-  visibility: hidden;
+  display: none;
   position: fixed;
   z-index: 1000;
   left: 0;
   top: 0;
-  overflow: scroll;
-  background-color: #c4c4c460;
-}
-
-.content {
-  margin: 5% auto;
+  height: 100%;
   width: 100%;
-  max-width: 500px;
+  overflow: scroll;
+  background-color: #c4c4c440;
+}
+.bground .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5% auto;
+  width: 599px;
+  max-width: 700px;
   background: #db8876;
   border-radius: 10px;
   overflow: hidden;
@@ -365,75 +370,89 @@ main {
   color: black;
   padding-top: 10px;
 }
-.content label {
-  font-size: 17px;
-  font-weight: normal;
+.bground .content .modal-body {
+  padding: 15px 8%;
+}
+.bground .content .modal-body form {
+  width: 500px;
+}
+.bground .content .modal-body h1 {
+  font-size: 64px;
+  font-weight: 400;
+  margin: 0;
+}
+.bground .content .modal-body label {
+  font-size: 36px;
+  font-weight: 400;
   display: inline-block;
   margin-bottom: 11px;
 }
-.content input {
+.bground .content .modal-body input {
   padding: 8px;
   border: none;
 }
-.content .text-control {
+.bground .content .modal-body .text-control {
   margin: 0;
   padding: 8px;
   width: 100%;
   border-radius: 8px;
   font-size: 20px;
-  height: 48px;
+  height: 65px;
 }
-.content .formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
+.bground .content .modal-body .btn-submit {
+  background: #901c1c;
   display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
+  margin: 30px auto 0 0;
+  border-radius: 7px;
+  font-size: 18px;
+  padding: 20px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
 }
-.content .formData[data-error-visible=true]::after {
-  opacity: 1;
+.bground .content .modal-body #message {
+  height: 170px;
 }
-.content .formData[data-error-visible=true] .text-control {
-  border: 2px solid #e54858;
+.bground .content .modal-body #message::placeholder {
+  color: blue;
+  font-size: 1.7em;
 }
-.content .close {
+.bground .content .modal-body .formData {
+  margin-top: 10px;
+}
+.bground .close {
   position: absolute;
-  right: 15px;
-  top: 15px;
-  width: 32px;
+  right: 35px;
+  top: 39px;
+  width: 39px;
   height: 32px;
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
 }
-.content .close:before,
-.content .close:after {
+.bground .close:before,
+.bground .close:after {
   position: absolute;
   left: 15px;
   content: " ";
-  height: 33px;
-  width: 3px;
+  height: 72px;
+  width: 8px;
   background-color: #fff;
 }
-.content .close:before {
+.bground .close:before {
   transform: rotate(45deg);
 }
-.content .close:after {
+.bground .close:after {
   transform: rotate(-45deg);
 }
-.content .btn-submit,
-.content .btn-signup {
-  background: #fe142f;
+
+.btn-confirmation {
+  background: #901c1c;
   display: block;
-  margin: 0 auto;
+  margin: 30px auto 0 0;
   border-radius: 7px;
-  font-size: 1rem;
-  padding: 12px 82px;
+  font-size: 18px;
+  padding: 20px 82px;
   color: #fff;
   cursor: pointer;
   border: 0;

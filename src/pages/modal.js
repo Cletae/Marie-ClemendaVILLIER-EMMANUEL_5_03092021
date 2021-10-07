@@ -1,6 +1,6 @@
 // --------- DOM Elements --------- //
 const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".btn_contact");
+const modalBtn = document.querySelectorAll(".btn-contact");
 
 // Form inputs elements
 const firstName = document.getElementById("first");
@@ -27,7 +27,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
-  modalbg.style.visibility = "visible";
+  modalbg.style.display = "block";
 }
 
 // Message de confirmation invisible
@@ -46,9 +46,10 @@ closeBtn.addEventListener("click", function () {
 
 // Style (css) error message
 function errorMessage(value) {
-  value.style.color = "red";
-  value.style.fontSize = "0.6em";
-  value.style.margin = "0.5em 0 0.8em 0.5em";
+  value.style.color = "#b80d0d";
+  value.style.fontWeight = "bolder";
+  value.style.fontSize = "1.5em";
+  value.style.margin = "0.5em 0 0.8em 0.2em";
 }
 
 // Vérification saisie Prénom
