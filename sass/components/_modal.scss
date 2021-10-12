@@ -63,8 +63,9 @@
         height: 170px;
 
         &::placeholder {
-          color: blue;
-          font-size: 1.7em;
+          color: $color-tagline;
+          font-size: 1.2em;
+          font-family: "DM Sans", sans-serif;
         }
       }
 
@@ -98,6 +99,9 @@
   }
   .close:after {
     transform: rotate(-45deg);
+  }
+
+  @media screen and (min-width: 375px) {
   }
 }
 

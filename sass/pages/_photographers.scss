@@ -38,6 +38,43 @@
     margin-right: 25px;
     box-shadow: 5px 5px 10px #dcdcdc;
   }
+
+  @media screen and (min-width: 375px) and (max-width: 750px) {
+    margin-left: 0;
+    width: 100%;
+    background-color: $color-deco;
+    margin-bottom: 60px;
+
+    &__detail {
+      padding-left: 0;
+    }
+
+    &__name {
+      font-size: 40px;
+    }
+
+    &__city {
+      font-size: 20px;
+    }
+
+    img {
+      width: 120px;
+      height: 125px;
+    }
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 750px) {
+  .tag__list {
+    flex-wrap: wrap;
+    width: 50%;
+  }
+
+  .contact {
+    position: fixed;
+    right: 110px;
+    bottom: 25px;
+  }
 }
 
 .btn-contact {
@@ -63,36 +100,56 @@
   margin-left: 25px;
   display: flex;
   @include flexbox($direction: row);
-  align-items: center;
 
   label {
+    margin-top: 15px;
     font-size: 16px;
     font-weight: 700;
   }
 
-  .menu {
-    margin-left: 15px;
-    padding: 15px;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: $color-primary;
-    color: $color-deco;
-  }
-
-  .order {
-    display: none;
-    &__option {
-      font-size: 10px;
+  article {
+    margin-left: 25px;
+    .menu {
+      margin-left: 15px;
+      padding: 15px;
+      font-size: 18px;
       cursor: pointer;
-      white-space: inherit;
-      min-height: 15px;
-      display: inline;
-      border: none;
+      border-radius: 5px;
+      background-color: $color-primary;
+      color: $color-deco;
 
-      &:hover,
-      :focus {
-        background-color: $color-hover;
+      #arrow_up {
+        display: none;
+      }
+    }
+
+    .order {
+      display: none;
+      @include flexbox;
+      margin: 0 0 0 5px;
+      padding-left: 11px;
+
+      &__option {
+        // font-size: 10px;
+        cursor: pointer;
+        white-space: inherit;
+        display: inline;
+        padding: 15px;
+        font-size: 18px;
+        cursor: pointer;
+        background-color: $color-primary;
+        color: $color-deco;
+        border-top: 1px solid $color-deco;
+
+        a {
+          color: $color-deco;
+          font-weight: 600;
+        }
+
+        &:hover,
+        :focus {
+          background-color: $color-hover;
+        }
       }
     }
   }
@@ -105,16 +162,18 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   row-gap: 55px;
+  column-gap: 20px;
   padding-top: 45px;
 
-  @include tablette;
-  @include screen;
+  @include tab_photographer;
+  @include screen_photographer;
 
   &__item {
     margin: auto 0;
   }
 
-  img {
+  img,
+  video {
     border-radius: 5px;
     height: 300px;
     width: 350px;
@@ -128,6 +187,30 @@
 
     p {
       margin: 0;
+    }
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 425px) {
+    margin-left: 15px;
+
+    img {
+      height: 200px;
+      width: 90%;
+    }
+
+    &__details {
+      width: 88%;
+    }
+  }
+
+  @media screen and (min-width: 425px) and (max-width: 780px) {
+    img {
+      height: 250px;
+      width: 90%;
+    }
+
+    &__details {
+      width: 88%;
     }
   }
 }

@@ -7,54 +7,52 @@
   left: 0;
   background-color: #fff;
   @include flex;
-  display: flex;
-}
+  display: none;
 
-.lightbox {
-  margin: auto;
-  width: 75vw;
-  height: 80vh;
-  max-width: 1080px;
-  gap: 1rem;
-
-  &__right {
-    position: relative;
-    height: 100%;
-    @include flex;
-    display: flex;
-  }
-
-  &__close {
-    position: absolute;
-    top: 0.5rem;
-    width: 100%;
-    cursor: pointer;
-    border: none;
-    background-color: #fff;
-  }
-
-  i {
-    width: 30px;
-    height: 30px;
-  }
-
-  &__video {
-    width: 100%;
-    height: 100%;
-  }
-
-  .lightbox__media {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-right: 4px solid grey;
-    border-radius: 5px;
-  }
-
-  &__left-arrow,
-  &__right-arrow {
-    cursor: pointer;
-    border: none;
-    background: transparent;
+  &__right,
+  &__left {
+    display: none;
   }
 }
+
+//   &__right {
+//     position: relative;
+//     height: 100%;
+//     @include flex;
+//     display: flex;
+//   }
+
+//   &__close {
+//     position: absolute;
+//     top: 0.5rem;
+//     width: 100%;
+//     cursor: pointer;
+//     border: none;
+//     background-color: #fff;
+//   }
+
+//   i {
+//     width: 30px;
+//     height: 30px;
+//   }
+
+//   &__media {
+//     width: 100%;
+//     height: 100%;
+//   }
+
+//   .lightbox__media {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//     border-right: 4px solid grey;
+//     border-radius: 5px;
+//   }
+
+//   &__left-arrow,
+//   &__right-arrow {
+//     cursor: pointer;
+//     border: none;
+//     background: transparent;
+//   }
+// }

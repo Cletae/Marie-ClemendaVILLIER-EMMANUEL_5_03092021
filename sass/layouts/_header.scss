@@ -53,9 +53,11 @@
   &__list {
     display: flex;
     @include flexbox($direction: row);
+    row-gap: 20px;
     column-gap: 10px;
     height: 22px;
     padding: 0;
+    flex-wrap: wrap;
 
     &--header {
       z-index: 1;
@@ -65,9 +67,13 @@
       height: 85px;
       width: 95%;
 
-      @media screen and (min-width: 375px) and (max-width: 700px) {
+      @media screen and (min-width: 375px) and (max-width: 750px) {
         height: 124px;
       }
+    }
+
+    .screen-reader {
+      display: none;
     }
   }
 
@@ -98,6 +104,10 @@
   font-weight: 700;
   border: none;
   border-radius: 5px;
+
+  @media screen and (min-width: 375px) and (max-width: 750px) {
+    left: 0;
+  }
 
   .mainSection {
     visibility: visible;

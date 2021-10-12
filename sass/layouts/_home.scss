@@ -26,7 +26,7 @@ main {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   row-gap: 55px;
-  padding-top: 145px;
+  padding-top: 175px;
 
   @include tablette;
   @include screen;

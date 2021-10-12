@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Fav Icon -->
+    <link rel="shortcut icon" href="../img/favicon.ico" />
+
     <!-- Liens Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,18 +44,8 @@
     <main>
       <!-- Présentation photographer card detail -->
       <section class="banner">
-        <article class="banner__detail">
-          <!-- <h1 class="banner__name">Mimi Keel</h1>
-          <p class="banner__city">London, UK</p>
-          <p class="banner__tagline">Voir le beau dans le quotidien</p>
-          <ul class="tags tags__list">
-            <li class=""><a href="">#portrait</a></li>
-            <li class=""><a href="">#events</a></li>
-            <li class=""><a href="">#travel</a></li>
-            <li><a href="">#animals</a></li>
-          </ul> -->
-        </article>
-        <article>
+        <article class="banner__detail"></article>
+        <article class="contact">
           <input
             type="button"
             aria-label="Contact Me"
@@ -68,65 +61,53 @@
         <label class="">Trier par</label>
 
         <article>
-          <!-- <button name="menu" class="menu">
-            <span>
-              <i class="fas fa-chevron-down"></i>
-              <i class="fas fa-chevron-up"></i>
+          <button name="menu" class="menu">
+              <i id="arrow_down" class="fas fa-chevron-down"></i>
+              <i id="arrow_up" class="fas fa-chevron-up"></i>
             </span>
           </button>
 
           <ul class="order">
-            <li role="option" class="order__option" data-value="popularite">
+            <li role="option" class="order__option" aria-expanded="true" aria-label="Order by" data-value="popularite">
               <a href="">Popularité</a>
             </li>
-            <li role="option" class="order__option" data-value="date"><a href="">Date</a></li>
-            <li role="option" class="order__option" data-value="titre"><a href="">Titre</a></li>
-          </ul> -->
+            <li role="option" class="order__option" aria-expanded="false" aria-label="Order by" data-value="date">
+              <a href="">Date</a>
+            </li>
+            <li role="option" class="order__option" aria-expanded="false" aria-label="Order by" data-value="titre">
+              <a href="">Titre</a>
+            </li>
+          </ul>
         </article>
       </section>
 
       <!-- Affichage photos -->
-      <section class="display">
-        <!-- <figure class="display__item">
-          <img src="../img/Photos/243/Animals_Rainbow.jpg" alt="" />
-          <figcaption class="display__details">
-            <p>Arc-en-cie</p>
-            <div class="block">
-              <span class="like"></span>
-              <a href="">
-                <i class="fas fa-heart"></i>
-              </a>
-            </div>
-          </figcaption>
-        </figure> -->
-      </section>
+      <section class="display"></section>
 
       <!-- LIGHTBOX -->
-      <!-- <div class="lightbox_container" role="dialog" aria-label="image closeup view">
-          <div class="lightbox">
-            <div class="lightbox__left">
-              <button id="left_arrow" aria-label="Previous image" role="link">
-                <i class="fas fa-chevron-left"></i>
-              </button>
-            </div>         
-  
-            <div class="lightbox__video">
-            </div>
-  
+      <div class="lightbox_container" role="dialog">
+          <div class="lightbox__content">
+            <span class="lightbox__close"></span>
+            <div class="lightbox__body">
 
-            <div class="lightbox__right">
-              <button class="right_arrow" aria-label="Next image" role="link">
-                <i class="fas fa-chevron-right"></i>
-              </button>
-              <button 
-                class="lightbox__close"
-                aria-label="Close dialog">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
+              <!-- <div class="lightbox__left">
+                <button id="left_arrow" aria-label="Previous image" role="link">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+              </div>         
+    
+              <div class="lightbox__media"></div>
+    
+  
+              <div class="lightbox__right">
+                <button class="right_arrow" aria-label="Next image" role="link">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div> -->
   
           </div>
-        </div> -->
+        </div>
 
       <!-- Form Contact -->
       <div class="bground">
@@ -174,9 +155,8 @@
                   type="text"
                   id="message"
                   name="message"
-                >
-Saisissez votre texte ici...
-                </textarea>
+                  placeholder="Saisissez votre message ici..."
+                ></textarea>
                 <div id="message-empty"></div>
               </div>
 

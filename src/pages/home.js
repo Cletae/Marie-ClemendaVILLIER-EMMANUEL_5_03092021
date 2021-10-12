@@ -47,9 +47,9 @@ if (document.body.classList.contains("home")) {
     );
     photographerImage.setAttribute(
       "src",
-      `img/Photos/Photographers_ID_Photos/${photographer.portrait}`
+      `img/photos/photographers_id_photos/${photographer.portrait}`
     );
-    photographerImage.alt = "";
+    photographerImage.alt = photographer.name;
 
     const photographerName = photographerDiv.appendChild(
       document.createElement("h2")
@@ -85,6 +85,12 @@ if (document.body.classList.contains("home")) {
       const photographerTagList = photographerTagUl.appendChild(
         document.createElement("li")
       );
+
+      const photographerSpan = photographerTagList.appendChild(
+        document.createElement("span")
+      );
+      photographerSpan.classList.add("screen-reader");
+      photographerSpan.innerHTML = "Tag";
 
       const photographerTagLink = photographerTagList.appendChild(
         document.createElement("a")
