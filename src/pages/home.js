@@ -2,23 +2,23 @@
 
 if (document.body.classList.contains("home")) {
   // --------- DOM Elements ----------- //
-  const headerLink = document.getElementsByClassName("header_link");
+  const headerLink = document.querySelector(".header_link");
   const tagsNav = document.querySelector(".tags");
   const photographerSection = document.querySelector(".photographers");
 
   // Affichage du scroll
 
-  // window.addEventListener("scroll", () => {
-  //   const mainSection = headerLink.offsetTop;
-  //   if (window.pageYOffset >= mainSection) {
-  //     headerLink.classList.add("mainSection");
-  //   }
-  // });
+  window.addEventListener("scroll", () => {
+    const mainSection = headerLink.offsetTop;
+    if (window.pageYOffset >= mainSection) {
+      diplayLinkScroll();
+    }
+  });
 
-  // headerLink.addEventListener("click", (event) => {
-  //   event.preventDefault();
-  //   photographerSection.focus();
-  // });
+  function diplayLinkScroll() {
+    headerLink.style.display = "block";
+    headerLink.innerHTML = "<a href=#main>Passer au contenu</a>";
+  }
 
   // Creation Card Photographers //
   function createCard(photographer) {

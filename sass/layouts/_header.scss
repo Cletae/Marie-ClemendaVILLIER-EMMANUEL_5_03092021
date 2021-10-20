@@ -92,11 +92,11 @@
   }
 }
 .header_link {
-  visibility: hidden;
-  position: absolute;
+  display: none;
+  position: fixed;
   z-index: 2;
-  top: -45px;
-  left: 510px;
+  top: 12px;
+  left: 31%;
   padding: 12px 6px;
   color: #181818;
   background-color: #db8876;
@@ -105,8 +105,8 @@
   border: none;
   border-radius: 5px;
 
-  @media screen and (min-width: 375px) and (max-width: 750px) {
-    left: 0;
+  @media screen and (min-width: 750px) {
+    left: 37%;
   }
 
   .mainSection {
