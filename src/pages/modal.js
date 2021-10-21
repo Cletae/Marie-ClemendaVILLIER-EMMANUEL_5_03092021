@@ -22,7 +22,7 @@ const emptyFirstName = document.getElementById("firstname-empty");
 const emptyLastName = document.getElementById("lastname-empty");
 const emptyEmail = document.getElementById("mail-empty");
 
-// 
+//
 photographerName.innerHTML = nameParams;
 
 // Regex
@@ -114,13 +114,14 @@ function checkEmail() {
   }
 }
 
-//  Verfication des saisies (inputs & radio buttons, checkbox) sur le Form
+//  Verfication des saisies (inputs) sur le Form
 function validationForm() {
   const resultFirstName = checkFirstName();
   const resultLastName = checkLastName();
   const resultEmail = checkEmail();
 
   if (resultFirstName && resultLastName && resultEmail) {
+    
     // Affichage du message de confirmation
     form.style.display = "none";
     confirmation.style.fontSize = "30px";

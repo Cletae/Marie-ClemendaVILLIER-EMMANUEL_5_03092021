@@ -9,9 +9,17 @@
   @include flex;
   display: none;
 
-  &__right,
-  &__left {
-    display: none;
+  &__content {
+    padding: 20px;
+  }
+
+  &__body {
+    background-color: blue;
+
+    &__right,
+    &__left {
+      display: none;
+    }
   }
 }
 

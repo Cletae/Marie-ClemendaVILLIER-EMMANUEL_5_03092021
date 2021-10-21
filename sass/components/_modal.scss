@@ -22,6 +22,11 @@
     position: relative;
     color: $color-text;
     padding-top: 10px;
+    animation: modalOpen 0.8s;
+
+    @media screen and (min-width: 375px) and (max-width: 780px) {
+      max-width: 600px;
+    }
 
     .modal-body {
       padding: 15px 8%;
@@ -107,4 +112,15 @@
 
 .btn-confirmation {
   @include button;
+}
+
+@keyframes modalOpen {
+  0% {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

@@ -60,22 +60,22 @@
       <section class="trie">
         <label class="">Trier par</label>
 
-        <article>
-          <button name="menu" class="menu">
+        <article class="filter">
+          <button name="menu" class="btn-dropdown" aria-expanded="false" aria-haspopup="listbox">Popolarité
               <i id="arrow_down" class="fas fa-chevron-down"></i>
               <i id="arrow_up" class="fas fa-chevron-up"></i>
             </span>
           </button>
 
-          <ul class="order">
-            <li role="option" class="order__option" aria-expanded="true" aria-label="Order by" data-value="popularite">
-              <a href="">Popularité</a>
+          <ul class="dropdown hidden" role="listbox">
+            <li class="dropdown__list popularite">
+              <a href="" class="option" role="option" aria-label="Order by" data-value="popularite">Popularité</a>
             </li>
-            <li role="option" class="order__option" aria-expanded="false" aria-label="Order by" data-value="date">
-              <a href="">Date</a>
+            <li class="dropdown__list">
+              <a href="" class="option" role="option" aria-label="Order by" data-value="date">Date</a>
             </li>
-            <li role="option" class="order__option" aria-expanded="false" aria-label="Order by" data-value="titre">
-              <a href="">Titre</a>
+            <li class="dropdown__list">
+              <a href="" class="option" role="option" aria-label="Order by" data-value="titre">Titre</a>
             </li>
           </ul>
         </article>
@@ -83,31 +83,6 @@
 
       <!-- Affichage photos -->
       <section class="display"></section>
-
-      <!-- LIGHTBOX -->
-      <div class="lightbox_container" role="dialog">
-          <div class="lightbox__content">
-            <span class="lightbox__close"></span>
-            <div class="lightbox__body">
-
-              <!-- <div class="lightbox__left">
-                <button id="left_arrow" aria-label="Previous image" role="link">
-                  <i class="fas fa-chevron-left"></i>
-                </button>
-              </div>         
-    
-              <div class="lightbox__media"></div>
-    
-  
-              <div class="lightbox__right">
-                <button class="right_arrow" aria-label="Next image" role="link">
-                  <i class="fas fa-chevron-right"></i>
-                </button>
-              </div>
-            </div> -->
-  
-          </div>
-        </div>
 
       <!-- Form Contact -->
       <div class="bground">
@@ -177,6 +152,32 @@
           />
         </div>
       </div>
+
+      <!-- LIGHTBOX -->
+      <div class="lightbox_container" role="dialog">
+        <div class="lightbox__content">
+          <span class="lightbox__close"></span>
+          <div class="lightbox__body">
+
+            <div class="lightbox__left">
+              <button id="left_arrow" aria-label="Previous image" role="link">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+            </div>         
+  
+            <div class="lightbox__media"></div>
+  
+
+            <div class="lightbox__right">
+              <button class="right_arrow" aria-label="Next image" role="link">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="info"></div>
     </main>
   </body>
 </html>
