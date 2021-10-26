@@ -106,7 +106,7 @@ if (document.body.classList.contains("home")) {
   // Function : promise + filters
   function loadData(tags = undefined) {
     // Promise
-    fetch("../data.json")
+    fetch("data.json")
       .then((res) => res.json())
       .then((data) => {
         let photographers = data.photographers;
