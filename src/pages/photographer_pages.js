@@ -318,7 +318,7 @@ if (body.classList.contains("photographes")) {
 
   // Promise
   function loadData() {
-    fetch("../data.json")
+    fetch("../../data.json")
       .then((res) => res.json())
       .then((data) => {
         const photographers = data.photographers;
