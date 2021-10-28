@@ -100,6 +100,10 @@
   display: flex;
   @include flexbox($direction: row);
 
+  @media screen and (min-width: 375px) and (max-width: 780px) {
+    display: none;
+  }
+
   label {
     margin-top: 15px;
     font-size: 16px;
@@ -128,11 +132,16 @@
       margin: 0 0 0 5px;
       padding-left: 11px;
 
+      &:not(.open) {
+        li:not(.open) {
+          display: none;
+        }
+      }
+
       &__list {
         // font-size: 10px;
         cursor: pointer;
         white-space: inherit;
-        display: inline;
         padding: 15px;
         font-size: 18px;
         cursor: pointer;

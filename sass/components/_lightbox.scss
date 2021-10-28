@@ -1,11 +1,13 @@
-.lightbox_container {
+.lightbox {
   position: fixed;
   z-index: 99;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  background-color: white;
   @include flex;
   display: none;
 
@@ -14,12 +16,52 @@
   }
 
   &__body {
-    background-color: blue;
+    background-color: gold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    &__right,
-    &__left {
-      display: none;
+    &__media {
+      width: 400px;
+      height: 350px;
     }
+
+    .right_arrow,
+    .left_arrow {
+      color: $color-primary;
+      background-color: transparent;
+      border: none;
+
+      i {
+        font-size: 45px;
+      }
+    }
+  }
+
+  &__close {
+    position: absolute;
+    right: 35px;
+    top: 39px;
+    width: 39px;
+    height: 32px;
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(0.7);
+  }
+  &__close:before,
+  &__close:after {
+    position: absolute;
+    right: 475px;
+    content: " ";
+    height: 72px;
+    width: 8px;
+    background-color: $color-primary;
+  }
+  &__close:before {
+    transform: rotate(45deg);
+  }
+  &__close:after {
+    transform: rotate(-45deg);
   }
 }
 

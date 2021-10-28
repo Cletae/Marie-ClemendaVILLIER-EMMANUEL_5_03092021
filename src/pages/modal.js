@@ -1,147 +1,151 @@
-// --------- DOM Elements --------- //
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".btn-contact");
-const photographerName = document.getElementById("photographer_name");
-const urlParams = new URL(window.location).searchParams;
-const nameParams = urlParams.get("name");
+const body = document.querySelector("body");
 
-// Form inputs elements
-const firstName = document.getElementById("first");
-const lastName = document.getElementById("last");
-const email = document.getElementById("email");
+if (body.classList.contains("photographes")) {
+  console.log("photographes");
 
-// Form elements
-const close = document.querySelector(".close");
-const btnSubmit = document.getElementsByClassName("btn-submit");
-const form = document.querySelector("form");
-const confirmation = document.getElementById("confirmation");
-const closeBtn = document.getElementById("close-btn");
+  // --------- DOM Elements --------- //
+  const modalbg = document.querySelector(".bground");
+  const modalBtn = document.querySelectorAll(".btn-contact");
+  const photographerName = document.getElementById("photographer_name");
+  const urlParams = new URL(window.location).searchParams;
+  const nameParams = urlParams.get("name");
 
-// Empty Elements Forms
-const emptyFirstName = document.getElementById("firstname-empty");
-const emptyLastName = document.getElementById("lastname-empty");
-const emptyEmail = document.getElementById("mail-empty");
+  // Form inputs elements
+  const firstName = document.getElementById("first");
+  const lastName = document.getElementById("last");
+  const email = document.getElementById("email");
 
-//
-photographerName.innerHTML = nameParams;
+  // Form elements
+  const close = document.querySelector(".close");
+  const btnSubmit = document.getElementsByClassName("btn-submit");
+  const form = document.querySelector("form");
+  const confirmation = document.getElementById("confirmation");
+  const closeBtn = document.getElementById("close-btn");
 
-// Regex
-const regexEmail = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
+  // Empty Elements Forms
+  const emptyFirstName = document.getElementById("firstname-empty");
+  const emptyLastName = document.getElementById("lastname-empty");
+  const emptyEmail = document.getElementById("mail-empty");
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+  photographerName.innerHTML = nameParams;
 
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
-}
+  // Regex
+  const regexEmail = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
 
-// Message de confirmation invisible
-closeBtn.style.display = "none";
-confirmation.style.display = "none";
+  // launch modal event
+  modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// Close button icon
-close.addEventListener("click", function () {
-  modalbg.style.display = "none";
-});
-
-// Close button du message de confirmation
-closeBtn.addEventListener("click", function () {
-  modalbg.style.display = "none";
-});
-
-// Style (css) error message
-function errorMessage(value) {
-  value.style.color = "#b80d0d";
-  value.style.fontWeight = "bolder";
-  value.style.fontSize = "1.5em";
-  value.style.margin = "0.5em 0 0.8em 0.2em";
-}
-
-// Vérification saisie Prénom
-function checkFirstName() {
-  const regexName = new RegExp(/^[a-zA-Z-àâçéèêëîïôûùüÿñæœ']{2,}$/, "g");
-
-  if (!firstName.value) {
-    emptyFirstName.innerHTML = "Veuillez saisir votre Prénom";
-    emptyFirstName.style.display = "block";
-    errorMessage(emptyFirstName);
-    return false;
-  } else if (regexName.test(firstName.value) == false) {
-    emptyFirstName.innerHTML = "Veuillez saisir un minimum de 2 caractère";
-    emptyFirstName.style.display = "block";
-    errorMessage(emptyFirstName);
-  } else {
-    emptyFirstName.style.display = "none";
-    return true;
+  // launch modal form
+  function launchModal() {
+    modalbg.style.display = "block";
   }
-}
 
-// Vérification saisie Nom
-function checkLastName() {
-  const regexName = new RegExp(/^[a-zA-Z-àâçéèêëîïôûùüÿñæœ']{2,}$/, "g");
+  // Message de confirmation invisible
+  closeBtn.style.display = "none";
+  confirmation.style.display = "none";
 
-  if (!lastName.value) {
-    emptyLastName.innerHTML = "Veuillez saisir votre Nom";
-    emptyLastName.style.display = "block";
-    errorMessage(emptyLastName);
-    return false;
-  } else if (regexName.test(lastName.value) == false) {
-    emptyLastName.innerHTML = "Veuillez saisir un minimum de 2 caractère";
-    emptyLastName.style.display = "block";
-    errorMessage(emptyLastName);
-  } else {
-    emptyLastName.style.display = "none";
-    return true;
+  // Close button icon
+  close.addEventListener("click", function () {
+    modalbg.style.display = "none";
+  });
+
+  // Close button du message de confirmation
+  closeBtn.addEventListener("click", function () {
+    modalbg.style.display = "none";
+  });
+
+  // Style (css) error message
+  function errorMessage(value) {
+    value.style.color = "#b80d0d";
+    value.style.fontWeight = "bolder";
+    value.style.fontSize = "1.5em";
+    value.style.margin = "0.5em 0 0.8em 0.2em";
   }
-}
 
-// Vérification saisie Email
-function checkEmail() {
-  if (!email.value) {
-    emptyEmail.innerHTML = "Veuillez saisir votre Email";
-    emptyEmail.style.display = "block";
-    errorMessage(emptyEmail);
-    return false;
-  } else if (regexEmail.exec(email.value) == null) {
-    emptyEmail.innerHTML = "Veuillez saisir une adresse email valide";
-    emptyEmail.style.display = "block";
-    errorMessage(emptyEmail);
-    return false;
-  } else {
-    emptyEmail.style.display = "none";
-    return true;
+  // Vérification saisie Prénom
+  function checkFirstName() {
+    const regexName = new RegExp(/^[a-zA-Z-àâçéèêëîïôûùüÿñæœ']{2,}$/, "g");
+
+    if (!firstName.value) {
+      emptyFirstName.innerHTML = "Veuillez saisir votre Prénom";
+      emptyFirstName.style.display = "block";
+      errorMessage(emptyFirstName);
+      return false;
+    } else if (regexName.test(firstName.value) == false) {
+      emptyFirstName.innerHTML = "Veuillez saisir un minimum de 2 caractère";
+      emptyFirstName.style.display = "block";
+      errorMessage(emptyFirstName);
+    } else {
+      emptyFirstName.style.display = "none";
+      return true;
+    }
   }
-}
 
-//  Verfication des saisies (inputs) sur le Form
-function validationForm() {
-  const resultFirstName = checkFirstName();
-  const resultLastName = checkLastName();
-  const resultEmail = checkEmail();
+  // Vérification saisie Nom
+  function checkLastName() {
+    const regexName = new RegExp(/^[a-zA-Z-àâçéèêëîïôûùüÿñæœ']{2,}$/, "g");
 
-  if (resultFirstName && resultLastName && resultEmail) {
-    
-    // Affichage du message de confirmation
-    form.style.display = "none";
-    confirmation.style.fontSize = "30px";
-    confirmation.style.textAlign = "center";
-    confirmation.style.display = "flex";
-    confirmation.style.margin = "0 15px 1em 0";
-    closeBtn.style.display = "block";
-    closeBtn.style.margin = "2em auto 2em auto";
-    return true;
+    if (!lastName.value) {
+      emptyLastName.innerHTML = "Veuillez saisir votre Nom";
+      emptyLastName.style.display = "block";
+      errorMessage(emptyLastName);
+      return false;
+    } else if (regexName.test(lastName.value) == false) {
+      emptyLastName.innerHTML = "Veuillez saisir un minimum de 2 caractère";
+      emptyLastName.style.display = "block";
+      errorMessage(emptyLastName);
+    } else {
+      emptyLastName.style.display = "none";
+      return true;
+    }
   }
-}
 
-// Submit si les champs sont remplis sinon verif Form
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  if (form.checkValidity === true) {
-    setTimeout(validationForm, 1000);
-    return true;
-  } else {
-    validationForm();
+  // Vérification saisie Email
+  function checkEmail() {
+    if (!email.value) {
+      emptyEmail.innerHTML = "Veuillez saisir votre Email";
+      emptyEmail.style.display = "block";
+      errorMessage(emptyEmail);
+      return false;
+    } else if (regexEmail.exec(email.value) == null) {
+      emptyEmail.innerHTML = "Veuillez saisir une adresse email valide";
+      emptyEmail.style.display = "block";
+      errorMessage(emptyEmail);
+      return false;
+    } else {
+      emptyEmail.style.display = "none";
+      return true;
+    }
   }
-});
+
+  //  Verfication des saisies (inputs) sur le Form
+  function validationForm() {
+    const resultFirstName = checkFirstName();
+    const resultLastName = checkLastName();
+    const resultEmail = checkEmail();
+
+    if (resultFirstName && resultLastName && resultEmail) {
+      // Affichage du message de confirmation
+      form.style.display = "none";
+      confirmation.style.fontSize = "30px";
+      confirmation.style.textAlign = "center";
+      confirmation.style.display = "flex";
+      confirmation.style.margin = "0 15px 1em 0";
+      closeBtn.style.display = "block";
+      closeBtn.style.margin = "2em auto 2em auto";
+      return true;
+    }
+  }
+
+  // Submit si les champs sont remplis sinon verif Form
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (form.checkValidity === true) {
+      setTimeout(validationForm, 1000);
+      return true;
+    } else {
+      validationForm();
+    }
+  });
+}

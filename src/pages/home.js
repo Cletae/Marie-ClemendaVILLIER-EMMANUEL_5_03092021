@@ -106,20 +106,17 @@ if (document.body.classList.contains("home")) {
   // Function : promise + filters
   function loadData(tags = undefined) {
     // Promise
-    fetch("data.json")
+    fetch("../src/data.json")
       .then((res) => res.json())
       .then((data) => {
         let photographers = data.photographers;
-
-        console.log(photographers);
 
         // Filtres
         const tagsHtml = document.querySelectorAll(".tag_link");
 
         tagsHtml.forEach((tagHtml) => {
           tagHtml.addEventListener("click", () => {
-            console.log("hello");
-
+            
             const selectedTag = tagHtml.dataset.tagName;
             console.log(selectedTag);
 
@@ -132,8 +129,6 @@ if (document.body.classList.contains("home")) {
             displayCard(photographersData);
           });
         });
-
-        console.log(photographers);
 
         // Affichage des cards photographers
         photographers.forEach((photographer) => {
