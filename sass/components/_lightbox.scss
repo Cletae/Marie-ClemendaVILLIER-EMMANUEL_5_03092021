@@ -16,14 +16,17 @@
   }
 
   &__body {
-    background-color: gold;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
 
     &__media {
       width: 400px;
-      height: 350px;
+      height: 400px;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
     }
 
     .right_arrow,

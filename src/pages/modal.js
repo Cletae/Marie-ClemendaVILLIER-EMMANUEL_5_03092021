@@ -1,8 +1,6 @@
 const body = document.querySelector("body");
 
 if (body.classList.contains("photographes")) {
-  console.log("photographes");
-
   // --------- DOM Elements --------- //
   const modalbg = document.querySelector(".bground");
   const modalBtn = document.querySelectorAll(".btn-contact");

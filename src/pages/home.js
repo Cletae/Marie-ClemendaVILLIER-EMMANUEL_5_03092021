@@ -106,17 +106,16 @@ if (document.body.classList.contains("home")) {
   // Function : promise + filters
   function loadData(tags = undefined) {
     // Promise
-    fetch("../src/data.json")
+    fetch("./src/data.json")
       .then((res) => res.json())
       .then((data) => {
-        let photographers = data.photographers;
+        const photographers = data.photographers;
 
         // Filtres
         const tagsHtml = document.querySelectorAll(".tag_link");
 
         tagsHtml.forEach((tagHtml) => {
           tagHtml.addEventListener("click", () => {
-            
             const selectedTag = tagHtml.dataset.tagName;
             console.log(selectedTag);
 
