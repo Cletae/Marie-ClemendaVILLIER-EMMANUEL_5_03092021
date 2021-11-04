@@ -25,12 +25,7 @@
 
     <!-- CSS & JS -->
     <link rel="stylesheet" href="../css/main.css" />
-    <!-- <script
-      src="../src/pages/photographer_pages.js"
-      type="module"
-      defer
-    ></script>
-    <script src="../src/pages/modal.js" type="module" defer></script> -->
+  
     <script src="../src/script.js" type="module" defer></script>
     <title>FishEye</title>
   </head>
@@ -62,18 +57,19 @@
         <label class="">Trier par</label>
 
         <article class="filter">
-          <button name="menu" class="btn-dropdown" aria-haspopup="listbox">
+          <button name="menu" class="btn-dropdown" aria-haspopup="listbox" aria-hidden="false">
               <span id="titleDropdown"></span>
               <i id="arrow_down" class="fas fa-chevron-down"></i>
               <i id="arrow_up" class="fas fa-chevron-up"></i>
             </span>
+            <ul class="dropdown " role="listbox">
+              <li class="dropdown__list open" role="option" aria-label="Order by" data-value="popularite">Popolarité</li>
+              <li class="dropdown__list" role="option" aria-label="Order by" data-value="date">Date</li>
+              <li class="dropdown__list" class="option" role="option" aria-label="Order by" data-value="titre">Titre</li>
+            </ul>
           </button>
 
-          <ul class="dropdown " role="listbox">
-            <li class="dropdown__list open" role="option" aria-label="Order by" data-value="popularite">Popolarité</li>
-            <li class="dropdown__list" role="option" aria-label="Order by" data-value="date">Date</li>
-            <li class="dropdown__list" class="option" role="option" aria-label="Order by" data-value="titre">Titre</li>
-          </ul>
+          
         </article>
       </section>
 
