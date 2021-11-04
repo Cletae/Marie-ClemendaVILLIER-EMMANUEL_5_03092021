@@ -308,29 +308,7 @@ if (body.classList.contains("photographes")) {
             tabMedia.push(media);
 
           // Affichage de la Lightbox
-          const images = document.querySelectorAll("img", "video");
-
-          images.forEach((image) => {
-            image.addEventListener("click", () => {
-              const idMedia = parseInt(image.dataset.id);
-
-              // const displayMedia =
-              //   idMedia.toString() == lightboxMedia.dataset["idMedia"];
-
-              // const createMedia = (idMedia) => {
-              //   lightboxContainer.innerHTML = `
-              //     ${CreateLightbox(media)}`;
-              // };
-
-              const media = medias.find(
-                (media) => lightboxMedia.dataset.id == idMedia
-              );
-              console.log("hello");
-
-              createLightbox(media);
-              displayLightbox(displayMedia);
-            });
-          });
+          clickImage(media);
         });
 
         // Show option dropdown
@@ -344,6 +322,33 @@ if (body.classList.contains("photographes")) {
           });
         });
       });
+  }
+
+  function clickImage(media) {
+    const images = document.querySelectorAll("img", "video");
+
+    images.forEach((image) => {
+      image.addEventListener("click", () => {
+        const idMedia = parseInt(image.dataset.id);
+        console.log(idMedia);
+
+        const displayMedia =
+          idMedia.toString() == lightboxMedia.dataset["idMedia"];
+
+        // const createMedia = (idMedia) => {
+        //   lightboxContainer.innerHTML = `
+        //     ${CreateLightbox(media)}`;
+        // };
+
+        // const media = medias.find(
+        //   (media) => lightboxMedia.dataset.id == idMedia
+        // );
+        console.log("hello");
+
+        createLightbox(media);
+        displayLightbox(displayMedia);
+      });
+    });
   }
 
   // Filter dropdown
@@ -379,8 +384,9 @@ if (body.classList.contains("photographes")) {
       });
     }
 
-    tabMedia.forEach((tab) => {
-      createMedia(tab);
+    tabMedia.forEach((media) => {
+      createMedia(media);
+      clickImage(media);
     });
   }
 }
