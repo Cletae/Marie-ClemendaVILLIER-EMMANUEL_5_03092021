@@ -252,6 +252,7 @@ if (body.classList.contains("photographes")) {
   const info = document.querySelector(".info");
   const totalLike = document.querySelector(".totalLike");
   const price = document.querySelector(".price");
+  let nbLikes = 0;
 
   function infoPriceAndLikes(photographer) {
     totalLike.innerHTML = ` <i class="fas fa-heart"></i>`;
@@ -261,10 +262,10 @@ if (body.classList.contains("photographes")) {
 
   function infoTotalLikes(totalLike) {
     let nbLikes = 0;
-
     totalLike.forEach((media) => {
       nbLikes += media.likes;
     });
+    console.log(media.likes);
 
     totalLike.innerHTML = nbLikes;
     console.log("hello");
@@ -337,7 +338,7 @@ if (body.classList.contains("photographes")) {
 
         // -- Afficher Info (Likes & Price) -- //
         infoPriceAndLikes(displayPhotographer);
-        infoTotalLikes();
+        infoTotalLikes()
       });
   }
 
