@@ -107,6 +107,7 @@ if (document.body.classList.contains("home")) {
   loadData();
 
   function loadData(tags = undefined) {
+    // Promise
     fetch("./src/data.json")
       .then((res) => res.json())
       .then((data) => {
