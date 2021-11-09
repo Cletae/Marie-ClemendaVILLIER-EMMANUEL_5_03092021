@@ -1,13 +1,12 @@
-// const body = document.querySelectorAll("body");
+// ------------------- AFFICHAGE --------------------//
 
 if (document.body.classList.contains("home")) {
-  // --------- DOM Elements ----------- //
+  // ----------- DOM ELEMENTS ----------- //
   const headerLink = document.querySelector(".header_link");
   const tagsNav = document.querySelector(".tags");
   const photographerSection = document.querySelector(".photographers");
 
-  // Affichage du scroll
-
+  // -- Affichage du scroll -- //
   window.addEventListener("scroll", () => {
     const mainSection = headerLink.offsetTop;
     if (window.pageYOffset >= mainSection) {
@@ -15,12 +14,13 @@ if (document.body.classList.contains("home")) {
     }
   });
 
+  // -- Afficher le link scroll -- //
   function diplayLinkScroll() {
     headerLink.style.display = "block";
     headerLink.innerHTML = "<a href=#main>Passer au contenu</a>";
   }
 
-  // Creation Card Photographers //
+  // --------------- PHOTOGRAPHERS CARDS ------------------- //
   function createCard(photographer) {
     const photographerArticle = photographerSection.appendChild(
       document.createElement("article")
@@ -97,26 +97,26 @@ if (document.body.classList.contains("home")) {
       );
       photographerTagLink.classList.add("tag_link");
       photographerTagLink.setAttribute("href", "#");
+      photographerTagLink.setAttribute("aria-label", "tag " + tags);
       photographerTagLink.innerHTML = "#" + tags;
       photographerTagLink.dataset.tagName = tags;
     });
   }
 
+  // ----------- PROMISE : -------------- //
   loadData();
-  // Function : promise + filters
+
   function loadData(tags = undefined) {
-    // Promise
-    fetch("../src/data.json")
+    fetch("./src/data.json")
       .then((res) => res.json())
       .then((data) => {
-        let photographers = data.photographers;
+        const photographers = data.photographers;
 
-        // Filtres
+        // ---- Filters Tags ---- //
         const tagsHtml = document.querySelectorAll(".tag_link");
 
         tagsHtml.forEach((tagHtml) => {
           tagHtml.addEventListener("click", () => {
-            
             const selectedTag = tagHtml.dataset.tagName;
             console.log(selectedTag);
 
@@ -130,17 +130,19 @@ if (document.body.classList.contains("home")) {
           });
         });
 
-        // Affichage des cards photographers
+        // -- Afficher photographers cards -- //
         photographers.forEach((photographer) => {
           createCard(photographer);
         });
       });
   }
 
+  // -- Clear le Html -- //
   function clearHtml() {
     photographerSection.innerHTML = "";
   }
 
+  // -- Afficher filter photographers cards -- //
   function displayCard(photographers) {
     photographers.forEach((photographer) => {
       createCard(photographer);

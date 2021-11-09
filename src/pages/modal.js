@@ -1,60 +1,62 @@
+// ------------------- AFFICHAGE --------------------//
+
 const body = document.querySelector("body");
 
 if (body.classList.contains("photographes")) {
-  console.log("photographes");
-
-  // --------- DOM Elements --------- //
+  // --------- DOM ELEMENTS --------- //
   const modalbg = document.querySelector(".bground");
   const modalBtn = document.querySelectorAll(".btn-contact");
   const photographerName = document.getElementById("photographer_name");
   const urlParams = new URL(window.location).searchParams;
   const nameParams = urlParams.get("name");
 
-  // Form inputs elements
+  // --- Form inputs elements --- //
   const firstName = document.getElementById("first");
   const lastName = document.getElementById("last");
   const email = document.getElementById("email");
+  const message = document.getElementById("message");
 
-  // Form elements
+  // --- Form elements --- //
   const close = document.querySelector(".close");
   const btnSubmit = document.getElementsByClassName("btn-submit");
   const form = document.querySelector("form");
   const confirmation = document.getElementById("confirmation");
   const closeBtn = document.getElementById("close-btn");
 
-  // Empty Elements Forms
+  // --- Empty Elements Forms --- //
   const emptyFirstName = document.getElementById("firstname-empty");
   const emptyLastName = document.getElementById("lastname-empty");
   const emptyEmail = document.getElementById("mail-empty");
+  const emptyMessage = document.getElementById("message-empty");
 
   photographerName.innerHTML = nameParams;
 
-  // Regex
+  // --- Regex --- //
   const regexEmail = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
 
-  // launch modal event
+  // --- Launch modal event --- //
   modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-  // launch modal form
+  // --- Launch modal form --- //
   function launchModal() {
     modalbg.style.display = "block";
   }
 
-  // Message de confirmation invisible
+  // --- Message de confirmation invisible --- //
   closeBtn.style.display = "none";
   confirmation.style.display = "none";
 
-  // Close button icon
+  // --- Close button icon --- //
   close.addEventListener("click", function () {
     modalbg.style.display = "none";
   });
 
-  // Close button du message de confirmation
+  // -- Close button du message de confirmation -- //
   closeBtn.addEventListener("click", function () {
     modalbg.style.display = "none";
   });
 
-  // Style (css) error message
+  // -- Style (css) error message -- //
   function errorMessage(value) {
     value.style.color = "#b80d0d";
     value.style.fontWeight = "bolder";
@@ -62,7 +64,7 @@ if (body.classList.contains("photographes")) {
     value.style.margin = "0.5em 0 0.8em 0.2em";
   }
 
-  // Vérification saisie Prénom
+  // -- Vérification saisie : Prénom -- //
   function checkFirstName() {
     const regexName = new RegExp(/^[a-zA-Z-àâçéèêëîïôûùüÿñæœ']{2,}$/, "g");
 
@@ -81,7 +83,7 @@ if (body.classList.contains("photographes")) {
     }
   }
 
-  // Vérification saisie Nom
+  // -- Vérification saisie : Nom -- //
   function checkLastName() {
     const regexName = new RegExp(/^[a-zA-Z-àâçéèêëîïôûùüÿñæœ']{2,}$/, "g");
 
@@ -100,7 +102,7 @@ if (body.classList.contains("photographes")) {
     }
   }
 
-  // Vérification saisie Email
+  // -- Vérification saisie : Email -- //
   function checkEmail() {
     if (!email.value) {
       emptyEmail.innerHTML = "Veuillez saisir votre Email";
@@ -118,14 +120,34 @@ if (body.classList.contains("photographes")) {
     }
   }
 
-  //  Verfication des saisies (inputs) sur le Form
+  // -- Vérification saisie : Message -- //
+  function checkMessage() {
+    const regexName = new RegExp(/^[a-zA-Z-àâçéèêëîïôûùüÿñæœ']{4,}$/, "g");
+
+    if (!message.value) {
+      emptyMessage.innerHTML = "Veuillez saisir votre Message";
+      emptyMessage.style.display = "block";
+      errorMessage(emptyMessage);
+      return false;
+    } else if (regexName.test(emptyMessage.value) == false) {
+      emptyMessage.innerHTML = "Veuillez saisir un minimum de 5 caractère";
+      emptyMessage.style.display = "block";
+      errorMessage(emptyMessage);
+    } else {
+      emptyMessage.style.display = "none";
+      return true;
+    }
+  }
+
+  // -- Verfication des saisies (inputs) sur le Form -- //
   function validationForm() {
     const resultFirstName = checkFirstName();
     const resultLastName = checkLastName();
     const resultEmail = checkEmail();
+    const resultMessage = checkMessage();
 
-    if (resultFirstName && resultLastName && resultEmail) {
-      // Affichage du message de confirmation
+    if (resultFirstName && resultLastName && resultEmail && resultMessage) {
+      // -- Affichage du message de confirmation -- //
       form.style.display = "none";
       confirmation.style.fontSize = "30px";
       confirmation.style.textAlign = "center";
@@ -137,7 +159,7 @@ if (body.classList.contains("photographes")) {
     }
   }
 
-  // Submit si les champs sont remplis sinon verif Form
+  // -- Submit si les champs sont remplis sinon verif Form -- //
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 

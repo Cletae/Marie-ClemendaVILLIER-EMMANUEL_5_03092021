@@ -25,12 +25,7 @@
 
     <!-- CSS & JS -->
     <link rel="stylesheet" href="../css/main.css" />
-    <!-- <script
-      src="../src/pages/photographer_pages.js"
-      type="module"
-      defer
-    ></script>
-    <script src="../src/pages/modal.js" type="module" defer></script> -->
+
     <script src="../src/script.js" type="module" defer></script>
     <title>FishEye</title>
   </head>
@@ -43,7 +38,7 @@
     </header>
 
     <main>
-      <!-- Présentation photographer card detail -->
+      <!------- PHOTOGRAPHER BANNER DETAILS ---------->
       <section class="banner">
         <article class="banner__detail"></article>
         <article class="contact">
@@ -57,30 +52,61 @@
         <article></article>
       </section>
 
-      <!-- Affichage du trie -->
+      <!--------  DROPDOWN ----------->
       <section class="trie">
         <label class="">Trier par</label>
 
         <article class="filter">
-          <button name="menu" class="btn-dropdown" aria-haspopup="listbox">
-              <span id="titleDropdown"></span>
+          <button
+            name="menu"
+            class="btn-dropdown"
+            role="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
+            <span id="titleDropdown"></span>
+            <span id="content arrows">
               <i id="arrow_down" class="fas fa-chevron-down"></i>
-              <i id="arrow_up" class="fas fa-chevron-up"></i>
-            </span>
+              <i id="arrow_up" class="fas fa-chevron-up"></i
+            ></span>
+            <ul class="dropdown" role="listbox">
+              <li
+                class="dropdown__list open"
+                role="option"
+                aria-label="Order by"
+                aria-selected="true"
+                data-value="popularite"
+              >
+                Popolarité
+              </li>
+              <li
+                class="dropdown__list"
+                role="option"
+                aria-label="Order by"
+                aria-selected="false"
+                data-value="date"
+              >
+                Date
+              </li>
+              <li
+                class="dropdown__list"
+                class="option"
+                role="option"
+                aria-label="Order by"
+                aria-selected="false"
+                data-value="titre"
+              >
+                Titre
+              </li>
+            </ul>
           </button>
-
-          <ul class="dropdown " role="listbox">
-            <li class="dropdown__list open" role="option" aria-label="Order by" data-value="popularite">Popolarité</li>
-            <li class="dropdown__list" role="option" aria-label="Order by" data-value="date">Date</li>
-            <li class="dropdown__list" class="option" role="option" aria-label="Order by" data-value="titre">Titre</li>
-          </ul>
         </article>
       </section>
 
-      <!-- Affichage photos -->
+      <!---------- DISPLAY MEDIAS PHOTOGRAPHER ----------->
       <section class="display"></section>
 
-      <!-- Form Contact -->
+      <!---------- FORM CONTACT -------->
       <div class="bground">
         <div class="content">
           <span class="close"></span>
@@ -149,22 +175,22 @@
         </div>
       </div>
 
-      <!-- LIGHTBOX -->
+      <!--------- LIGHTBOX ----------->
       <div class="lightbox" role="dialog">
         <div class="lightbox__content">
           <span class="lightbox__close"></span>
           <div class="lightbox__body">
-
             <div class="lightbox__left">
-              <button class="left_arrow" aria-label="Previous image" role="link">
+              <button
+                class="left_arrow"
+                aria-label="Previous image"
+                role="link"
+              >
                 <i class="fas fa-chevron-left"></i>
               </button>
-            </div>         
-  
-            <div class="lightbox__media">
-              
             </div>
-  
+
+            <div class="lightbox__media"></div>
 
             <div class="lightbox__right">
               <button class="right_arrow" aria-label="Next image" role="link">
@@ -175,6 +201,7 @@
         </div>
       </div>
 
+      <!-------- INFO LIKE & PRICE --------->
       <div class="info">
         <p class="totalLike"></p>
         <p class="price"></p>

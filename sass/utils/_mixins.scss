@@ -1,5 +1,6 @@
-// Mixins
-// Flexbox
+// ---------- MIXINS ---------------//
+
+// --------- Flexbox ---------//
 @mixin flex($position: center) {
   @if $position == flex-start {
     justify-content: flex-start;
@@ -21,7 +22,7 @@
   }
 }
 
-// CSS Buttun modal
+// -------- Buttun modal ---------//
 @mixin button {
   background: $color-primary;
   display: block;
@@ -34,7 +35,19 @@
   border: 0;
 }
 
-//Media Home
+// -------- Close buttun ---------//
+@mixin btn-close {
+  position: absolute;
+  right: 35px;
+  top: 39px;
+  width: 39px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+
+// ------- Media Home ----------//
 @mixin tablette {
   @media screen and (min-width: map-get($breakpoint, tab)) and (max-width: map-get($breakpoint, desktop )) {
     grid-template-columns: 1fr 1fr;
@@ -52,7 +65,7 @@
   }
 }
 
-// Media Photographers
+// --------- Media Photographers ----------//
 @mixin tab_photographer {
   @media screen and (min-width: 780px) and (max-width: 1145px) {
     grid-template-columns: 1fr 1fr;

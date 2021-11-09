@@ -1,3 +1,4 @@
+// ------- Logo FishEye ---------//
 .header_home,
 .header_photographer {
   width: 80%;
@@ -49,6 +50,7 @@
   }
 }
 
+// -------- Filter Tags ----------//
 .tags {
   &__list {
     display: flex;
@@ -91,6 +93,8 @@
     }
   }
 }
+
+// -------- Link scroll ----------//
 .header_link {
   display: none;
   position: fixed;

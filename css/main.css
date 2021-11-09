@@ -596,14 +596,14 @@ main {
   padding: 20px;
 }
 .lightbox__body {
-  background-color: gold;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .lightbox__body__media {
   width: 400px;
-  height: 350px;
+  height: 400px;
 }
 .lightbox__body .right_arrow,
 .lightbox__body .left_arrow {

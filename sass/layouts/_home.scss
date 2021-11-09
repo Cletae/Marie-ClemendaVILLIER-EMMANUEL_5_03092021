@@ -1,3 +1,4 @@
+// ------- Affichage du titre -------//
 main {
   position: relative;
 }
@@ -21,6 +22,7 @@ main {
   }
 }
 
+// ------- Photographers Cards --------- //
 .photographers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -32,8 +34,6 @@ main {
   @include screen;
 
   &__cards {
-    // margin-top: 25px;
-    // padding-top: 50px;
     display: flex;
     @include flex;
     @include flexbox;

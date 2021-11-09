@@ -28,6 +28,8 @@
       max-width: 600px;
     }
 
+    // ------- Content Form --------//
+
     .modal-body {
       padding: 15px 8%;
 
@@ -80,15 +82,10 @@
     }
   }
 
+  // ----- Close buttun -------//
+
   .close {
-    position: absolute;
-    right: 35px;
-    top: 39px;
-    width: 39px;
-    height: 32px;
-    opacity: 1;
-    cursor: pointer;
-    transform: scale(0.7);
+    @include btn-close;
   }
   .close:before,
   .close:after {
@@ -105,8 +102,6 @@
   .close:after {
     transform: rotate(-45deg);
   }
-
-  
 }
 
 .btn-confirmation {

@@ -16,14 +16,17 @@
   }
 
   &__body {
-    background-color: gold;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
 
     &__media {
       width: 400px;
-      height: 350px;
+      height: 400px;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
     }
 
     .right_arrow,
@@ -39,14 +42,7 @@
   }
 
   &__close {
-    position: absolute;
-    right: 35px;
-    top: 39px;
-    width: 39px;
-    height: 32px;
-    opacity: 1;
-    cursor: pointer;
-    transform: scale(0.7);
+    @include btn-close;
   }
   &__close:before,
   &__close:after {
@@ -64,45 +60,3 @@
     transform: rotate(-45deg);
   }
 }
-
-//   &__right {
-//     position: relative;
-//     height: 100%;
-//     @include flex;
-//     display: flex;
-//   }
-
-//   &__close {
-//     position: absolute;
-//     top: 0.5rem;
-//     width: 100%;
-//     cursor: pointer;
-//     border: none;
-//     background-color: #fff;
-//   }
-
-//   i {
-//     width: 30px;
-//     height: 30px;
-//   }
-
-//   &__media {
-//     width: 100%;
-//     height: 100%;
-//   }
-
-//   .lightbox__media {
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//     border-right: 4px solid grey;
-//     border-radius: 5px;
-//   }
-
-//   &__left-arrow,
-//   &__right-arrow {
-//     cursor: pointer;
-//     border: none;
-//     background: transparent;
-//   }
-// }

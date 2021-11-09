@@ -1,4 +1,4 @@
-// Photographer banner
+// ------------- Photographer banner -------------//
 .banner {
   background-color: $color-fond;
   display: flex;
@@ -93,7 +93,7 @@
   }
 }
 
-// Trie
+// -------------- Trie / Dropdown ---------------//
 .trie {
   margin-top: 25px;
   margin-left: 25px;
@@ -163,7 +163,7 @@
   }
 }
 
-// Display photos
+// ---------------- Display medias ---------------//
 .display {
   margin-left: 25px;
   display: grid;
@@ -223,10 +223,11 @@
   }
 }
 
+// ------------ Info Like & Price ------------//
 .info {
   position: fixed;
   z-index: 2;
-  bottom: 12px;
+  bottom: -6px;
   right: 5%;
   padding: 12px 45px;
   color: #181818;
@@ -235,4 +236,17 @@
   font-weight: 700;
   border: none;
   border-radius: 5px;
+  display: flex;
+
+  p {
+    margin: 0;
+  }
+
+  // .totalLike {
+  //   margin-right: 10px;
+
+  //   i {
+  //     padding-right: 5px;
+  //   }
+  // }
 }
