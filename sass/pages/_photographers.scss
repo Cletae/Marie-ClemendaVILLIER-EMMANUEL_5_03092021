@@ -192,9 +192,15 @@
     @include flexbox($direction: row);
     justify-content: space-between;
     width: 348px;
+    font-size: 20px;
+    color: $color-primary;
 
     p {
       margin: 0;
+    }
+
+    span {
+      padding: 0 5px;
     }
   }
 

@@ -90,7 +90,7 @@ if (body.classList.contains("photographes")) {
 
     const img = figure.appendChild(document.createElement("img"));
 
-    img.src = `/img/photos/${media.photographerId}/${media.image}`;
+    img.src = `../img/photos/${media.photographerId}/${media.image}`;
     img.alt = `${media.title}`;
     img.dataset.id = id;
 
@@ -109,7 +109,8 @@ if (body.classList.contains("photographes")) {
     like.innerHTML = `${media.likes}`;
 
     const icon = div.appendChild(document.createElement("span"));
-    icon.innerHTML = `<i class="fas fa-heart"></i>`;
+    icon.innerHTML = `<i class="fas fa-heart heart"></i>`;
+    icon.classList.add("iconHearts");
   }
 
   // -------- Affichage video ---------- //
@@ -125,7 +126,7 @@ if (body.classList.contains("photographes")) {
     video.dataset.id = id;
 
     const videoSrc = video.appendChild(document.createElement("source"));
-    videoSrc.src = `/img/photos/${media.photographerId}/${media.video}`;
+    videoSrc.src = `../img/photos/${media.photographerId}/${media.video}`;
 
     const figureCaption = figure.appendChild(
       document.createElement("figcaption")
@@ -142,7 +143,8 @@ if (body.classList.contains("photographes")) {
     like.innerHTML = `${media.likes}`;
 
     const icon = div.appendChild(document.createElement("span"));
-    icon.innerHTML = `<i class="fas fa-heart"></i>`;
+    icon.innerHTML = `<i class="fas fa-heart heart"></i>`;
+    icon.classList.add("iconHearts");
   }
 
   // ------------- DROPDOWN ----------------- //
@@ -214,44 +216,14 @@ if (body.classList.contains("photographes")) {
     lightboxMedias.innerHTML = display;
   }
 
-  // Left arrow
-  lightboxLeft.addEventListener("click", () => {
-    for (let i = -1; i >= 0; i -= 1) {
-      if (media[i].id == displayMedia.id) {
-        if (i == 0) {
-          media = displayMedia[displayMedia.id.length - 1];
-        } else {
-          media = displayMedia[(i -= 1)];
-        }
-      }
-    }
-    console.log("left");
-
-    displayLightbox();
-  });
-
-  // Right arrow
-  lightboxRight.addEventListener("click", () => {
-    for (let i = 0; i <= -1; i += 1) {
-      if (displayMedia[i].id == media.id) {
-        if (i == displayMedia - 1) {
-          [media] = displayMedia;
-        } else {
-          media = displayMedia[(i += 1)];
-        }
-      }
-    }
-    console.log("right");
-
-    displayLightbox();
-  });
-
   // ------------- INFOS : LIKES & PRICE --------------- //
 
   // ---- Infos Elements ----- //
   const info = document.querySelector(".info");
   const totalLike = document.querySelector(".totalLike");
   const price = document.querySelector(".price");
+  const iconHearts = document.querySelectorAll(".iconHearts");
+  const hearts = document.querySelectorAll(".heart");
   let nbLikes = 0;
 
   function infoPriceAndLikes(photographer) {
@@ -260,21 +232,22 @@ if (body.classList.contains("photographes")) {
     price.innerText = `${photographer.price}€/jour`;
   }
 
-  function infoTotalLikes(totalLike) {
-    let nbLikes = 0;
-    totalLike.forEach((media) => {
-      nbLikes += media.likes;
-    });
-    console.log(media.likes);
+  // function infoTotalLikes(totalLike) {
+  //   let nbLikes = 0;
+  //   totalLike.forEach((media) => {
+  //     nbLikes += media.likes;
+  //   });
+  //   console.log(media.likes);
 
-    totalLike.innerHTML = nbLikes;
-    console.log("hello");
-  }
+  //   totalLike.innerHTML = nbLikes;
+  //   console.log("coeur");
+  // }
 
   // function addLikes() {
 
-  //   block.addEventListener("click", () => {
-  //     if (nbLikes === Number(like.innerHTML)) {
+  // heartIcon.forEach((heart) => {
+  //heart.addEventListener("click", () => {
+  //     if (nbLikes == Number(like.innerHTML)) {
   //       likes.innerHTML = nbLikes + 1;
   //       totalLike.innerHTML++;
   //       block.setAttribute("aria-label", "like ajouté");
@@ -284,6 +257,7 @@ if (body.classList.contains("photographes")) {
   //       block.setAttribute("aria-label", "like retiré");
   //     }
   //   });
+  // })
   // }
 
   // ----------- PROMISE : ---------------- //
@@ -317,6 +291,10 @@ if (body.classList.contains("photographes")) {
         // -- Afficher photographer banner -- //
         photographerCard(displayPhotographer);
 
+        // -- Afficher Info (Likes & Price) -- //
+        // infoPriceAndLikes(displayPhotographer);
+        // infoTotalLikes();
+
         // -- Afficher img/videos -- //
         reveleMedias(idParams).forEach((media, photographer) => {
           createMedia(media), tabMedia.push(media);
@@ -335,18 +313,14 @@ if (body.classList.contains("photographes")) {
 
         // -- Afficher lightbox -- //
         clickImage();
-
-        // -- Afficher Info (Likes & Price) -- //
-        infoPriceAndLikes(displayPhotographer);
-        infoTotalLikes()
       });
   }
 
   // -- Find medias & display in lightbox -- //
-  function clickImage(media) {
+  function clickImage(medias) {
     const images = document.querySelectorAll("figure img, figure video");
 
-    images.forEach((image, media) => {
+    images.forEach((image) => {
       image.addEventListener("click", () => {
         // recupérer le src et le alt de l'image qui a été cliqué
         const src = image.src;
@@ -356,15 +330,57 @@ if (body.classList.contains("photographes")) {
         console.log(alt);
 
         // afficher la lightbox (normalement elle est vide d'image a ce point la)
+
         displayLightbox();
+
         // créer une image avec le src et le alt du dessus dans la lightbox
 
-        if (media.src == image.src) {
-          lightboxMedia.classList.add("selected");
-          createLightbox();
-        }
+        // const displayMedia = medias.find((media) => {
+        //   const mediaIdString = medias.src.toString();
+        //   if (media.src == src) {
+        //     console.log("hello");
+
+        //     lightboxMedias.classList.add("selected");
+        //     createLightbox();
+        //   }
+        //   return mediaIdString == displayMedia;
+        // });
+
+        const displayMedia = medias.find((media) => media.src == src);
+        return createLightbox(displayMedia);
 
         // ajouter la classe selected sur l'image derrière (pour pouvoir charger la précédente et la suivante a partir de celle qu'on affiche)
+        // Left arrow
+        function previous(media, displayMedia) {
+          lightboxLeft.addEventListener("click", () => {
+            for (let i = -1; i >= 0; i -= 1) {
+              if (media[i].id == displayMedia.id) {
+                if (i == 0) {
+                  media = displayMedia[displayMedia.id.length - 1];
+                } else {
+                  media = displayMedia[(i -= 1)];
+                }
+              }
+            }
+            console.log("left");
+          });
+        }
+
+        // Right arrow
+        function next(media, displayMedia) {
+          lightboxRight.addEventListener("click", () => {
+            for (let i = 0; i <= -1; i += 1) {
+              if (displayMedia[i].id == media.id) {
+                if (i == displayMedia - 1) {
+                  [media] = displayMedia;
+                } else {
+                  media = displayMedia[(i += 1)];
+                }
+              }
+            }
+            console.log("right");
+          });
+        }
       });
     });
   }

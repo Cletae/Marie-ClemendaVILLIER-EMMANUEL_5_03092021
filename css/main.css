@@ -408,9 +408,14 @@ main {
   flex-direction: row;
   justify-content: space-between;
   width: 348px;
+  font-size: 20px;
+  color: #901c1c;
 }
 .display__details p {
   margin: 0;
+}
+.display__details span {
+  padding: 0 5px;
 }
 @media screen and (min-width: 375px) and (max-width: 425px) {
   .display {
@@ -437,7 +442,7 @@ main {
 .info {
   position: fixed;
   z-index: 2;
-  bottom: 12px;
+  bottom: -6px;
   right: 5%;
   padding: 12px 45px;
   color: #181818;
@@ -446,6 +451,10 @@ main {
   font-weight: 700;
   border: none;
   border-radius: 5px;
+  display: flex;
+}
+.info p {
+  margin: 0;
 }
 
 .bground {
