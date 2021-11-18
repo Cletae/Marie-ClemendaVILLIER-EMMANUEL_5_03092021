@@ -14,8 +14,8 @@
     @include flexbox;
     @include flex;
     margin: 5% auto;
-    width: 599px;
-    max-width: 700px;
+    width: 100%;
+    max-width: 570px;
     background: $color-hover;
     border-radius: 10px;
     overflow: hidden;
@@ -24,23 +24,17 @@
     padding-top: 10px;
     animation: modalOpen 0.8s;
 
-    @media screen and (min-width: 375px) and (max-width: 780px) {
-      max-width: 600px;
-    }
-
     // ------- Content Form --------//
 
     .modal-body {
-      padding: 15px 8%;
-
-      form {
-        width: 500px;
-      }
+      padding: 1rem 8%;
+      margin: 1rem auto;
 
       h1 {
         font-size: 64px;
         font-weight: 400;
         margin: 0;
+        margin-right: 35px;
       }
 
       label {
@@ -80,12 +74,59 @@
         margin-top: 10px;
       }
     }
+
+    @media screen and (min-width: 375px) and (max-width: 500px) {
+      padding: 0;
+      margin: 0;
+      height: 850px;
+
+      .modal-body {
+        margin: 0;
+        padding: 0;
+
+        h1 {
+          font-size: 40px;
+          margin-right: 50px;
+        }
+
+        label {
+          font-size: 30px;
+        }
+      }
+    }
+
+    @media screen and (min-width: 500px) and (max-width: 700px) {
+      padding: 20px 0;
+
+      .modal-body {
+        margin: 0;
+        padding: 0;
+
+        h1 {
+          font-size: 45px;
+        }
+
+        label {
+          font-size: 35px;
+        }
+      }
+    }
   }
 
   // ----- Close buttun -------//
 
   .close {
     @include btn-close;
+    right: 18px;
+    top: 55px;
+
+    @media screen and (min-width: 375px) and (max-width: 500px) {
+      top: 50px;
+    }
+
+    @media screen and (min-width: 500px) and (max-width: 700px) {
+      top: 20px;
+    }
   }
   .close:before,
   .close:after {
@@ -95,6 +136,14 @@
     height: 72px;
     width: 8px;
     background-color: #fff;
+
+    @media screen and (min-width: 375px) and (max-width: 500px) {
+      height: 45px;
+    }
+
+    @media screen and (min-width: 500px) and (max-width: 700px) {
+      height: 50px;
+    }
   }
   .close:before {
     transform: rotate(45deg);

@@ -121,10 +121,6 @@
       background-color: $color-primary;
       color: $color-deco;
       font-weight: 600;
-
-      #arrow_up {
-        display: none;
-      }
     }
 
     .dropdown {
@@ -199,32 +195,23 @@
       margin: 0;
     }
 
-    span {
+    .iconHearts {
       padding: 0 5px;
+      cursor: pointer;
     }
   }
 
-  @media screen and (min-width: 375px) and (max-width: 425px) {
+  @media screen and (min-width: 375px) and (max-width: 700px) {
     margin-left: 15px;
 
-    img {
+    img,
+    video {
       height: 200px;
-      width: 90%;
+      width: 325px;
     }
 
     &__details {
-      width: 88%;
-    }
-  }
-
-  @media screen and (min-width: 425px) and (max-width: 780px) {
-    img {
-      height: 250px;
-      width: 90%;
-    }
-
-    &__details {
-      width: 88%;
+      width: 320px;
     }
   }
 }
@@ -238,21 +225,27 @@
   padding: 12px 45px;
   color: #181818;
   background-color: #db8876;
-  font-size: 1.1rem;
+  font-size: 25px;
   font-weight: 700;
   border: none;
   border-radius: 5px;
   display: flex;
+  @include flexbox($direction: row);
 
   p {
     margin: 0;
   }
 
-  // .totalLike {
-  //   margin-right: 10px;
+  .likes {
+    margin-right: 10px;
+    display: flex;
 
-  //   i {
-  //     padding-right: 5px;
-  //   }
-  // }
+    i {
+      padding: 2px 5px 0 5px;
+    }
+  }
+
+  @media screen and (min-width: 375px) and (max-width: 780px) {
+    display: none;
+  }
 }

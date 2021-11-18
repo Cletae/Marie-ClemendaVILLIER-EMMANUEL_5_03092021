@@ -38,8 +38,6 @@
 // -------- Close buttun ---------//
 @mixin btn-close {
   position: absolute;
-  right: 35px;
-  top: 39px;
   width: 39px;
   height: 32px;
   opacity: 1;
@@ -77,8 +75,12 @@
 
 @mixin screen_photographer {
   @media screen and (min-width: map-get($breakpoint, mobile)) and (max-width: 780px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 1fr);
+    // grid-template-columns: 1fr;
+    // grid-template-rows: repeat(6, 1fr);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     column-gap: 20px;
+    align-items: center;
   }
 }

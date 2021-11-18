@@ -64,11 +64,8 @@
             aria-haspopup="listbox"
             aria-expanded="false"
           >
-            <span id="titleDropdown"></span>
-            <span id="content arrows">
-              <i id="arrow_down" class="fas fa-chevron-down"></i>
-              <i id="arrow_up" class="fas fa-chevron-up"></i
-            ></span>
+            <span id="titleDropdown">Popularité</span>
+            <span id="content_arrows"></span>
             <ul class="dropdown" role="listbox">
               <li
                 class="dropdown__list open"
@@ -178,7 +175,6 @@
       <!--------- LIGHTBOX ----------->
       <div class="lightbox" role="dialog">
         <div class="lightbox__content">
-          <span class="lightbox__close"></span>
           <div class="lightbox__body">
             <div class="lightbox__left">
               <button
@@ -196,6 +192,7 @@
               <button class="right_arrow" aria-label="Next image" role="link">
                 <i class="fas fa-chevron-right"></i>
               </button>
+              <span class="lightbox__close"><i class="fas fa-times"></i></span>
             </div>
           </div>
         </div>
@@ -203,7 +200,7 @@
 
       <!-------- INFO LIKE & PRICE --------->
       <div class="info">
-        <p class="totalLike"></p>
+        <span class="likes"></span>
         <p class="price"></p>
       </div>
     </main>

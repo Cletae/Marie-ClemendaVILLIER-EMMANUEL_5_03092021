@@ -1,4 +1,4 @@
-// ------------------- AFFICHAGE --------------------//
+// ---------------------------- AFFICHAGE ---------------------------//
 
 if (document.body.classList.contains("home")) {
   // ----------- DOM ELEMENTS ----------- //
@@ -20,7 +20,7 @@ if (document.body.classList.contains("home")) {
     headerLink.innerHTML = "<a href=#main>Passer au contenu</a>";
   }
 
-  // --------------- PHOTOGRAPHERS CARDS ------------------- //
+  // ---------------------------- PHOTOGRAPHERS CARDS ------------------------------------ //
   function createCard(photographer) {
     const photographerArticle = photographerSection.appendChild(
       document.createElement("article")
@@ -103,7 +103,7 @@ if (document.body.classList.contains("home")) {
     });
   }
 
-  // ----------- PROMISE : -------------- //
+  // --------------------------- PROMISE : ---------------------------------------------- //
   loadData();
 
   function loadData(tags = undefined) {

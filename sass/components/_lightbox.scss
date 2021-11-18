@@ -12,7 +12,8 @@
   display: none;
 
   &__content {
-    padding: 20px;
+    padding: 70px;
+    width: 100%;
   }
 
   &__body {
@@ -21,42 +22,136 @@
     justify-content: center;
     align-items: center;
 
-    &__media {
-      width: 400px;
-      height: 400px;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-    }
-
     .right_arrow,
     .left_arrow {
       color: $color-primary;
       background-color: transparent;
       border: none;
+      cursor: pointer;
 
       i {
         font-size: 45px;
+        padding: 0 15px;
       }
     }
   }
 
+  &__right {
+    position: relative;
+  }
+
   &__close {
-    @include btn-close;
-  }
-  &__close:before,
-  &__close:after {
     position: absolute;
-    right: 475px;
-    content: " ";
-    height: 72px;
-    width: 8px;
-    background-color: $color-primary;
+    color: $color-primary;
+    font-size: 40px;
+    right: 22px;
+    top: -430px;
+    cursor: pointer;
   }
-  &__close:before {
-    transform: rotate(45deg);
+
+  &__media {
+    img,
+    video {
+      width: 850px;
+      height: 800px;
+    }
+
+    p {
+      color: $color-primary;
+      margin-top: 20px;
+      font-size: 30px;
+    }
   }
-  &__close:after {
-    transform: rotate(-45deg);
+
+  @media screen and (min-width: 375px) and (max-width: 465px) {
+    &__content {
+      padding-top: 50px;
+    }
+
+    &__body {
+      .left_arrow,
+      .right_arrow {
+        i {
+          font-size: 35px;
+          margin-bottom: 35px;
+        }
+      }
+    }
+
+    img,
+    video {
+      height: 400px;
+      width: 250px;
+    }
+
+    &__close {
+      top: -210px;
+    }
+  }
+
+  @media screen and (min-width: 465px) and (max-width: 565px) {
+    &__content {
+      padding-top: 50px;
+    }
+
+    &__body {
+      .left_arrow,
+      .right_arrow {
+        i {
+          margin-bottom: 45px;
+        }
+      }
+    }
+
+    img,
+    video {
+      height: 500px;
+      width: 350px;
+    }
+
+    &__close {
+      top: -255px;
+    }
+  }
+
+  @media all and (min-width: 565px) and (max-width: 760px) {
+    &__content {
+      padding-top: 65px;
+    }
+
+    &__body {
+      .left_arrow,
+      .right_arrow {
+        i {
+          margin-bottom: 45px;
+        }
+      }
+    }
+
+    img,
+    video {
+      height: 400px;
+      width: 450px;
+    }
+
+    &__close {
+      top: -205px;
+    }
+  }
+
+  @media all and (min-width: 760px) and (max-width: 1315px) {
+    &__content {
+      padding-top: 65px;
+    }
+
+    img,
+    video {
+      height: 600px;
+      width: 650px;
+    }
+
+    &__close {
+      top: -325px;
+    }
   }
 }

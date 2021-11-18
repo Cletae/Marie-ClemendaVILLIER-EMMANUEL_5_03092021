@@ -7,8 +7,9 @@ if (body.classList.contains("photographes")) {
   const modalbg = document.querySelector(".bground");
   const modalBtn = document.querySelectorAll(".btn-contact");
   const photographerName = document.getElementById("photographer_name");
-  const urlParams = new URL(window.location).searchParams;
-  const nameParams = urlParams.get("name");
+
+  const urlNameParams = new URL(window.location).searchParams;
+  const nameParams = urlNameParams.get("name");
 
   // --- Form inputs elements --- //
   const firstName = document.getElementById("first");
@@ -120,33 +121,13 @@ if (body.classList.contains("photographes")) {
     }
   }
 
-  // -- Vérification saisie : Message -- //
-  function checkMessage() {
-    const regexName = new RegExp(/^[a-zA-Z-àâçéèêëîïôûùüÿñæœ']{4,}$/, "g");
-
-    if (!message.value) {
-      emptyMessage.innerHTML = "Veuillez saisir votre Message";
-      emptyMessage.style.display = "block";
-      errorMessage(emptyMessage);
-      return false;
-    } else if (regexName.test(emptyMessage.value) == false) {
-      emptyMessage.innerHTML = "Veuillez saisir un minimum de 5 caractère";
-      emptyMessage.style.display = "block";
-      errorMessage(emptyMessage);
-    } else {
-      emptyMessage.style.display = "none";
-      return true;
-    }
-  }
-
   // -- Verfication des saisies (inputs) sur le Form -- //
   function validationForm() {
     const resultFirstName = checkFirstName();
     const resultLastName = checkLastName();
     const resultEmail = checkEmail();
-    const resultMessage = checkMessage();
 
-    if (resultFirstName && resultLastName && resultEmail && resultMessage) {
+    if (resultFirstName && resultLastName && resultEmail) {
       // -- Affichage du message de confirmation -- //
       form.style.display = "none";
       confirmation.style.fontSize = "30px";
@@ -155,6 +136,8 @@ if (body.classList.contains("photographes")) {
       confirmation.style.margin = "0 15px 1em 0";
       closeBtn.style.display = "block";
       closeBtn.style.margin = "2em auto 2em auto";
+      const formContent = `Prénom : ${firstName.value}, \nNom : ${lastName.value}, \nEmail: : ${email.value}, \nMessage: : ${message.value}`;
+      console.log(formContent);
       return true;
     }
   }
@@ -165,6 +148,7 @@ if (body.classList.contains("photographes")) {
 
     if (form.checkValidity === true) {
       setTimeout(validationForm, 1000);
+
       return true;
     } else {
       validationForm();
