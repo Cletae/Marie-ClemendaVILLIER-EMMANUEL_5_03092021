@@ -57,11 +57,13 @@
         <label class="">Trier par</label>
 
         <article class="filter">
-          <!-- <div class="btn-dropdown">
-            <select name="" id="">
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
+          <!-- <div>
+            <select class="btn-dropdown">
+              <option class="dropdown__list hidden" value="popularite">
+                Popularité
+              </option>
+              <option class="dropdown__list hidden" value="date">Date</option>
+              <option class="dropdown__list hidden" value="titre">Titre</option>
             </select>
           </div> -->
 
@@ -73,41 +75,42 @@
               aria-haspopup="listbox"
               aria-expanded="false"
             >
-              <span id="titleDropdown">Popularité</span>
+              <span id="titleDropdown"></span>
+
               <span id="content_arrows"
                 ><i class="fas fa-chevron-down"></i
               ></span>
-              <ul class="dropdown" role="listbox">
-                <li
-                  class="dropdown__list hidden"
-                  role="option"
-                  aria-label="Order by"
-                  aria-selected="true"
-                  data-value="popularite"
-                >
-                  Popolarité
-                </li>
-                <li
-                  class="dropdown__list hidden"
-                  role="option"
-                  aria-label="Order by"
-                  aria-selected="false"
-                  data-value="date"
-                >
-                  Date
-                </li>
-                <li
-                  class="dropdown__list hidden"
-                  class="option"
-                  role="option"
-                  aria-label="Order by"
-                  aria-selected="false"
-                  data-value="titre"
-                >
-                  Titre
-                </li>
-              </ul>
             </button>
+            <ul class="dropdown" role="listbox">
+              <li
+                class="dropdown__list hidden"
+                role="option"
+                aria-label="Order by"
+                aria-selected="true"
+                data-value="popularite"
+              >
+                Popolarité
+              </li>
+              <li
+                class="dropdown__list hidden"
+                role="option"
+                aria-label="Order by"
+                aria-selected="false"
+                data-value="date"
+              >
+                Date
+              </li>
+              <li
+                class="dropdown__list hidden"
+                class="option"
+                role="option"
+                aria-label="Order by"
+                aria-selected="false"
+                data-value="titre"
+              >
+                Titre
+              </li>
+            </ul>
           </div>
         </article>
       </section>

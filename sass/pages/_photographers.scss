@@ -134,10 +134,6 @@
         }
       }
 
-      // #titleDropdown {
-      //   display: none;
-      // }
-
       &__list {
         // font-size: 10px;
         cursor: pointer;
@@ -148,15 +144,16 @@
         background-color: $color-primary;
         color: $color-deco;
         border-top: 1px solid $color-deco;
+      }
 
-        a {
-          color: $color-deco;
-          font-weight: 600;
-        }
-
-        &:hover,
-        :focus {
-          background-color: $color-hover;
+      .hidden {
+        display: none;
+        text-align: left;
+        width: 100%;
+        padding: 10px;
+        &:hover {
+          background-color: white;
+          color: $couleur-primaire;
         }
       }
     }

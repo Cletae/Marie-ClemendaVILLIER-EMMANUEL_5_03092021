@@ -8,7 +8,10 @@ if (body.classList.contains("photographes")) {
   // -- Form Element -- //
   const modalbg = document.querySelector(".bground");
   const modalBtn = document.querySelectorAll(".btn-contact");
+  const photographerName = document.getElementById("photographer_name");
 
+  const urlParam = new URL(window.location).searchParams;
+  const nameParam = urlParam.get("name");
   // --- Form inputs elements --- //
   const firstName = document.getElementById("first");
   const lastName = document.getElementById("last");
@@ -31,6 +34,15 @@ if (body.classList.contains("photographes")) {
   // --- Regex --- //
   const regexEmail = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
 
+  // --- Launch modal event --- //
+  modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+  // --- Launch modal form --- //
+  function launchModal(photographer) {
+    modalbg.style.display = "block";
+    photographerName.innerHTML = nameParam;
+  }
+
   // --- Message de confirmation invisible --- //
   closeBtn.style.display = "none";
   confirmation.style.display = "none";
@@ -43,6 +55,12 @@ if (body.classList.contains("photographes")) {
   // -- Close button du message de confirmation -- //
   closeBtn.addEventListener("click", function () {
     modalbg.style.display = "none";
+  });
+
+  window.addEventListener("keydown", function (e) {
+    if (e.key == "Escape") {
+      modalbg.style.display = "none";
+    }
   });
 
   // -- Style (css) error message -- //
