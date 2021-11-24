@@ -57,46 +57,58 @@
         <label class="">Trier par</label>
 
         <article class="filter">
-          <button
-            name="menu"
-            class="btn-dropdown"
-            role="button"
-            aria-haspopup="listbox"
-            aria-expanded="false"
-          >
-            <span id="titleDropdown">Popularité</span>
-            <span id="content_arrows"></span>
-            <ul class="dropdown" role="listbox">
-              <li
-                class="dropdown__list open"
-                role="option"
-                aria-label="Order by"
-                aria-selected="true"
-                data-value="popularite"
-              >
-                Popolarité
-              </li>
-              <li
-                class="dropdown__list"
-                role="option"
-                aria-label="Order by"
-                aria-selected="false"
-                data-value="date"
-              >
-                Date
-              </li>
-              <li
-                class="dropdown__list"
-                class="option"
-                role="option"
-                aria-label="Order by"
-                aria-selected="false"
-                data-value="titre"
-              >
-                Titre
-              </li>
-            </ul>
-          </button>
+          <!-- <div class="btn-dropdown">
+            <select name="" id="">
+              <option value=""></option>
+              <option value=""></option>
+              <option value=""></option>
+            </select>
+          </div> -->
+
+          <div>
+            <button
+              name="menu"
+              class="btn-dropdown"
+              role="button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              <span id="titleDropdown">Popularité</span>
+              <span id="content_arrows"
+                ><i class="fas fa-chevron-down"></i
+              ></span>
+              <ul class="dropdown" role="listbox">
+                <li
+                  class="dropdown__list hidden"
+                  role="option"
+                  aria-label="Order by"
+                  aria-selected="true"
+                  data-value="popularite"
+                >
+                  Popolarité
+                </li>
+                <li
+                  class="dropdown__list hidden"
+                  role="option"
+                  aria-label="Order by"
+                  aria-selected="false"
+                  data-value="date"
+                >
+                  Date
+                </li>
+                <li
+                  class="dropdown__list hidden"
+                  class="option"
+                  role="option"
+                  aria-label="Order by"
+                  aria-selected="false"
+                  data-value="titre"
+                >
+                  Titre
+                </li>
+              </ul>
+            </button>
+          </div>
         </article>
       </section>
 
@@ -200,7 +212,7 @@
 
       <!-------- INFO LIKE & PRICE --------->
       <div class="info">
-        <span class="likes"></span>
+        <span class="infoLikes"></span>
         <p class="price"></p>
       </div>
     </main>

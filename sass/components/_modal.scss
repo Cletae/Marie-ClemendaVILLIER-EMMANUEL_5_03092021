@@ -30,7 +30,8 @@
       padding: 1rem 8%;
       margin: 1rem auto;
 
-      h1 {
+      h1,
+      h2 {
         font-size: 64px;
         font-weight: 400;
         margin: 0;
@@ -58,6 +59,11 @@
 
       .btn-submit {
         @include button;
+
+        &:hover {
+          background-color: white;
+          color: black;
+        }
       }
 
       #message {
@@ -76,15 +82,14 @@
     }
 
     @media screen and (min-width: 375px) and (max-width: 500px) {
-      padding: 0;
-      margin: 0;
-      height: 850px;
+      padding: 5px 0 10px 0;
 
       .modal-body {
         margin: 0;
         padding: 0;
 
-        h1 {
+        h1,
+        h2 {
           font-size: 40px;
           margin-right: 50px;
         }
@@ -102,8 +107,9 @@
         margin: 0;
         padding: 0;
 
-        h1 {
-          font-size: 45px;
+        h1,
+        h2 {
+          font-size: 35px;
         }
 
         label {

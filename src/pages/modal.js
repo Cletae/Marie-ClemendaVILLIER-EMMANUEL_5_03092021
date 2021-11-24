@@ -4,12 +4,10 @@ const body = document.querySelector("body");
 
 if (body.classList.contains("photographes")) {
   // --------- DOM ELEMENTS --------- //
+
+  // -- Form Element -- //
   const modalbg = document.querySelector(".bground");
   const modalBtn = document.querySelectorAll(".btn-contact");
-  const photographerName = document.getElementById("photographer_name");
-
-  const urlNameParams = new URL(window.location).searchParams;
-  const nameParams = urlNameParams.get("name");
 
   // --- Form inputs elements --- //
   const firstName = document.getElementById("first");
@@ -30,18 +28,8 @@ if (body.classList.contains("photographes")) {
   const emptyEmail = document.getElementById("mail-empty");
   const emptyMessage = document.getElementById("message-empty");
 
-  photographerName.innerHTML = nameParams;
-
   // --- Regex --- //
   const regexEmail = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
-
-  // --- Launch modal event --- //
-  modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-  // --- Launch modal form --- //
-  function launchModal() {
-    modalbg.style.display = "block";
-  }
 
   // --- Message de confirmation invisible --- //
   closeBtn.style.display = "none";

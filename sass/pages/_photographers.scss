@@ -134,6 +134,10 @@
         }
       }
 
+      // #titleDropdown {
+      //   display: none;
+      // }
+
       &__list {
         // font-size: 10px;
         cursor: pointer;
@@ -236,7 +240,7 @@
     margin: 0;
   }
 
-  .likes {
+  .infoLikes {
     margin-right: 10px;
     display: flex;
 

@@ -451,11 +451,11 @@ main {
 .info p {
   margin: 0;
 }
-.info .likes {
+.info .infoLikes {
   margin-right: 10px;
   display: flex;
 }
-.info .likes i {
+.info .infoLikes i {
   padding: 2px 5px 0 5px;
 }
 @media screen and (min-width: 375px) and (max-width: 780px) {
@@ -495,7 +495,8 @@ main {
   padding: 1rem 8%;
   margin: 1rem auto;
 }
-.bground .content .modal-body h1 {
+.bground .content .modal-body h1,
+.bground .content .modal-body h2 {
   font-size: 64px;
   font-weight: 400;
   margin: 0;
@@ -530,6 +531,10 @@ main {
   cursor: pointer;
   border: 0;
 }
+.bground .content .modal-body .btn-submit:hover {
+  background-color: white;
+  color: black;
+}
 .bground .content .modal-body #message {
   height: 170px;
 }
@@ -543,15 +548,14 @@ main {
 }
 @media screen and (min-width: 375px) and (max-width: 500px) {
   .bground .content {
-    padding: 0;
-    margin: 0;
-    height: 850px;
+    padding: 5px 0 10px 0;
   }
   .bground .content .modal-body {
     margin: 0;
     padding: 0;
   }
-  .bground .content .modal-body h1 {
+  .bground .content .modal-body h1,
+.bground .content .modal-body h2 {
     font-size: 40px;
     margin-right: 50px;
   }
@@ -567,8 +571,9 @@ main {
     margin: 0;
     padding: 0;
   }
-  .bground .content .modal-body h1 {
-    font-size: 45px;
+  .bground .content .modal-body h1,
+.bground .content .modal-body h2 {
+    font-size: 35px;
   }
   .bground .content .modal-body label {
     font-size: 35px;

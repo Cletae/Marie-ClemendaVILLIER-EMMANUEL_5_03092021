@@ -15,6 +15,22 @@ if (body.classList.contains("photographes")) {
   // -- Section Element -- //
   const contentMedia = document.querySelector(".display");
 
+  // -- Form Element -- //
+  const modalbg = document.querySelector(".bground");
+  const modalBtn = document.querySelectorAll(".btn-contact");
+  const photographerName = document.getElementById("photographer_name");
+
+  // --- Dropdown Elements --- //
+  const trie = document.querySelector(".trie");
+  const filter = document.querySelector(".filter");
+  const btnSelect = document.querySelector(".btn-dropdown");
+  const select = document.querySelector(".dropdown");
+  const options = document.querySelectorAll(".dropdown__list");
+  const arrowDown = document.querySelector(".arrow_down");
+  const arrowUp = document.querySelector(".arrow_up");
+  const contentArrow = document.getElementById("content_arrows");
+  const titleDropdown = document.getElementById("titleDropdown");
+
   // --------------------------------- PROMISE : -------------------------------------- //
 
   loadData();
@@ -45,16 +61,32 @@ if (body.classList.contains("photographes")) {
         photographerCard(displayPhotographer);
 
         // -- Afficher img/videos -- //
-        reveleMedias(idParams).forEach((media, photographer) => {
+        reveleMedias(idParams).forEach((media, photographer, option) => {
           createMedia(media), tabMedia.push(media), likeMedia.push(media.likes);
         });
+
+        launchModal(displayPhotographer);
 
         // -- Show option dropdown -- //
         options.forEach((option, media) => {
           option.addEventListener("click", () => {
+            if (option == "true") {
+              titleDropdown.innerText = select.innerText;
+              option.classList.add("hidden");
+            }
             options.forEach((option) => option.classList.remove("open"));
-            titleDropdown.innerHTML = option.innerHTML;
             filterMedias(tabMedia, option, media);
+            const optionLastSelected =
+              document.querySelector(".dropdow > .hidden");
+
+            // Unselect last selected element
+            optionLastSelected.setAttribute("aria-selected", "false");
+            optionLastSelected.classList.remove("hidden");
+
+            // Clicked element becomes new slected element
+            option.classList.add("hidden");
+            option.setAttribute("aria-selected", "true");
+            titleDropdown.innerText = option.innerText;
           });
         });
 
@@ -63,8 +95,8 @@ if (body.classList.contains("photographes")) {
 
         // -- Afficher Info (Likes & Price) -- //
         infoPriceAndLikes(displayPhotographer);
-        infoTotalLikes(likeMedia);
         clickLikes();
+        infoTotalLikes(likeMedia);
       });
   }
 
@@ -161,7 +193,8 @@ if (body.classList.contains("photographes")) {
     para.innerHTML = `${media.title}`;
 
     const div = figureCaption.appendChild(document.createElement("div"));
-    div.classList.add("block");
+    div.classList.add("blockLike");
+    div.dataset.select = false;
 
     const like = div.appendChild(document.createElement("span"));
     like.innerHTML = `${media.likes}`;
@@ -169,7 +202,7 @@ if (body.classList.contains("photographes")) {
 
     const icon = div.appendChild(document.createElement("span"));
     icon.dataset.id = id;
-    icon.innerHTML = `<i class="fas fa-heart heartLike"></i>`;
+    icon.innerHTML = `<i class="heartLike fas fa-heart"></i>`;
     icon.classList.add("iconHearts");
   }
 
@@ -197,61 +230,63 @@ if (body.classList.contains("photographes")) {
     para.innerHTML = `${media.title}`;
 
     const div = figureCaption.appendChild(document.createElement("div"));
-    div.classList.add("block");
+    div.classList.add("blockLike");
+    div.dataset.select = false;
 
     const like = div.appendChild(document.createElement("span"));
     like.innerHTML = `${media.likes}`;
 
     const icon = div.appendChild(document.createElement("span"));
     icon.dataset.id = id;
-    icon.innerHTML = `<i class="fas fa-heart heartLike"></i>`;
+    icon.innerHTML = `<i class="heartLike fas fa-heart" ></i>`;
     icon.classList.add("iconHearts");
+  }
+
+  // ---------------------------- MODAL ------------------------------ //
+  // --- Launch modal event --- //
+  modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+  // --- Launch modal form --- //
+  function launchModal(photographer) {
+    modalbg.style.display = "block";
+    photographerName.innerHTML = photographer.name;
   }
 
   // -------------------------- DROPDOWN ---------------------------------- //
 
-  // --- Dropdown Elements --- //
-  const trie = document.querySelector(".trie");
-  const filter = document.querySelector(".filter");
-  const btnSelect = document.querySelector(".btn-dropdown");
-  const select = document.querySelector(".dropdown");
-  const options = document.querySelectorAll(".dropdown__list");
-  const arrowDown = document.querySelector(".arrow_down");
-  // const arrowUp = document.querySelector(".arrow_up");
-  const contentArrow = document.getElementById("content_arrows");
-  const titleDropdown = document.getElementById("titleDropdown");
-
   // ---- Dropdown click event ----- //
-  btnSelect.addEventListener("click", () => {
+  btnSelect.addEventListener("click", function (event) {
+    event.preventDefault();
     displayFilter();
   });
 
   // ---- Show le dropdown ----//
   function displayFilter(option) {
-    if (option == "false") {
-      select.style.display = "none";
-      select.setAttribute("aria-expanded", "false");
-      btnSelect.setAttribute("aria-expanded", "false");
-      contentArrow.innerHTML = `<i class="fas fa-chevron-down"></i>`;
-    } else {
+    if (!select.classList.contains("open")) {
       select.style.display = "block";
       select.classList.toggle("open");
       select.setAttribute("aria-expanded", "true");
       btnSelect.setAttribute("aria-expanded", "true");
       contentArrow.innerHTML = `<i class="fas fa-chevron-up"></i>`;
+    } else {
+      select.style.display = "none";
+      select.setAttribute("aria-expanded", "false");
+      btnSelect.setAttribute("aria-expanded", "false");
+      contentArrow.innerHTML = `<i class="fas fa-chevron-down"></i>`;
     }
   }
 
   // ----- Filter dropdown ------ //
   function filterMedias(tabMedia, option) {
-    contentMedia.innerHTML = "";
-
+    // option.innerHTML = titleDropdown.textContent;
     if (option.dataset.value == "popularite") {
       const sortPopularite = tabMedia.sort(function (a, b) {
+        titleDropdown.textContent = option.innerHTML;
         return b.likes - a.likes;
       });
     } else if (option.dataset.value == "date") {
       const sortDate = tabMedia.sort(function (a, b) {
+        titleDropdown.textContent = option.innerHTML;
         return new Date(b.date) - new Date(a.date);
       });
     } else if (option.dataset.value == "titre") {
@@ -270,17 +305,19 @@ if (body.classList.contains("photographes")) {
         if (titreA > titreB) {
           condition = 1;
         }
+        titleDropdown.textContent = option.innerHTML;
 
         return condition;
       });
     }
-    // tabMedia = sortPopularite;
+    contentMedia.innerHTML = "";
+
     tabMedia.forEach((media) => {
       createMedia(media);
     });
-
     clickImage(tabMedia);
     clickLikes();
+    launchModal(photographer);
   }
 
   // ---------------------------- LIGHTBOX ----------------------------- //
@@ -301,6 +338,9 @@ if (body.classList.contains("photographes")) {
 
   // Close lightbox
   lightboxClose.addEventListener("click", function () {
+    lightboxContainer.style.display = "none";
+  });
+  lightboxClose.addEventListener("keypress", function () {
     lightboxContainer.style.display = "none";
   });
 
@@ -347,18 +387,18 @@ if (body.classList.contains("photographes")) {
         // -- Left arrow -- //
         function previous(displayMedia) {
           lightboxLeft.addEventListener("click", () => {
-            for (let i = displayMedia.lenght - 1; i >= 0; i -= 1) {
-              if (displayMedia[i] == tabMedia) {
+            console.log(displayMedia);
+            for (let i = 0; i >= tabMedia.length; i++) {
+              if (tabMedia[i].id == displayMedia.id) {
                 if (i == 0) {
-                  tabMedia = displayMedia[displayMedia.lenght - 1];
+                  displayMedia = tabMedia[tabMedia.length - 1];
                 } else {
-                  tabMedia = displayMedia[(i -= 1)];
+                  displayMedia = tabMedia[(i -= 1)];
                 }
               }
             }
             console.log(displayMedia);
-            console.log(tabMedia);
-
+            createLightbox(displayMedia);
             console.log("left");
           });
         }
@@ -366,16 +406,17 @@ if (body.classList.contains("photographes")) {
         // -- Right arrow -- //
         function next(displayMedia) {
           lightboxRight.addEventListener("click", () => {
-            for (let i = 0; i <= displayMedia.lenght - 1; i += 1) {
-              if (displayMedia[i].id == tabMedia) {
-                if (i == displayMedia.lenght - 1) {
-                  [tabMedia] = displayMedia;
+            for (let i = 0; i <= tabMedia.length - 1; i++) {
+              if (tabMedia[i].id == displayMedia.id) {
+                if (i == tabMedia.length - 1) {
+                  [displayMedia] = tabMedia;
                 } else {
-                  tabMedia = displayMedia[(i += 1)];
+                  displayMedia = tabMedia[(i += 1)];
                 }
               }
             }
             console.log(displayMedia);
+            createLightbox(displayMedia);
             console.log("right");
           });
         }
@@ -387,16 +428,40 @@ if (body.classList.contains("photographes")) {
 
   // ---- Infos Elements ----- //
   const info = document.querySelector(".info");
-  const infoLikes = document.querySelector(".likes");
+  const infoLikes = document.querySelector(".infoLikes");
   const price = document.querySelector(".price");
-  const iconHearts = document.querySelectorAll(".iconHearts");
-  const heart = document.querySelector(".heartLike");
-  const likes = document.querySelector(".likes");
+  const nbLikes = document.querySelectorAll(".likes");
+
   // -- Display info (icon & price/day) -- //
   function infoPriceAndLikes(photographer) {
     infoLikes.innerHTML =
-      `<p id="totalLike"></p> ` + `<i class="fas fa-heart heart"></i>`;
+      `<p id="totalLike"></p> ` + `<i class="fas fa-heart"></i>`;
     price.innerText = `${photographer.price}€/jour`;
+  }
+
+  // -- Ajout/Suppression Likes -- //
+  function clickLikes(likeMedia) {
+    const blockLikes = document.querySelectorAll(".blockLike");
+    const totalLike = document.getElementById("totalLike");
+
+    blockLikes.forEach((blockLike) => {
+      blockLike.addEventListener("click", () => {
+        if (blockLike.dataset.select == "true") {
+          blockLike.dataset.select = "false";
+          blockLike.childNodes[0].textContent =
+            Number(blockLike.childNodes[0].textContent) - 1;
+          totalLike.innerHTML--;
+          blockLike.setAttribute("aria-label", "like retiré");
+        } else {
+          blockLike.dataset.select = "true";
+          blockLike.childNodes[0].textContent =
+            Number(blockLike.childNodes[0].textContent) + 1;
+          totalLike.innerHTML++;
+          blockLike.setAttribute("aria-label", "like ajouté");
+        }
+        return infoTotalLikes(likeMedia);
+      });
+    });
   }
 
   // -- Display total likes -- //
@@ -404,33 +469,7 @@ if (body.classList.contains("photographes")) {
     const totalLike = document.getElementById("totalLike");
     const reducer = (previousValue, currentValue) =>
       previousValue + currentValue;
-    const nbLikes = likeMedia.reduce(reducer);
-    totalLike.innerHTML = nbLikes;
-  }
-
-  // -- Ajout/Suppression Likes -- //
-  function clickLikes() {
-    iconHearts.forEach((heart) => {
-      heart.addEventListener("click", () => {
-        const likeId = media.id;
-
-        let likeNumber = Number(likes.innerHTML);
-        console.log(likeNumber);
-
-        const mediaId = medias.find((media) => media.id == mediaId);
-
-        if (mediaId == likeId) {
-          likes.innerHTML = likeNumber + 1;
-          totalLike.innerHTML++;
-          block.setAttribute("aria-label", "like ajouté");
-        } else {
-          likes.innerHTML = likeNumber;
-          totalLike.innerHTML--;
-          block.setAttribute("aria-label", "like retiré");
-        }
-        console.log(likeId);
-        infoTotalLikes(likeMedia);
-      });
-    });
+    const nbTotalLikes = likeMedia.reduce(reducer);
+    totalLike.innerHTML = nbTotalLikes;
   }
 }
