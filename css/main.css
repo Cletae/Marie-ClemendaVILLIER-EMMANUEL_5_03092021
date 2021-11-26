@@ -360,14 +360,6 @@ main {
   color: #fff;
   border-top: 1px solid #fff;
 }
-.trie .filter .dropdown__list a {
-  color: #fff;
-  font-weight: 600;
-}
-.trie .filter .dropdown__list:hover,
-.trie .filter .dropdown__list :focus {
-  background-color: #db8876;
-}
 
 .display {
   margin-left: 25px;

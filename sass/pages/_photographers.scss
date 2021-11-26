@@ -146,16 +146,16 @@
         border-top: 1px solid $color-deco;
       }
 
-      .hidden {
-        display: none;
-        text-align: left;
-        width: 100%;
-        padding: 10px;
-        &:hover {
-          background-color: white;
-          color: $couleur-primaire;
-        }
-      }
+      // .hidden {
+      //   display: none;
+      //   text-align: left;
+      //   width: 100%;
+      //   padding: 10px;
+      //   &:hover {
+      //     background-color: white;
+      //     color: $color-primary;
+      //   }
+      // }
     }
   }
 }

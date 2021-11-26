@@ -99,7 +99,7 @@ if (body.classList.contains("photographes")) {
 
         // -- Afficher Info (Likes & Price) -- //
         infoPriceAndLikes(displayPhotographer);
-        clickLikes();
+        clickLikes(likeMedia);
         infoTotalLikes(likeMedia);
       });
   }
@@ -311,7 +311,7 @@ if (body.classList.contains("photographes")) {
       createMedia(media);
     });
     clickImage(tabMedia);
-    clickLikes();
+    clickLikes(likeMedia);
   }
 
   // ---------------------------- LIGHTBOX ----------------------------- //
@@ -372,7 +372,6 @@ if (body.classList.contains("photographes")) {
         // -- Left arrow -- //
         function previous(displayMedia) {
           lightboxLeft.addEventListener("click", () => {
-            console.log(displayMedia);
             for (let i = 0; i < tabMedia.length; i++) {
               if (tabMedia[i].id == displayMedia.id) {
                 if (i == 0) {
@@ -382,7 +381,6 @@ if (body.classList.contains("photographes")) {
                 }
               }
             }
-            console.log(displayMedia);
             createLightbox(displayMedia);
             console.log("left");
           });
@@ -400,7 +398,6 @@ if (body.classList.contains("photographes")) {
                 }
               }
             }
-            console.log(displayMedia);
             createLightbox(displayMedia);
             console.log("right");
           });
@@ -449,7 +446,6 @@ if (body.classList.contains("photographes")) {
           totalLike.innerHTML++;
           blockLike.setAttribute("aria-label", "like ajouté");
         }
-        return infoTotalLikes(likeMedia);
       });
     });
   }
