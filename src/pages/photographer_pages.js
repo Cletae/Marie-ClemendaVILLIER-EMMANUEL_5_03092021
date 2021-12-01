@@ -382,7 +382,11 @@ if (body.classList.contains("photographes")) {
               }
             }
             createLightbox(displayMedia);
-            console.log("left");
+          });
+          lightboxLeft.addEventListener("keypress", (event) => {
+            if (event.key == "Enter" || event.key == "Tab") {
+              createLightbox(displayMedia);
+            }
           });
         }
 
@@ -399,19 +403,12 @@ if (body.classList.contains("photographes")) {
               }
             }
             createLightbox(displayMedia);
-            console.log("right");
           });
-        }
-      });
-
-      window.addEventListener("keyup", (e) => {
-        if (e.key == "Escape" || e.key == "Esc") {
-          lightboxContainer.style.display = "none";
-          previousActiveElement.focus();
-        } else if (e.key == "ArrowLeft") {
-          previous(lightboxMedias);
-        } else if (e.key == "ArrowRight") {
-          next(lightboxMedias);
+          lightboxRight.addEventListener("keypress", (event) => {
+            if (event.key == "Enter" || event.key == "Tab") {
+              createLightbox(displayMedia);
+            }
+          });
         }
       });
     });
