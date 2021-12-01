@@ -43,7 +43,7 @@ main {
     display: flex;
     @include flexbox;
     @include flex;
-    transition: 0.3 ease;
+    transition: ease;
 
     &:hover {
       transform: scale(1.02);

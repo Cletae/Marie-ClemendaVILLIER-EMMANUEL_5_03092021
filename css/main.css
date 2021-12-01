@@ -205,7 +205,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: 0.3 ease;
+  transition: ease;
 }
 .photographers__item:hover {
   transform: scale(1.02);
