@@ -383,11 +383,11 @@ if (body.classList.contains("photographes")) {
             }
             createLightbox(displayMedia);
           });
-          lightboxLeft.addEventListener("keypress", (event) => {
-            if (event.key == "Enter" || event.key == "Tab") {
-              createLightbox(displayMedia);
-            }
-          });
+          // lightboxLeft.addEventListener("keypress", (event) => {
+          //   if (event.key == "Enter" || event.key == "Tab") {
+          //     createLightbox(displayMedia);
+          //   }
+          // });
         }
 
         // -- Right arrow -- //
@@ -404,11 +404,11 @@ if (body.classList.contains("photographes")) {
             }
             createLightbox(displayMedia);
           });
-          lightboxRight.addEventListener("keypress", (event) => {
-            if (event.key == "Enter" || event.key == "Tab") {
-              createLightbox(displayMedia);
-            }
-          });
+          // lightboxRight.addEventListener("keypress", (event) => {
+          //   if (event.key == "Enter" || event.key == "Tab") {
+          //     createLightbox(displayMedia);
+          //   }
+          // });
         }
       });
     });
