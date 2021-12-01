@@ -405,10 +405,22 @@ if (body.classList.contains("photographes")) {
             createLightbox(displayMedia);
           });
           // lightboxRight.addEventListener("keypress", (event) => {
-          //   if (event.key == "Enter" || event.key == "Tab") {
-          //     createLightbox(displayMedia);
+          //   if (event.key == "ArrowRight") {
+          //     next(displayMedia);
           //   }
           // });
+        }
+      });
+
+      window.addEventListener("keydown", function (e) {
+        if (e.key == "ArrowRight") {
+          next();
+        }
+        if (e.key == "ArrowLeft") {
+          previous();
+        }
+        if (e.key == "Escape") {
+          lightboxContainer.style.display = "none";
         }
       });
     });

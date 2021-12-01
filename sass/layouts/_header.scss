@@ -75,17 +75,22 @@
     }
 
     .screen-reader {
-      display: hidden;
+      visibility: hidden;
     }
   }
 
-  a {
+  .tag_link {
     font-weight: 500;
     padding: 5px;
     color: $color-primary;
     border: 0.5px solid #c4c4c4;
     box-sizing: border-box;
     border-radius: 15px;
+
+    &:active {
+      background-color: $color-primary;
+      color: $color-deco;
+    }
 
     &:hover {
       background-color: $color-primary;

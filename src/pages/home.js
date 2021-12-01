@@ -115,9 +115,10 @@ if (document.body.classList.contains("home")) {
 
         // ---- Filters Tags ---- //
         const tagsHtml = document.querySelectorAll(".tag_link");
+        let tagsArray = [];
 
         tagsHtml.forEach((tagHtml) => {
-          tagHtml.addEventListener("click", () => {
+          tagHtml.addEventListener("click", (e) => {
             const selectedTag = tagHtml.dataset.tagName;
             console.log(selectedTag);
 
@@ -126,6 +127,7 @@ if (document.body.classList.contains("home")) {
 
               return tags.includes(selectedTag);
             });
+
             clearHtml();
             displayCard(photographersData);
           });

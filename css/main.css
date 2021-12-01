@@ -101,9 +101,9 @@ ul {
   }
 }
 .tags__list .screen-reader {
-  display: none;
+  visibility: hidden;
 }
-.tags a {
+.tags .tag_link {
   font-weight: 500;
   padding: 5px;
   color: #901c1c;
@@ -111,7 +111,11 @@ ul {
   box-sizing: border-box;
   border-radius: 15px;
 }
-.tags a:hover {
+.tags .tag_link:active {
+  background-color: #901c1c;
+  color: #fff;
+}
+.tags .tag_link:hover {
   background-color: #901c1c;
   color: #fff;
 }
@@ -395,6 +399,12 @@ main {
   border-radius: 5px;
   height: 300px;
   width: 350px;
+  cursor: pointer;
+}
+.display img:hover,
+.display video:hover {
+  transform: scale(1.025);
+  transition: ease;
 }
 .display__details {
   display: flex;
