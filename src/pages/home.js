@@ -1,4 +1,5 @@
 // ---------------------------- AFFICHAGE ---------------------------//
+import { loadData } from "./functions";
 
 if (document.body.classList.contains("home")) {
   // ----------- DOM ELEMENTS ----------- //
@@ -22,62 +23,24 @@ if (document.body.classList.contains("home")) {
 
   // ---------------------------- PHOTOGRAPHERS CARDS ------------------------------------ //
   function createCard(photographer) {
-    const photographerArticle = photographerSection.appendChild(
-      document.createElement("article")
-    );
-    photographerArticle.classList.add("photographers__cards");
-
-    const photographerDiv = photographerArticle.appendChild(
-      document.createElement("div")
-    );
-    photographerDiv.classList.add("photographers__item");
-
-    const photographerLink = photographerDiv.appendChild(
-      document.createElement("a")
-    );
-    photographerLink.setAttribute(
-      "href",
-      `html/photographer_pages.html?id=${photographer.id}`
-    );
-    photographerLink.setAttribute("id", `${photographer.id}`);
-    photographerLink.setAttribute("aria-label", `${photographer.name}`);
-
-    const photographerImage = photographerLink.appendChild(
-      document.createElement("img")
-    );
-    photographerImage.setAttribute(
-      "src",
-      `img/photos/photographers_id_photos/${photographer.portrait}`
-    );
-    photographerImage.alt = photographer.name;
-
-    const photographerName = photographerDiv.appendChild(
-      document.createElement("h2")
-    );
-    photographerName.innerText = photographer.name;
-
-    const photographerLocation = photographerArticle.appendChild(
-      document.createElement("p")
-    );
-    photographerLocation.innerText = `${photographer.city}, ${photographer.country}`;
-    photographerLocation.classList.add("city");
-
-    const photographerTagline = photographerArticle.appendChild(
-      document.createElement("p")
-    );
-    photographerTagline.innerText = photographer.tagline;
-    photographerTagline.classList.add("tagline");
-
-    const photographerPrice = photographerArticle.appendChild(
-      document.createElement("p")
-    );
-    photographerPrice.innerText = `${photographer.price}€/jour`;
-    photographerPrice.classList.add("price");
-
-    const photographerTagUl = photographerArticle.appendChild(
-      document.createElement("ul")
-    );
+    photographerSection.innerHTML =
+      `<article class="photographers__cards">
+    <div class="photographers__item">
+    <a href="html/photographer_pages.html?id=${photographer.id}" id="${photographer.id}" aria-label="${photographer.name}">
+    <img src="img/photos/photographers_id_photos/${photographer.portrait}" alt="${photographer.name}"/>
+    </a>
+    </div>
+    <p class="city">${photographer.city}, ${photographer.country}</p>
+    <p class="tagline">${photographer.tagline}</p>
+    <p class="price">${photographer.price}€/jour</p>
     photographerTagUl.classList.add("tags", "tags__list");
+    <ul class="tags tags__list"></ul>` +
+      createTag(photographer) +
+      `</article>`;
+  }
+
+  function createTag(photographer) {
+    const photographerTagUl = querySelector("ul");
 
     let tags = photographer.tags;
 
@@ -104,41 +67,6 @@ if (document.body.classList.contains("home")) {
   }
 
   // --------------------------- PROMISE : ---------------------------------------------- //
-  loadData();
-
-  function loadData(tags = undefined) {
-    // Promise
-    fetch("./src/data.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const photographers = data.photographers;
-
-        // ---- Filters Tags ---- //
-        const tagsHtml = document.querySelectorAll(".tag_link");
-        let tagsArray = [];
-
-        tagsHtml.forEach((tagHtml) => {
-          tagHtml.addEventListener("click", (e) => {
-            const selectedTag = tagHtml.dataset.tagName;
-            console.log(selectedTag);
-
-            const photographersData = photographers.filter((photographer) => {
-              const tags = photographer.tags;
-
-              return tags.includes(selectedTag);
-            });
-
-            clearHtml();
-            displayCard(photographersData);
-          });
-        });
-
-        // -- Afficher photographers cards -- //
-        photographers.forEach((photographer) => {
-          createCard(photographer);
-        });
-      });
-  }
 
   // -- Clear le Html -- //
   function clearHtml() {

@@ -111,11 +111,11 @@ ul {
   box-sizing: border-box;
   border-radius: 15px;
 }
-.tags .tag_link:active {
+.tags .tag_link:hover {
   background-color: #901c1c;
   color: #fff;
 }
-.tags .tag_link:hover {
+.tags:not(.active) {
   background-color: #901c1c;
   color: #fff;
 }

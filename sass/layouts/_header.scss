@@ -87,15 +87,15 @@
     box-sizing: border-box;
     border-radius: 15px;
 
-    &:active {
-      background-color: $color-primary;
-      color: $color-deco;
-    }
-
     &:hover {
       background-color: $color-primary;
       color: $color-deco;
     }
+  }
+
+  &:not(.active) {
+    background-color: $color-primary;
+    color: $color-deco;
   }
 }
 

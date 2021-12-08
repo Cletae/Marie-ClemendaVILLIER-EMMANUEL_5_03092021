@@ -1,5 +1,8 @@
 // --------------------------- AFFICHAGE ---------------------------------//
 
+import { loadData } from "./functions";
+import { Media } from "./medias";
+
 const body = document.querySelector("body");
 
 if (body.classList.contains("photographes")) {
@@ -46,90 +49,21 @@ if (body.classList.contains("photographes")) {
   const price = document.querySelector(".price");
   const nbLikes = document.querySelectorAll(".likes");
 
-  // --------------------------------- PROMISE : -------------------------------------- //
-
-  loadData();
-
-  function loadData() {
-    fetch("../src/data.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const photographers = data.photographers;
-        const medias = data.media;
-        const urlParams = new URL(window.location).searchParams;
-        const idParams = parseInt(urlParams.get("id"));
-
-        // -- Retrouver l'id photographer et le diriger dans sa page -- //
-        const displayPhotographer = photographers.find((photographer) => {
-          const photographerIdString = photographer.id.toString();
-          return photographerIdString == idParams;
-        });
-
-        // -- Retrouver l'id medias du photographer concerné -- //
-        function reveleMedias(urlId) {
-          return medias.filter(
-            (media) => media.photographerId.toString() == urlId
-          );
-        }
-
-        // -- Afficher photographer banner -- //
-        photographerCard(displayPhotographer);
-        //launchModal(displayPhotographer);
-
-        // -- Afficher img/videos -- //
-        reveleMedias(idParams).forEach((media, photographer, option) => {
-          createMedia(media), tabMedia.push(media), likeMedia.push(media.likes);
-        });
-
-        // -- Show option dropdown -- //
-        options.forEach((option, media) => {
-          option.addEventListener("click", () => {
-            titleDropdown.innerHTML = option.innerHTML;
-            btnSelect.setAttribute("aria-expanded", "false");
-            //select.style.display = "block";
-            // contentArrow.innerHTML = `<span class="arrow"><i class="fas fa-chevron-down"></i></span>`;
-            options.forEach((option) => option.classList.remove("open"));
-            filterMedias(tabMedia, option, media);
-            //select.style.displayb = "none";
-          });
-        });
-
-        // -- Afficher lightbox -- //
-        clickImage(medias, tabMedia);
-
-        // -- Afficher Info (Likes & Price) -- //
-        infoPriceAndLikes(displayPhotographer);
-        clickLikes(likeMedia);
-        infoTotalLikes(likeMedia);
-      });
-  }
-
   // ------------------------ PHOTOGRAPHER BANNER ----------------------------- //
 
   // --- Create Photographer Banner --- //
   function photographerCard(photographer) {
-    const photographerName = photographerArticle.appendChild(
-      document.createElement("h1")
-    );
-    photographerName.classList.add("banner__name");
-    photographerName.innerText = photographer.name;
+    photographerArticle.innerHTML =
+      `<h1 class="banner__name">${photographer.name}</h1>
+    <p class="banner__city">${photographer.city}, ${photographer.country}</p>
+    <p class="banner__tagline">${photographer.tagline}</p>
+    <ul class="tags tags__list">` +
+      tagAndImage(photographer) +
+      `</ul> `;
+  }
 
-    const photographerLocation = photographerArticle.appendChild(
-      document.createElement("p")
-    );
-    photographerLocation.classList.add("banner__city");
-    photographerLocation.innerText = `${photographer.city}, ${photographer.country}`;
-
-    const photographerTagline = photographerArticle.appendChild(
-      document.createElement("p")
-    );
-    photographerTagline.classList.add("banner__tagline");
-    photographerTagline.innerText = photographer.tagline;
-
-    const photographerTagUl = photographerArticle.appendChild(
-      document.createElement("ul")
-    );
-    photographerTagUl.classList.add("tags", "tags__list");
+  function tagAndImage(photographer) {
+    const photographerTagUl = querySelector("tags");
 
     let tags = photographer.tags;
 
@@ -163,87 +97,6 @@ if (body.classList.contains("photographes")) {
     );
     imgPhotographer.src = `../img/photos/photographers_id_photos/${photographer.portrait}`;
     imgPhotographer.alt = photographer.name;
-  }
-
-  // ------------------------------ DISPLAY MEDIAS  --------------------------------------//
-
-  function createMedia(media) {
-    if (media.hasOwnProperty("image")) {
-      return displayImages(media);
-    } else if (media.hasOwnProperty("video")) {
-      return displayVideos(media);
-    }
-  }
-
-  // --- Affichage Images ---- //
-  function displayImages(media) {
-    const figure = contentMedia.appendChild(document.createElement("figure"));
-    figure.classList.add("display__item");
-
-    let id = media.id;
-
-    const img = figure.appendChild(document.createElement("img"));
-
-    img.src = `../img/photos/${media.photographerId}/${media.image}`;
-    img.alt = `${media.title}`;
-    img.dataset.id = id;
-
-    const figureCaption = figure.appendChild(
-      document.createElement("figcaption")
-    );
-    figureCaption.classList.add("display__details");
-
-    const para = figureCaption.appendChild(document.createElement("p"));
-    para.innerHTML = `${media.title}`;
-
-    const div = figureCaption.appendChild(document.createElement("div"));
-    div.classList.add("blockLike");
-    div.dataset.select = false;
-
-    const like = div.appendChild(document.createElement("span"));
-    like.innerHTML = `${media.likes}`;
-    like.classList.add("likes");
-
-    const icon = div.appendChild(document.createElement("span"));
-    icon.dataset.id = id;
-    icon.innerHTML = `<i class="heartLike fas fa-heart"></i>`;
-    icon.classList.add("iconHearts");
-  }
-
-  // -------- Affichage video ---------- //
-  function displayVideos(media) {
-    const figure = contentMedia.appendChild(document.createElement("figure"));
-    figure.classList.add("display__item");
-
-    let id = media.id;
-
-    const video = figure.appendChild(document.createElement("video"));
-    video.setAttribute("controls", "controls");
-    video.setAttribute("muted", "muted");
-    video.dataset.id = id;
-
-    const videoSrc = video.appendChild(document.createElement("source"));
-    videoSrc.src = `../img/photos/${media.photographerId}/${media.video}`;
-
-    const figureCaption = figure.appendChild(
-      document.createElement("figcaption")
-    );
-    figureCaption.classList.add("display__details");
-
-    const para = figureCaption.appendChild(document.createElement("p"));
-    para.innerHTML = `${media.title}`;
-
-    const div = figureCaption.appendChild(document.createElement("div"));
-    div.classList.add("blockLike");
-    div.dataset.select = false;
-
-    const like = div.appendChild(document.createElement("span"));
-    like.innerHTML = `${media.likes}`;
-
-    const icon = div.appendChild(document.createElement("span"));
-    icon.dataset.id = id;
-    icon.innerHTML = `<i class="heartLike fas fa-heart" ></i>`;
-    icon.classList.add("iconHearts");
   }
 
   // -------------------------- DROPDOWN ---------------------------------- //
@@ -306,6 +159,7 @@ if (body.classList.contains("photographes")) {
       });
     }
     contentMedia.innerHTML = "";
+    console.log(tabMedia);
 
     tabMedia.forEach((media) => {
       createMedia(media);
@@ -368,61 +222,50 @@ if (body.classList.contains("photographes")) {
           previous(displayMedia),
           next(displayMedia)
         );
-
-        // -- Left arrow -- //
-        function previous(displayMedia) {
-          lightboxLeft.addEventListener("click", () => {
-            for (let i = 0; i < tabMedia.length; i++) {
-              if (tabMedia[i].id == displayMedia.id) {
-                if (i == 0) {
-                  displayMedia = tabMedia[tabMedia.length - 1];
-                } else {
-                  displayMedia = tabMedia[(i -= 1)];
-                }
+      });
+      // -- Left arrow -- //
+      function previous(displayMedia) {
+        lightboxLeft.addEventListener("click", () => {
+          for (let i = 0; i < tabMedia.length; i++) {
+            if (tabMedia[i].id == displayMedia.id) {
+              if (i == 0) {
+                displayMedia = tabMedia[tabMedia.length - 1];
+              } else {
+                displayMedia = tabMedia[(i -= 1)];
               }
             }
-            createLightbox(displayMedia);
-          });
-          // lightboxLeft.addEventListener("keypress", (event) => {
-          //   if (event.key == "Enter" || event.key == "Tab") {
-          //     createLightbox(displayMedia);
-          //   }
-          // });
-        }
+          }
+          createLightbox(displayMedia);
+        });
+      }
 
-        // -- Right arrow -- //
-        function next(displayMedia) {
-          lightboxRight.addEventListener("click", () => {
-            for (let i = 0; i <= tabMedia.length - 1; i++) {
-              if (tabMedia[i].id == displayMedia.id) {
-                if (i == tabMedia.length - 1) {
-                  [displayMedia] = tabMedia;
-                } else {
-                  displayMedia = tabMedia[(i += 1)];
-                }
+      // -- Right arrow -- //
+      function next(displayMedia) {
+        lightboxRight.addEventListener("click", () => {
+          for (let i = 0; i <= tabMedia.length - 1; i++) {
+            if (tabMedia[i].id == displayMedia.id) {
+              if (i == tabMedia.length - 1) {
+                [displayMedia] = tabMedia;
+              } else {
+                displayMedia = tabMedia[(i += 1)];
               }
             }
-            createLightbox(displayMedia);
-          });
-          // lightboxRight.addEventListener("keypress", (event) => {
-          //   if (event.key == "ArrowRight") {
-          //     next(displayMedia);
-          //   }
-          // });
-        }
-      });
+          }
+          createLightbox(displayMedia);
+        });
+      }
+    });
 
-      window.addEventListener("keydown", function (e) {
-        if (e.key == "ArrowRight") {
-          next();
-        }
-        if (e.key == "ArrowLeft") {
-          previous();
-        }
-        if (e.key == "Escape") {
-          lightboxContainer.style.display = "none";
-        }
-      });
+    window.addEventListener("keydown", function (e) {
+      if (e.key == "ArrowRight") {
+        next();
+      }
+      if (e.key == "ArrowLeft") {
+        previous();
+      }
+      if (e.key == "Escape") {
+        lightboxContainer.style.display = "none";
+      }
     });
   }
 
