@@ -93,7 +93,7 @@
     }
   }
 
-  &:not(.active) {
+  .active {
     background-color: $color-primary;
     color: $color-deco;
   }

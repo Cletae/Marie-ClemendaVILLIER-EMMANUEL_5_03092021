@@ -115,7 +115,7 @@ ul {
   background-color: #901c1c;
   color: #fff;
 }
-.tags:not(.active) {
+.tags .active {
   background-color: #901c1c;
   color: #fff;
 }
