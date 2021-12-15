@@ -1,4 +1,4 @@
-export default class Image {
+export class Image {
   constructor(media) {
     Object.assign(this, media);
   }

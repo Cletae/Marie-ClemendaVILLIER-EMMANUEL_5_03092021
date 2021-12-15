@@ -1,4 +1,4 @@
-export default class Video {
+export class Video {
   constructor(media) {
     Object.assign(this, media);
   }
