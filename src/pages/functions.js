@@ -244,7 +244,7 @@ function photographerCard(photographer) {
   const imgArticle = document.querySelector(".imgArticle");
 
   const imgPhotographer = imgArticle.appendChild(document.createElement("img"));
-  imgPhotographer.src = `../img/photos/photographers_id_photos/${photographer.portrait}`;
+  imgPhotographer.src = `./img/photos/photographers_id_photos/${photographer.portrait}`;
   imgPhotographer.alt = photographer.name;
 }
 

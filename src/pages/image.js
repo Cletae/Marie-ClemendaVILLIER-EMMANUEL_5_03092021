@@ -5,7 +5,7 @@ export class Image {
 
   display() {
     return `<figure class="display__item" data-tag-name="${this.tags}">
-                <img src="../img/photos/${this.photographerId}/${this.image}" alt="${this["alt-text"]}" data-id="${this.id}">
+                <img src="./img/photos/${this.photographerId}/${this.image}" alt="${this["alt-text"]}" data-id="${this.id}">
                 <figcaption class="display__details">
                   <p>${this.title}</p>
                   <div class="blockLike" data-select="false">
