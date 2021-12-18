@@ -169,9 +169,10 @@ function createCard(photographer) {
   <img src="img/photos/photographers_id_photos/${photographer.portrait}" alt="${
     photographer.name
   }"/>
+  <h2>${photographer.name}</h2>
   </a>
   </div>
-  <h2>${photographer.name}</h2>
+  
   <p class="city">${photographer.city}, ${photographer.country}</p>
   <p class="tagline">${photographer.tagline}</p>
   <p class="price">${photographer.price}€/jour</p>

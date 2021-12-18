@@ -39,7 +39,8 @@ main {
     @include flexbox;
   }
 
-  &__item {
+  &__item,
+  a {
     display: flex;
     @include flexbox;
     @include flex;

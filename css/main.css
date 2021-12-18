@@ -200,14 +200,16 @@ main {
   align-items: center;
   flex-direction: column;
 }
-.photographers__item {
+.photographers__item,
+.photographers a {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: ease;
 }
-.photographers__item:hover {
+.photographers__item:hover,
+.photographers a:hover {
   transform: scale(1.02);
 }
 .photographers img {
