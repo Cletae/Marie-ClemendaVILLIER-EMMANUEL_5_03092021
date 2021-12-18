@@ -7,18 +7,6 @@ const body = document.querySelector("body");
 if (body.classList.contains("photographes")) {
   // ----------------------------- DOM ELEMENTS --------------------------------- //
 
-  // -- Header Elements -- //
-  const photographerBanner = document.querySelector(".banner");
-  const photographerArticle = document.querySelector(".banner__detail");
-
-  // -- Section Element -- //
-  const contentMedia = document.querySelector(".display");
-
-  // -- Form Element -- //
-  const modalbg = document.querySelector(".bground");
-  const modalBtn = document.querySelectorAll(".btn-contact");
-  const photographerName = document.getElementById("photographer_name");
-
   // --- Dropdown Elements --- //
 
   const btnSelect = document.querySelector(".btn-dropdown");
@@ -29,12 +17,6 @@ if (body.classList.contains("photographes")) {
   // -- Lightbox Element -- //
   const lightboxContainer = document.querySelector(".lightbox");
   const lightboxClose = document.querySelector(".lightbox__close");
-
-  // ---- Infos Elements ----- //
-  const info = document.querySelector(".info");
-  const infoLikes = document.querySelector(".infoLikes");
-  const price = document.querySelector(".price");
-  const nbLikes = document.querySelectorAll(".likes");
 
   loadData();
 

@@ -110,47 +110,43 @@ export function loadData(tags = undefined) {
 
           let tag_selected = document.querySelectorAll(".active");
 
-          if (document.body.classList.contains("home")) {
+          function filterTags(tag_selected, items) {
+            let resultat = [];
+
             if (tag_selected.length == 0) {
-              resultat = photographers;
+              resultat = items;
             } else {
               tag_selected.forEach((values) => {
-                photographers.filter((photographer) => {
-                  if (photographer.tags.indexOf(values.dataset.tagName) != -1) {
-                    console.log(values.dataset.tagName);
-
-                    console.log(values.dataset.tagName);
-                    if (!resultat.includes(photographer)) {
-                      resultat.push(photographer);
+                items.filter((item) => {
+                  if (item.tags.indexOf(values.dataset.tagName) != -1) {
+                    if (!resultat.includes(item)) {
+                      resultat.push(item);
                     }
                   }
                 });
               });
             }
+
+            return resultat;
+          }
+
+          if (document.body.classList.contains("home")) {
+            resultat = filterTags(tag_selected, photographers);
 
             resultat.forEach((photographer) => {
               createCard(photographer);
             });
           } else {
-            if (tag_selected.length == 0) {
-              resultat = medias;
-            } else {
-              tag_selected.forEach((values) => {
-                console.log(values);
-
-                medias.filter((media) => {
-                  if (media.tags.indexOf(values.dataset.tagName) != -1) {
-                    if (!resultat.includes(media)) {
-                      resultat.push(media);
-                    }
-                  }
-                });
-              });
-            }
+            resultat = filterTags(tag_selected, tabMedia);
 
             resultat.forEach((media) => {
               const newMedia = createMedia(media);
               contentMedia.insertAdjacentHTML("beforeend", newMedia.display());
+              // // -- Afficher lightbox -- //
+              clickImage(medias, tabMedia);
+
+              clickLikes(likeMedia);
+              infoTotalLikes(likeMedia);
             });
           }
         });
@@ -342,20 +338,6 @@ function clickImage(medias, tabMedia) {
       );
     });
 
-    window.addEventListener("keydown", (e) => {
-      if (e.key == "ArrowLeft") {
-        lightboxLeft.click();
-      }
-
-      if (e.key == "ArrowRight") {
-        lightboxRight.click();
-      }
-
-      if (e.key == "Escape") {
-        lightboxContainer.style.display = "none";
-      }
-    });
-
     // -- Left arrow -- //
     function previous(displayMedia) {
       lightboxLeft.addEventListener("click", () => {
@@ -388,6 +370,20 @@ function clickImage(medias, tabMedia) {
         createLightbox(displayMedia);
       });
     }
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key == "ArrowLeft") {
+        lightboxLeft.click();
+      }
+
+      if (e.key == "ArrowRight") {
+        lightboxRight.click();
+      }
+
+      if (e.key == "Escape") {
+        lightboxContainer.style.display = "none";
+      }
+    });
   });
 }
 
