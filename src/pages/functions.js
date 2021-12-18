@@ -172,7 +172,6 @@ function createCard(photographer) {
   <h2>${photographer.name}</h2>
   </a>
   </div>
-  
   <p class="city">${photographer.city}, ${photographer.country}</p>
   <p class="tagline">${photographer.tagline}</p>
   <p class="price">${photographer.price}€/jour</p>

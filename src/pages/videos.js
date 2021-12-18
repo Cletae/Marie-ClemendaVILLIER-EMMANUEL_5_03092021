@@ -6,7 +6,7 @@ export class Video {
   display() {
     return `<figure class="display__item" data-tag-name="${this.tags}">
                 <video controls="controls" muted="muted" data-id="${this.id}">
-                <source src="../img/photos/${this.photographerId}/${this.video}#t=0.1" type="video/mp4">
+                <source src="img/photos/${this.photographerId}/${this.video}#t=0.1" type="video/mp4">
                 </video>
                   <figcaption class="display__details">
                     <p>${this.title}</p>
