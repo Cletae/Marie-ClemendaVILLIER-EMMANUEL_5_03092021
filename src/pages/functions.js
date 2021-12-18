@@ -298,11 +298,11 @@ function createLightbox(media) {
   let display = "";
 
   if (media.image) {
-    display = `<img src="../img/photos/${media.photographerId}/${media.image}" alt="${media["alt-text"]}" data-id="${media.id}">
+    display = `<img src="img/photos/${media.photographerId}/${media.image}" alt="${media["alt-text"]}" data-id="${media.id}">
               <p>${media.title}</p>`;
   } else if (media.video) {
     display = `<video controls="">
-      <source src="../img/photos/${media.photographerId}/${media.video}" data-id="${media.id}" type="video/mp4">
+      <source src="img/photos/${media.photographerId}/${media.video}" data-id="${media.id}" type="video/mp4">
     </video>
     <p>${media.title}</p>`;
   }
