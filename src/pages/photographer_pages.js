@@ -56,4 +56,5 @@ if (body.classList.contains("photographes")) {
   lightboxClose.addEventListener("keypress", function () {
     lightboxContainer.style.display = "none";
   });
+  
 }

@@ -79,6 +79,13 @@ export function loadData(tags = undefined) {
             btnSelect.setAttribute("aria-expanded", "false");
             options.forEach((option) => option.classList.remove("open"));
             filterMedias(tabMedia, option, media);
+            // -- Afficher lightbox -- //
+            clickImage(medias, tabMedia);
+
+            // -- Afficher Info (Likes & Price) -- //
+            infoPriceAndLikes(displayPhotographer);
+            clickLikes(likeMedia);
+            infoTotalLikes(likeMedia);
           });
         });
 
@@ -287,8 +294,8 @@ function filterMedias(tabMedia, option) {
     contentMedia.insertAdjacentHTML("beforeend", newMedia.display());
   });
 
-  clickImage(tabMedia);
-  clickLikes(likeMedia);
+  // clickImage(tabMedia);
+  // clickLikes(likeMedia);
 }
 
 // ---------------------------- LIGHTBOX ----------------------------- //
@@ -319,6 +326,7 @@ let currentMediaIndex = 0;
 // ------------- Find medias & display in lightbox ------------- //
 function clickImage(medias, tabMedia) {
   const images = document.querySelectorAll("figure img, figure video");
+  let displayMedia = "";
 
   images.forEach((image) => {
     image.addEventListener("click", () => {
@@ -329,8 +337,8 @@ function clickImage(medias, tabMedia) {
       displayLightbox();
 
       // --- Retrouve la media miniature in lightbox --- //
-      const displayMedia = medias.find((media) => {
-        return media.id == id;
+      displayMedia = tabMedia.find((media) => {
+        return media.id == parseInt(id);
       });
 
       // --- Affiche media in lighbox --- //
@@ -338,54 +346,53 @@ function clickImage(medias, tabMedia) {
         createLightbox(displayMedia), previous(displayMedia), next(displayMedia)
       );
     });
-
-    // -- Left arrow -- //
-    function previous(displayMedia) {
-      lightboxLeft.addEventListener("click", () => {
-        for (let i = 0; i < tabMedia.length; i++) {
-          if (tabMedia[i].id == displayMedia.id) {
-            if (i == 0) {
-              displayMedia = tabMedia[tabMedia.length - 1];
-            } else {
-              displayMedia = tabMedia[(i -= 1)];
-            }
-          }
-        }
-
-        createLightbox(displayMedia);
-      });
-    }
-
-    // -- Right arrow -- //
-    function next(displayMedia) {
-      lightboxRight.addEventListener("click", () => {
-        for (let i = 0; i <= tabMedia.length - 1; i++) {
-          if (tabMedia[i].id == displayMedia.id) {
-            if (i == tabMedia.length - 1) {
-              [displayMedia] = tabMedia;
-            } else {
-              displayMedia = tabMedia[(i += 1)];
-            }
-          }
-        }
-        createLightbox(displayMedia);
-      });
-    }
-
-    window.addEventListener("keydown", (e) => {
-      if (e.key == "ArrowLeft") {
-        lightboxLeft.click();
-      }
-
-      if (e.key == "ArrowRight") {
-        lightboxRight.click();
-      }
-
-      if (e.key == "Escape") {
-        lightboxContainer.style.display = "none";
-      }
-    });
   });
+  window.addEventListener("keydown", (e) => {
+    if (e.key == "ArrowLeft") {
+      lightboxLeft.click();
+    }
+
+    if (e.key == "ArrowRight") {
+      lightboxRight.click();
+    }
+
+    if (e.key == "Escape") {
+      lightboxContainer.style.display = "none";
+    }
+  });
+
+  // -- Left arrow -- //
+  function previous(displayMedia) {
+    lightboxLeft.addEventListener("click", () => {
+      for (let i = 0; i < tabMedia.length; i++) {
+        if (tabMedia[i].id == displayMedia.id) {
+          if (i == 0) {
+            displayMedia = tabMedia[tabMedia.length - 1];
+          } else {
+            displayMedia = tabMedia[(i -= 1)];
+          }
+        }
+      }
+
+      createLightbox(displayMedia);
+    });
+  }
+
+  // -- Right arrow -- //
+  function next(displayMedia) {
+    lightboxRight.addEventListener("click", () => {
+      for (let i = 0; i <= tabMedia.length - 1; i++) {
+        if (tabMedia[i].id == displayMedia.id) {
+          if (i == tabMedia.length - 1) {
+            [displayMedia] = tabMedia;
+          } else {
+            displayMedia = tabMedia[(i += 1)];
+          }
+        }
+      }
+      createLightbox(displayMedia);
+    });
+  }
 }
 
 // ------------------------------ INFOS : LIKES & PRICE ------------------------------- //

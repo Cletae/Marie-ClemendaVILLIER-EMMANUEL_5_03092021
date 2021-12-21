@@ -37,94 +37,77 @@
     </header>
 
     <main>
-      <!------- PHOTOGRAPHER BANNER DETAILS ---------->
-      <section class="banner">
+      <!-- PHOTOGRAPHER BANNER DETAILS -->
+      <div class="banner">
         <article class="banner__detail"></article>
-        <article class="contact">
+        <div class="contact">
           <input
             type="button"
             aria-label="Contact Me"
             class="btn-contact"
             value="Contactez moi"
           />
-        </article>
-        <article class="imgArticle"></article>
-      </section>
+        </div>
+        <div class="imgArticle"></div>
+      </div>
 
-      <!--------  DROPDOWN ----------->
-      <section class="trie">
+      <!--  DROPDOWN -->
+      <div class="trie">
         <label class="">Trier par</label>
 
-        <article class="filter">
-          <!-- <div>
-            <select class="btn-dropdown">
-              <option class="dropdown__list hidden" value="popularite">
-                Popularité
-              </option>
-              <option class="dropdown__list hidden" value="date">Date</option>
-              <option class="dropdown__list hidden" value="titre">Titre</option>
-            </select>
-          </div> -->
+        <div class="filter">
+          <button
+            name="menu"
+            class="btn-dropdown"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
+            <span id="titleDropdown"></span>
 
-          <div>
-            <button
-              name="menu"
-              class="btn-dropdown"
-              role="button"
-              aria-haspopup="listbox"
-              aria-expanded="false"
+            <span id="content_arrows"><i class="fas fa-chevron-down"></i></span>
+          </button>
+          <ul class="dropdown" role="listbox">
+            <li
+              class="dropdown__list hidden"
+              role="option"
+              aria-label="Order by"
+              aria-selected="true"
+              data-value="popularite"
             >
-              <span id="titleDropdown"></span>
+              Popolarité
+            </li>
+            <li
+              class="dropdown__list hidden"
+              role="option"
+              aria-label="Order by"
+              aria-selected="false"
+              data-value="date"
+            >
+              Date
+            </li>
+            <li
+              class="dropdown__list hidden"
+              role="option"
+              aria-label="Order by"
+              aria-selected="false"
+              data-value="titre"
+            >
+              Titre
+            </li>
+          </ul>
+        </div>
+      </div>
 
-              <span id="content_arrows"
-                ><i class="fas fa-chevron-down"></i
-              ></span>
-            </button>
-            <ul class="dropdown" role="listbox">
-              <li
-                class="dropdown__list hidden"
-                role="option"
-                aria-label="Order by"
-                aria-selected="true"
-                data-value="popularite"
-              >
-                Popolarité
-              </li>
-              <li
-                class="dropdown__list hidden"
-                role="option"
-                aria-label="Order by"
-                aria-selected="false"
-                data-value="date"
-              >
-                Date
-              </li>
-              <li
-                class="dropdown__list hidden"
-                class="option"
-                role="option"
-                aria-label="Order by"
-                aria-selected="false"
-                data-value="titre"
-              >
-                Titre
-              </li>
-            </ul>
-          </div>
-        </article>
-      </section>
+      <!-- DISPLAY MEDIAS PHOTOGRAPHER -->
+      <div class="display"></div>
 
-      <!---------- DISPLAY MEDIAS PHOTOGRAPHER ----------->
-      <section class="display"></section>
-
-      <!---------- FORM CONTACT -------->
+      <!-- FORM CONTACT -->
       <div class="bground">
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
             <form name="reserve" action="index.html" method="get">
               <h1>Contactez moi</h1>
-              <h2 id="photographer_name"></h2>
               <div class="formData">
                 <label for="first">Prénom</label><br />
                 <input
@@ -160,7 +143,6 @@
                 <label for="message">Votre message</label><br />
                 <textarea
                   class="text-control"
-                  type="text"
                   id="message"
                   name="message"
                   placeholder="Saisissez votre message ici..."
@@ -168,12 +150,7 @@
                 <div id="message-empty"></div>
               </div>
 
-              <input
-                class="btn-submit"
-                type="submit"
-                class="button"
-                value="Envoyer"
-              />
+              <input class="btn-submit" type="submit" value="Envoyer" />
             </form>
           </div>
           <div id="confirmation">Merci d'avoir pris contact.</div>
@@ -186,7 +163,7 @@
         </div>
       </div>
 
-      <!--------- LIGHTBOX ----------->
+      <!-- LIGHTBOX -->
       <div class="lightbox" role="dialog">
         <div class="lightbox__content">
           <div class="lightbox__body">
@@ -212,7 +189,7 @@
         </div>
       </div>
 
-      <!-------- INFO LIKE & PRICE --------->
+      <!-- INFO LIKE & PRICE -->
       <div class="info">
         <span class="infoLikes"></span>
         <p class="price"></p>
