@@ -7,7 +7,6 @@ let likeMedia = [];
 const photographerSection = document.querySelector(".photographers");
 
 const contentMedia = document.querySelector(".display");
-const photographerBanner = document.querySelector(".banner");
 
 // --- Dropdown Elements --- //
 
@@ -17,8 +16,6 @@ const options = document.querySelectorAll(".dropdown__list");
 // -- Lightbox Element -- //
 
 const lightboxContainer = document.querySelector(".lightbox");
-const lightboxClose = document.querySelector(".lightbox__close");
-const lightboxBody = document.querySelector(".lightbox__body");
 
 const lightboxMedias = document.querySelector(".lightbox__media");
 const lightboxLeft = document.querySelector(".lightbox__left");
@@ -150,7 +147,7 @@ export function loadData(tags = undefined) {
               const newMedia = createMedia(media);
               contentMedia.insertAdjacentHTML("beforeend", newMedia.display());
               // // -- Afficher lightbox -- //
-              clickImage(medias, tabMedia);
+              clickImage(medias, tabMedia, resultat);
 
               clickLikes(likeMedia);
               infoTotalLikes(likeMedia);
@@ -326,7 +323,6 @@ let currentMediaIndex = 0;
 // ------------- Find medias & display in lightbox ------------- //
 function clickImage(medias, tabMedia) {
   const images = document.querySelectorAll("figure img, figure video");
-  let displayMedia = "";
 
   images.forEach((image) => {
     image.addEventListener("click", () => {
@@ -337,8 +333,8 @@ function clickImage(medias, tabMedia) {
       displayLightbox();
 
       // --- Retrouve la media miniature in lightbox --- //
-      displayMedia = tabMedia.find((media) => {
-        return media.id == parseInt(id);
+      const displayMedia = tabMedia.find((media) => {
+        return media.id == id;
       });
 
       // --- Affiche media in lighbox --- //
@@ -365,8 +361,8 @@ function clickImage(medias, tabMedia) {
   function previous(displayMedia) {
     lightboxLeft.addEventListener("click", () => {
       for (let i = 0; i < tabMedia.length; i++) {
-        if (tabMedia[i].id == displayMedia.id) {
-          if (i == 0) {
+        if (tabMedia[i].id === displayMedia.id) {
+          if (i === 0) {
             displayMedia = tabMedia[tabMedia.length - 1];
           } else {
             displayMedia = tabMedia[(i -= 1)];
@@ -382,8 +378,8 @@ function clickImage(medias, tabMedia) {
   function next(displayMedia) {
     lightboxRight.addEventListener("click", () => {
       for (let i = 0; i <= tabMedia.length - 1; i++) {
-        if (tabMedia[i].id == displayMedia.id) {
-          if (i == tabMedia.length - 1) {
+        if (tabMedia[i].id === displayMedia.id) {
+          if (i === tabMedia.length - 1) {
             [displayMedia] = tabMedia;
           } else {
             displayMedia = tabMedia[(i += 1)];
